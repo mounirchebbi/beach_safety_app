@@ -90,3 +90,74 @@
 {"level":"info","message":"Client disconnected","service":"beach-safety-api","socketId":"rUc_Kezj60Nmpp1kAAAF","timestamp":"2025-06-26 10:08:56"}
 {"email":"demo.center@beachsafety.com","level":"info","message":"User logged in successfully","role":"center_admin","service":"beach-safety-api","timestamp":"2025-06-26 10:09:02","userId":"797fe7c4-3303-4388-b0df-160f6f8c5914"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:09:09:02 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 438 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 10:09:02"}
+{"level":"info","message":"Server running on port 5000","service":"beach-safety-api","timestamp":"2025-06-26 11:06:03"}
+{"level":"info","message":"Environment: development","service":"beach-safety-api","timestamp":"2025-06-26 11:06:03"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:06:20"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:06:20 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 401 49 \"-\" \"curl/7.68.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:06:20"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"beach-safety-api","timestamp":"2025-06-26 11:07:54"}
+{"level":"info","message":"Server running on port 5000","service":"beach-safety-api","timestamp":"2025-06-26 11:08:08"}
+{"level":"info","message":"Environment: development","service":"beach-safety-api","timestamp":"2025-06-26 11:08:08"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:08:26"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:08:26 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 401 49 \"-\" \"curl/7.68.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:08:26"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:09:16"}
+{"email":"demo.admin@beachsafety.com","level":"info","message":"User logged in successfully","role":"system_admin","service":"beach-safety-api","timestamp":"2025-06-26 11:09:16","userId":"be4f180b-a12f-47af-a146-11c76c0d1ec6"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:16 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 439 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:16"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"j2mmfzR_54LVyJDDAAAB","timestamp":"2025-06-26 11:09:16"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"j2mmfzR_54LVyJDDAAAB","timestamp":"2025-06-26 11:09:16"}
+{"level":"info","message":"User logged out","service":"beach-safety-api","timestamp":"2025-06-26 11:09:25","userId":"be4f180b-a12f-47af-a146-11c76c0d1ec6"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:25 +0000] \"POST /api/v1/auth/logout HTTP/1.1\" 200 52 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:25"}
+{"level":"info","message":"Client disconnected","service":"beach-safety-api","socketId":"j2mmfzR_54LVyJDDAAAB","timestamp":"2025-06-26 11:09:25"}
+{"email":"demo.lifeguard@beachsafety.com","level":"info","message":"User logged in successfully","role":"lifeguard","service":"beach-safety-api","timestamp":"2025-06-26 11:09:38","userId":"fe7e986f-983f-42a8-abb3-c59a54c4227a"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:38 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 436 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:38"}
+{"level":"info","message":"User logged out","service":"beach-safety-api","timestamp":"2025-06-26 11:09:42","userId":"fe7e986f-983f-42a8-abb3-c59a54c4227a"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:42 +0000] \"POST /api/v1/auth/logout HTTP/1.1\" 200 52 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:42"}
+{"email":"demo.center@beachsafety.com","level":"info","message":"User logged in successfully","role":"center_admin","service":"beach-safety-api","timestamp":"2025-06-26 11:09:48","userId":"797fe7c4-3303-4388-b0df-160f6f8c5914"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:48 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 438 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:48"}
+{"level":"info","message":"User logged out","service":"beach-safety-api","timestamp":"2025-06-26 11:09:58","userId":"797fe7c4-3303-4388-b0df-160f6f8c5914"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:09:58 +0000] \"POST /api/v1/auth/logout HTTP/1.1\" 200 52 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:09:58"}
+{"level":"info","message":"Starting removal of sample lifeguards...","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"User john.smith@beachsafety.com not found, skipping","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"User sarah.johnson@beachsafety.com not found, skipping","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"User mike.davis@beachsafety.com not found, skipping","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"User emma.wilson@beachsafety.com not found, skipping","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"User david.brown@beachsafety.com not found, skipping","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"Sample lifeguards removal completed successfully","service":"beach-safety-api","timestamp":"2025-06-26 11:20:49"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"beach-safety-api","timestamp":"2025-06-26 11:21:57"}
+{"level":"info","message":"Server running on port 5000","service":"beach-safety-api","timestamp":"2025-06-26 11:29:23"}
+{"level":"info","message":"Environment: development","service":"beach-safety-api","timestamp":"2025-06-26 11:29:23"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:29:48 +0000] \"GET / HTTP/1.1\" 404 56 \"-\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:29:48"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:29:49 +0000] \"GET /favicon.ico HTTP/1.1\" 404 67 \"-\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:29:49"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:29:53"}
+{"email":"demo.admin@beachsafety.com","level":"info","message":"User logged in successfully","role":"system_admin","service":"beach-safety-api","timestamp":"2025-06-26 11:29:53","userId":"be4f180b-a12f-47af-a146-11c76c0d1ec6"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:29:53 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 439 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:29:53"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"wFefVwtzK-rKT4TxAAAB","timestamp":"2025-06-26 11:29:53"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"wFefVwtzK-rKT4TxAAAB","timestamp":"2025-06-26 11:29:53"}
+{"level":"info","message":"Server running on port 5000","service":"beach-safety-api","timestamp":"2025-06-26 11:32:57"}
+{"level":"info","message":"Environment: development","service":"beach-safety-api","timestamp":"2025-06-26 11:32:57"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:33:09"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:33:09"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:09 +0000] \"GET /api/v1/auth/me HTTP/1.1\" 200 247 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:09"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:09 +0000] \"GET /api/v1/auth/me HTTP/1.1\" 200 247 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:09"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:12 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 401 49 \"-\" \"curl/7.68.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:12"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:13 +0000] \"GET / HTTP/1.1\" 404 56 \"-\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:13"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:14 +0000] \"GET /favicon.ico HTTP/1.1\" 404 67 \"-\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:14"}
+{"email":"demo.admin@beachsafety.com","level":"info","message":"User logged in successfully","role":"system_admin","service":"beach-safety-api","timestamp":"2025-06-26 11:33:20","userId":"be4f180b-a12f-47af-a146-11c76c0d1ec6"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:33:20 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 439 \"-\" \"curl/7.68.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:33:20"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"EmxAMmP20JubbiaJAAAB","timestamp":"2025-06-26 11:33:44"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"sObyU1k3A9XBX9lhAAAD","timestamp":"2025-06-26 11:33:44"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"sObyU1k3A9XBX9lhAAAD","timestamp":"2025-06-26 11:33:44"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"MChLDbTzIQmDCPUbAAAF","timestamp":"2025-06-26 11:33:44"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"MChLDbTzIQmDCPUbAAAF","timestamp":"2025-06-26 11:33:44"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"beach-safety-api","timestamp":"2025-06-26 11:34:14"}
+{"level":"info","message":"Server running on port 5000","service":"beach-safety-api","timestamp":"2025-06-26 11:34:30"}
+{"level":"info","message":"Environment: development","service":"beach-safety-api","timestamp":"2025-06-26 11:34:30"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:34:44"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:34:44 +0000] \"GET /api/v1/auth/me HTTP/1.1\" 304 - \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:34:44"}
+{"level":"info","message":"Connected to PostgreSQL database","service":"beach-safety-api","timestamp":"2025-06-26 11:34:44"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:34:44 +0000] \"GET /api/v1/auth/me HTTP/1.1\" 200 247 \"http://localhost:3000/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:34:44"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"7w_MzhygZ3Aa3vARAAAC","timestamp":"2025-06-26 11:34:45"}
+{"level":"info","message":"Client connected","service":"beach-safety-api","socketId":"1SLYUgZIu6xvQJiQAAAD","timestamp":"2025-06-26 11:34:45"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"1SLYUgZIu6xvQJiQAAAD","timestamp":"2025-06-26 11:34:45"}
+{"level":"info","message":"Client joined system admin room","service":"beach-safety-api","socketId":"7w_MzhygZ3Aa3vARAAAC","timestamp":"2025-06-26 11:34:45"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Jun/2025:10:34:45 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 401 49 \"-\" \"curl/7.68.0\"","service":"beach-safety-api","timestamp":"2025-06-26 11:34:45"}

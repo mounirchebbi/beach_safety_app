@@ -1,0 +1,41 @@
+
+> beach-safety-backend@1.0.0 start
+> node src/app.js
+
+2025-06-26 11:34:30 [[32minfo[39m]: Server running on port 5000 {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:30 [[32minfo[39m]: Environment: development {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:44 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:44 [[32minfo[39m]: ::ffff:127.0.0.1 - - [26/Jun/2025:10:34:44 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:44 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:44 [[32minfo[39m]: ::ffff:127.0.0.1 - - [26/Jun/2025:10:34:44 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 247 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-26 11:34:45 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "7w_MzhygZ3Aa3vARAAAC"
+}
+2025-06-26 11:34:45 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "1SLYUgZIu6xvQJiQAAAD"
+}
+2025-06-26 11:34:45 [[32minfo[39m]: Client joined system admin room {
+  "service": "beach-safety-api",
+  "socketId": "1SLYUgZIu6xvQJiQAAAD"
+}
+2025-06-26 11:34:45 [[32minfo[39m]: Client joined system admin room {
+  "service": "beach-safety-api",
+  "socketId": "7w_MzhygZ3Aa3vARAAAC"
+}
+2025-06-26 11:34:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [26/Jun/2025:10:34:45 +0000] "POST /api/v1/auth/login HTTP/1.1" 401 49 "-" "curl/7.68.0" {
+  "service": "beach-safety-api"
+}
