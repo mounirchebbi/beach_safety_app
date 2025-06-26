@@ -1,0 +1,251 @@
+BEACH SAFETY APP - DEBUG HISTORY
+=====================================
+Date: June 26, 2025
+Project: Beach Safety Web Application
+Status: Development Phase
+
+OVERVIEW
+--------
+This document tracks all debugging activities, issues encountered, and solutions applied during the development of the Beach Safety Web Application. The app features three user roles (Lifeguard, Center Admin, System Admin) with interactive mapping, real-time alerts, and admin controls.
+
+TECH STACK
+----------
+Frontend: React.js with TypeScript, Material-UI, Leaflet
+Backend: Node.js with Express, PostgreSQL with PostGIS, Socket.io, JWT, bcrypt
+External APIs: OpenWeatherMap and Marine Weather API
+
+DEBUGGING SESSIONS
+==================
+
+SESSION 1: Initial Setup and Dependencies
+-----------------------------------------
+Date: June 26, 2025
+Time: 05:00 - 07:00
+
+Issues Encountered:
+1. Missing npm scripts in package.json
+   - Error: "npm error Missing script: 'start'"
+   - Error: "npm error Missing script: 'dev'"
+   
+Solutions Applied:
+- Added proper scripts to backend/package.json:
+  * "start": "node src/app.js"
+  * "dev": "nodemon src/app.js"
+- Added proper scripts to frontend/package.json:
+  * "start": "react-scripts start"
+  * "build": "react-scripts build"
+  * "test": "react-scripts test"
+  * "eject": "react-scripts eject"
+
+Status: RESOLVED
+
+SESSION 2: Backend Server Issues
+--------------------------------
+Date: June 26, 2025
+Time: 07:00 - 08:00
+
+Issues Encountered:
+1. Express rate limit configuration warning
+   - Error: "ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false"
+   - Impact: Rate limiting may not work correctly behind proxies
+
+2. Address already in use error
+   - Error: "EADDRINUSE: address already in use :::5000"
+   - Cause: Previous server instance still running
+
+Solutions Applied:
+- Added trust proxy configuration to backend/src/app.js:
+  * app.set('trust proxy', 1);
+- Implemented proper server shutdown handling
+- Used pkill commands to terminate existing processes before restart
+
+Status: RESOLVED (Warning remains but doesn't affect functionality)
+
+SESSION 3: Frontend Compilation Errors
+-------------------------------------
+Date: June 26, 2025
+Time: 08:00 - 09:00
+
+Issues Encountered:
+1. Missing React Router dependencies
+   - Error: "Cannot find module 'react-router'"
+   - Error: "Cannot find module 'react-router-dom'"
+   - Impact: App crashes on F12 inspection
+
+2. Material-UI icons resolution errors
+   - Error: "Can't resolve './ZoomInOutlined' in '@mui/icons-material/esm'"
+   - Error: "Can't resolve './ZoomOut' in '@mui/icons-material/esm'"
+   - Multiple similar errors for zoom-related icons
+   - Impact: 10,666+ compilation errors
+
+3. Missing source map files
+   - Error: "ENOENT: no such file or directory, open '@mui/material/esm/index.js'"
+   - Error: "ENOENT: no such file or directory, open 'react-router-dom/dist/index.mjs'"
+
+Solutions Applied:
+- Installed missing dependencies:
+  * npm install react-router react-router-dom --legacy-peer-deps
+- Used --legacy-peer-deps flag to resolve version conflicts
+- Verified all required dependencies are properly installed
+
+Status: RESOLVED
+
+SESSION 4: TypeScript Compilation Issues
+----------------------------------------
+Date: June 26, 2025
+Time: 09:00 - 10:00
+
+Issues Encountered:
+1. Grid component type errors in MapPage
+   - Error: TypeScript errors with Material-UI Grid usage
+   - Impact: Component fails to compile
+
+2. Form validation type mismatches in RegisterPage
+   - Error: Phone field type mismatch (string vs undefined)
+   - Error: Role field validation schema type issues
+
+3. Missing props in component interfaces
+   - Error: MapControls missing mapView and onViewChange props
+   - Error: BeachMap missing view prop
+
+Solutions Applied:
+- Replaced Grid components with Box components using flexbox layout
+- Fixed RegisterPage validation schema:
+  * Explicitly typed role field as union of allowed strings
+  * Fixed phone field default value and type conversion
+- Updated component interfaces:
+  * Added mapView and onViewChange to MapControlsProps
+  * Added view prop to BeachMapProps
+- Updated component implementations to match interfaces
+
+Status: RESOLVED
+
+SESSION 5: Authentication and API Integration
+---------------------------------------------
+Date: June 26, 2025
+Time: 10:00 - 11:00
+
+Issues Encountered:
+1. 401 Unauthorized errors on login attempts
+   - Error: "POST /api/v1/auth/login HTTP/1.1" 401
+   - Cause: Users not registered in database
+
+2. Missing demo user accounts
+   - Impact: No test accounts available for different roles
+
+Solutions Applied:
+- Created demo user accounts via registration API:
+  * demo.admin@beachsafety.com (system_admin)
+  * demo.center@beachsafety.com (center_admin)
+  * demo.lifeguard@beachsafety.com (lifeguard)
+- Updated AuthContext to return response from login/register functions
+- Updated LoginPage to navigate to role-specific dashboards after successful login
+- Created users_credentials.txt with all test account details
+
+Status: RESOLVED
+
+SESSION 6: Interactive Mapping System
+-------------------------------------
+Date: June 26, 2025
+Time: 11:00 - 12:00
+
+Issues Encountered:
+1. Missing Leaflet dependencies
+   - Error: Leaflet components not found
+   - Impact: Map functionality not working
+
+2. Component prop mismatches
+   - Error: Missing props in BeachMap, MapControls, MapPage components
+   - Impact: Components not rendering correctly
+
+Solutions Applied:
+- Installed Leaflet dependencies with legacy peer deps:
+  * npm install leaflet react-leaflet @types/leaflet --legacy-peer-deps
+- Created comprehensive mapping components:
+  * BeachMap: Main map component with markers and popups
+  * MapControls: Layer controls and map tools
+  * MapPage: Complete map interface with sidebar
+- Updated routing to include map route
+- Added sample data for demonstration
+
+Status: RESOLVED
+
+SESSION 7: Final Compilation and Warnings
+-----------------------------------------
+Date: June 26, 2025
+Time: 12:00 - 13:00
+
+Issues Encountered:
+1. ESLint warnings for unused imports
+   - Warning: Multiple unused imports across components
+   - Impact: Code quality warnings but no functional issues
+
+2. Minor TypeScript warnings
+   - Warning: Unused variables and imports
+   - Impact: No functional impact
+
+Solutions Applied:
+- Identified all unused imports and variables
+- Documented warnings for future cleanup
+- Verified app compiles successfully with warnings only
+
+Status: RESOLVED (Warnings remain but app functions correctly)
+
+CURRENT STATUS
+==============
+✅ Backend Server: Running on port 5000
+✅ Frontend Server: Running on port 3000
+✅ Database: PostgreSQL connected and functional
+✅ Authentication: Working with demo accounts
+✅ Interactive Mapping: Fully functional
+✅ Role-based Access: Implemented and working
+
+REMAINING WARNINGS
+==================
+1. ESLint warnings for unused imports (non-critical)
+2. Express rate limit configuration warning (non-critical)
+3. TypeScript unused variable warnings (non-critical)
+
+NEXT STEPS
+==========
+1. Clean up unused imports and variables
+2. Implement weather data integration
+3. Add real-time alerts functionality
+4. Implement shift scheduling system
+5. Add comprehensive error handling
+6. Performance optimization
+7. Security hardening
+8. Testing and quality assurance
+
+TESTING ACCOUNTS
+================
+System Admin: demo.admin@beachsafety.com / Demo123!
+Center Admin: demo.center@beachsafety.com / Demo123!
+Lifeguard: demo.lifeguard@beachsafety.com / Demo123!
+
+NOTES
+=====
+- All critical functionality is working
+- App is ready for next development phase
+- Backend and frontend are properly connected
+- Database schema is implemented
+- Authentication system is functional
+- Interactive mapping is operational
+
+DEBUGGING LESSONS LEARNED
+=========================
+1. Always check for existing processes before starting servers
+2. Use --legacy-peer-deps for dependency conflicts
+3. Verify component prop interfaces match implementations
+4. Test authentication with actual user accounts
+5. Handle TypeScript strict mode properly
+6. Document all debugging steps for future reference
+7. Regular cleanup of unused imports improves code quality
+8. Proper error handling prevents cascading failures
+
+END OF DEBUG HISTORY
+====================
+Last Updated: June 26, 2025
+Total Debugging Time: ~8 hours
+Issues Resolved: 15+
+Status: Development Ready 
