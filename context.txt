@@ -1,0 +1,481 @@
+BEACH SAFETY WEB APP - COMPREHENSIVE DEVELOPMENT STRATEGY
+================================================================
+
+1. PROJECT OVERVIEW
+===================
+A comprehensive beach safety management system with role-based access control,
+real-time weather monitoring, interactive mapping, emergency management, and
+shift scheduling capabilities.
+
+2. ARCHITECTURE & TECH STACK
+============================
+
+2.1 Frontend Architecture
+-------------------------
+Technology Stack:
+- React.js 18+ (Functional components with hooks)
+- Material-UI (MUI) v5 - UI component library
+- Leaflet.js - Interactive mapping
+- Axios - HTTP client for API communication
+- React Router v6 - Client-side routing
+- Socket.io-client - Real-time updates
+- React Query/TanStack Query - Server state management
+- React Hook Form - Form handling
+- React Calendar - Shift scheduling interface
+
+Architecture Pattern:
+- Component-based architecture with custom hooks
+- Context API for global state management
+- Custom hooks for API calls and business logic
+- Responsive design with mobile-first approach
+- Progressive Web App (PWA) capabilities
+
+2.2 Backend Architecture
+------------------------
+Technology Stack:
+- Node.js 18+ - JavaScript runtime
+- Express.js 4.x - Web application framework
+- PostgreSQL 15+ - Primary database
+- PostGIS 3.x - Spatial database extension
+- Socket.io - Real-time bidirectional communication
+- JWT (jsonwebtoken) - Authentication/Authorization
+- bcrypt - Password hashing
+- Multer - File upload handling
+- Helmet - Security middleware
+- CORS - Cross-origin resource sharing
+- Morgan - HTTP request logging
+- Winston - Application logging
+
+Architecture Pattern:
+- RESTful API design with versioning
+- MVC (Model-View-Controller) pattern
+- Middleware-based authentication/authorization
+- Service layer for business logic
+- Repository pattern for data access
+- Event-driven architecture for real-time features
+
+2.3 External APIs & Services
+----------------------------
+- OpenWeatherMap API - Weather data and forecasts
+- Marine Weather API - Ocean conditions (waves, currents)
+- Geocoding API - Address to coordinates conversion
+- Push notification service (Firebase/OneSignal)
+
+3. DATABASE DESIGN
+==================
+
+3.1 Core Tables Structure
+-------------------------
+
+USERS Table:
+- id (UUID, Primary Key)
+- email (VARCHAR, Unique)
+- password_hash (VARCHAR)
+- role (ENUM: 'system_admin', 'center_admin', 'lifeguard')
+- first_name (VARCHAR)
+- last_name (VARCHAR)
+- phone (VARCHAR)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+- is_active (BOOLEAN)
+
+CENTERS Table:
+- id (UUID, Primary Key)
+- name (VARCHAR)
+- description (TEXT)
+- location (GEOMETRY(POINT, 4326)) - PostGIS point
+- address (VARCHAR)
+- phone (VARCHAR)
+- email (VARCHAR)
+- operating_hours (JSONB)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+- is_active (BOOLEAN)
+
+LIFEGUARDS Table:
+- id (UUID, Primary Key)
+- user_id (UUID, Foreign Key to USERS)
+- center_id (UUID, Foreign Key to CENTERS)
+- certification_level (VARCHAR)
+- certification_expiry (DATE)
+- emergency_contact (JSONB)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+SHIFTS Table:
+- id (UUID, Primary Key)
+- lifeguard_id (UUID, Foreign Key to LIFEGUARDS)
+- center_id (UUID, Foreign Key to CENTERS)
+- start_time (TIMESTAMP)
+- end_time (TIMESTAMP)
+- status (ENUM: 'scheduled', 'active', 'completed', 'cancelled')
+- check_in_time (TIMESTAMP)
+- check_in_location (GEOMETRY(POINT, 4326))
+- check_out_time (TIMESTAMP)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+SAFETY_ZONES Table:
+- id (UUID, Primary Key)
+- center_id (UUID, Foreign Key to CENTERS)
+- name (VARCHAR)
+- zone_type (ENUM: 'no_swim', 'caution', 'safe')
+- geometry (GEOMETRY(POLYGON, 4326)) - PostGIS polygon
+- description (TEXT)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+WEATHER_DATA Table:
+- id (UUID, Primary Key)
+- center_id (UUID, Foreign Key to CENTERS)
+- temperature (DECIMAL)
+- wind_speed (DECIMAL)
+- wind_direction (DECIMAL)
+- precipitation (DECIMAL)
+- wave_height (DECIMAL)
+- current_speed (DECIMAL)
+- visibility (DECIMAL)
+- recorded_at (TIMESTAMP)
+- created_at (TIMESTAMP)
+
+SAFETY_FLAGS Table:
+- id (UUID, Primary Key)
+- center_id (UUID, Foreign Key to CENTERS)
+- flag_status (ENUM: 'green', 'yellow', 'red', 'black')
+- reason (TEXT)
+- set_by (UUID, Foreign Key to USERS)
+- set_at (TIMESTAMP)
+- expires_at (TIMESTAMP)
+- created_at (TIMESTAMP)
+
+EMERGENCY_ALERTS Table:
+- id (UUID, Primary Key)
+- center_id (UUID, Foreign Key to CENTERS)
+- alert_type (ENUM: 'sos', 'medical', 'drowning', 'weather')
+- severity (ENUM: 'low', 'medium', 'high', 'critical')
+- location (GEOMETRY(POINT, 4326))
+- description (TEXT)
+- reported_by (VARCHAR) - Anonymous beachgoer or user_id
+- status (ENUM: 'active', 'responding', 'resolved', 'closed')
+- assigned_lifeguard_id (UUID, Foreign Key to LIFEGUARDS)
+- created_at (TIMESTAMP)
+- resolved_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+INCIDENT_REPORTS Table:
+- id (UUID, Primary Key)
+- alert_id (UUID, Foreign Key to EMERGENCY_ALERTS)
+- lifeguard_id (UUID, Foreign Key to LIFEGUARDS)
+- incident_type (VARCHAR)
+- description (TEXT)
+- action_taken (TEXT)
+- outcome (TEXT)
+- involved_persons (JSONB)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+3.2 Database Indexes
+--------------------
+- Users: email, role, is_active
+- Centers: location (GIST index for spatial queries)
+- Lifeguards: center_id, user_id
+- Shifts: center_id, lifeguard_id, start_time, status
+- Safety_Zones: center_id, zone_type, geometry (GIST)
+- Weather_Data: center_id, recorded_at
+- Safety_Flags: center_id, flag_status, set_at
+- Emergency_Alerts: center_id, status, created_at, location (GIST)
+
+4. BACKEND ARCHITECTURE DETAILS
+===============================
+
+4.1 Project Structure
+---------------------
+```
+backend/
+├── src/
+│   ├── config/
+│   │   ├── database.js
+│   │   ├── socket.js
+│   │   └── environment.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── centerController.js
+│   │   ├── lifeguardController.js
+│   │   ├── shiftController.js
+│   │   ├── weatherController.js
+│   │   ├── alertController.js
+│   │   └── reportController.js
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   ├── roleCheck.js
+│   │   ├── validation.js
+│   │   └── errorHandler.js
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Center.js
+│   │   ├── Lifeguard.js
+│   │   ├── Shift.js
+│   │   ├── SafetyZone.js
+│   │   ├── WeatherData.js
+│   │   ├── SafetyFlag.js
+│   │   ├── EmergencyAlert.js
+│   │   └── IncidentReport.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── centers.js
+│   │   ├── lifeguards.js
+│   │   ├── shifts.js
+│   │   ├── weather.js
+│   │   ├── alerts.js
+│   │   └── reports.js
+│   ├── services/
+│   │   ├── weatherService.js
+│   │   ├── notificationService.js
+│   │   ├── geocodingService.js
+│   │   └── socketService.js
+│   ├── utils/
+│   │   ├── database.js
+│   │   ├── validation.js
+│   │   └── helpers.js
+│   └── app.js
+├── package.json
+└── .env
+```
+
+4.2 API Endpoints Structure
+---------------------------
+```
+/api/v1/
+├── /auth
+│   ├── POST /login
+│   ├── POST /register
+│   ├── POST /logout
+│   └── GET /me
+├── /centers
+│   ├── GET / (System Admin only)
+│   ├── POST / (System Admin only)
+│   ├── GET /:id
+│   ├── PUT /:id (Center Admin only)
+│   ├── DELETE /:id (System Admin only)
+│   ├── GET /:id/lifeguards
+│   ├── GET /:id/shifts
+│   └── GET /:id/weather
+├── /lifeguards
+│   ├── GET / (Center Admin only)
+│   ├── POST / (Center Admin only)
+│   ├── GET /:id
+│   ├── PUT /:id (Center Admin only)
+│   ├── DELETE /:id (Center Admin only)
+│   └── GET /:id/shifts
+├── /shifts
+│   ├── GET / (Center Admin only)
+│   ├── POST / (Center Admin only)
+│   ├── GET /:id
+│   ├── PUT /:id (Center Admin only)
+│   ├── DELETE /:id (Center Admin only)
+│   ├── POST /:id/check-in
+│   └── POST /:id/check-out
+├── /weather
+│   ├── GET /centers/:id/current
+│   ├── GET /centers/:id/forecast
+│   └── GET /centers/:id/history
+├── /alerts
+│   ├── POST /sos (Public)
+│   ├── GET / (Lifeguard/Center Admin)
+│   ├── GET /:id
+│   ├── PUT /:id/status
+│   └── POST /:id/assign
+├── /reports
+│   ├── GET / (Center Admin)
+│   ├── POST / (Lifeguard)
+│   ├── GET /:id
+│   └── PUT /:id
+└── /public
+    ├── GET /centers
+    ├── GET /centers/:id/status
+    └── GET /weather/current
+```
+
+4.3 Real-time Features (Socket.io)
+----------------------------------
+Events:
+- weather_update: Real-time weather data
+- alert_new: New emergency alert
+- alert_status_change: Alert status updates
+- flag_status_change: Safety flag updates
+- shift_checkin: Lifeguard check-in notifications
+- emergency_broadcast: System-wide emergency messages
+
+5. FRONTEND ARCHITECTURE DETAILS
+================================
+
+5.1 Project Structure
+---------------------
+```
+frontend/
+├── public/
+│   ├── index.html
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   ├── Loading.jsx
+│   │   │   └── ErrorBoundary.jsx
+│   │   ├── auth/
+│   │   │   ├── LoginForm.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── map/
+│   │   │   ├── BeachMap.jsx
+│   │   │   ├── CenterMarker.jsx
+│   │   │   ├── SafetyZone.jsx
+│   │   │   └── EmergencyButton.jsx
+│   │   ├── weather/
+│   │   │   ├── WeatherDashboard.jsx
+│   │   │   └── WeatherCard.jsx
+│   │   ├── lifeguard/
+│   │   │   ├── ShiftCalendar.jsx
+│   │   │   ├── AlertPanel.jsx
+│   │   │   └── IncidentReportForm.jsx
+│   │   ├── admin/
+│   │   │   ├── StaffManagement.jsx
+│   │   │   ├── ShiftScheduler.jsx
+│   │   │   └── ReportManager.jsx
+│   │   └── system-admin/
+│   │       ├── CenterManagement.jsx
+│   │       └── SystemOverview.jsx
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   ├── useSocket.js
+│   │   ├── useWeather.js
+│   │   └── useAlerts.js
+│   ├── services/
+│   │   ├── api.js
+│   │   ├── authService.js
+│   │   ├── weatherService.js
+│   │   └── socketService.js
+│   ├── context/
+│   │   ├── AuthContext.jsx
+│   │   └── SocketContext.jsx
+│   ├── pages/
+│   │   ├── PublicDashboard.jsx
+│   │   ├── LifeguardDashboard.jsx
+│   │   ├── CenterAdminDashboard.jsx
+│   │   └── SystemAdminDashboard.jsx
+│   ├── utils/
+│   │   ├── constants.js
+│   │   ├── helpers.js
+│   │   └── validation.js
+│   ├── styles/
+│   │   └── theme.js
+│   ├── App.jsx
+│   └── index.js
+├── package.json
+└── .env
+```
+
+5.2 Component Architecture
+--------------------------
+- Atomic Design principles
+- Reusable components with props validation
+- Custom hooks for business logic
+- Context API for global state
+- Error boundaries for error handling
+- Lazy loading for route-based code splitting
+
+5.3 State Management
+--------------------
+- React Context for authentication and global state
+- React Query for server state management
+- Local state with useState for component-specific data
+- Socket.io for real-time state updates
+
+6. DEVELOPMENT STRATEGY
+=======================
+
+6.1 Phase 1: Foundation (Week 1-2)
+----------------------------------
+- Project setup and configuration
+- Database schema implementation
+- Basic authentication system
+- Core API endpoints
+- Basic frontend structure
+
+6.2 Phase 2: Core Features (Week 3-4)
+-------------------------------------
+- User management and role-based access
+- Center and lifeguard management
+- Basic mapping functionality
+- Weather data integration
+- Shift management system
+
+6.3 Phase 3: Real-time Features (Week 5-6)
+------------------------------------------
+- Socket.io implementation
+- Real-time weather updates
+- Emergency alert system
+- Live status updates
+- Interactive map features
+
+6.4 Phase 4: Advanced Features (Week 7-8)
+-----------------------------------------
+- Incident reporting system
+- Advanced scheduling interface
+- Safety zone management
+- Flag status system
+- Mobile responsiveness
+
+6.5 Phase 5: Testing & Deployment (Week 9-10)
+---------------------------------------------
+- Unit and integration testing
+- Performance optimization
+- Security audit
+- Production deployment
+- Documentation
+
+7. SECURITY CONSIDERATIONS
+==========================
+- JWT token expiration and refresh
+- Role-based access control (RBAC)
+- Input validation and sanitization
+- SQL injection prevention
+- XSS protection
+- CORS configuration
+- Rate limiting
+- HTTPS enforcement
+- Environment variable management
+
+8. PERFORMANCE OPTIMIZATION
+===========================
+- Database query optimization
+- API response caching
+- Frontend code splitting
+- Image optimization
+- CDN integration
+- Database connection pooling
+- Socket.io room management
+- Progressive Web App features
+
+9. MONITORING & LOGGING
+=======================
+- Application performance monitoring
+- Error tracking and alerting
+- User activity logging
+- API usage analytics
+- Real-time system health monitoring
+- Database performance metrics
+
+10. DEPLOYMENT STRATEGY
+=======================
+- Docker containerization
+- CI/CD pipeline setup
+- Environment-specific configurations
+- Database migration strategy
+- Backup and recovery procedures
+- SSL certificate management
+- Load balancing considerations
+
+This comprehensive strategy provides a solid foundation for building a robust,
+scalable, and maintainable Beach Safety Web App with all the required features
+and user roles. 
