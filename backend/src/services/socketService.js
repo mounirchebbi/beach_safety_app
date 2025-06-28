@@ -1,5 +1,6 @@
 const { logger } = require('../utils/logger');
 const { query } = require('../config/database');
+const weatherService = require('./weatherService');
 
 let io;
 
@@ -191,13 +192,52 @@ const initializeSocket = (socketIo) => {
 };
 
 // Emit weather update to specific center
-const emitWeatherUpdate = (centerId, weatherData) => {
-  if (io) {
+const emitWeatherUpdate = async (centerId) => {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
+    // Fetch fresh weather data
+    const weatherData = await weatherService.getCurrentWeather(centerId);
+    
+    // Emit to center room
     io.to(`center_${centerId}`).emit('weather_update', {
       ...weatherData,
       timestamp: new Date().toISOString()
     });
+    
     logger.info('Weather update emitted', { centerId });
+  } catch (error) {
+    logger.error('Error emitting weather update:', error);
+  }
+};
+
+// Emit weather updates to all centers
+const emitWeatherUpdatesToAllCenters = async () => {
+  try {
+    const centersResult = await query(
+      'SELECT id, name FROM centers WHERE is_active = true'
+    );
+
+    const updatePromises = centersResult.rows.map(async (center) => {
+      try {
+        await emitWeatherUpdate(center.id);
+        logger.info('Weather update sent to center', { centerId: center.id, centerName: center.name });
+      } catch (error) {
+        logger.error('Failed to send weather update to center', { 
+          centerId: center.id, 
+          centerName: center.name, 
+          error: error.message 
+        });
+      }
+    });
+
+    await Promise.allSettled(updatePromises);
+    logger.info('Weather updates completed for all centers');
+  } catch (error) {
+    logger.error('Error in weather update broadcast:', error);
   }
 };
 
@@ -256,6 +296,7 @@ const getConnectedClientsCount = () => {
 module.exports = {
   initializeSocket,
   emitWeatherUpdate,
+  emitWeatherUpdatesToAllCenters,
   emitEmergencyAlert,
   emitAlertStatusChange,
   emitSystemNotification,

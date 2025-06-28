@@ -22,7 +22,7 @@ const publicRoutes = require('./routes/public');
 const safetyRoutes = require('./routes/safety');
 
 // Import services
-const { initializeSocket } = require('./services/socketService');
+const { initializeSocket, emitWeatherUpdatesToAllCenters } = require('./services/socketService');
 
 const app = express();
 const server = http.createServer(app);
@@ -41,8 +41,12 @@ initializeSocket(io);
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.'
+  max: 1000, // limit each IP to 1000 requests per windowMs (increased for development)
+  message: 'Too many requests from this IP, please try again later.',
+  skip: (req) => {
+    // Skip rate limiting for public endpoints and health checks
+    return req.path.startsWith('/api/v1/public') || req.path === '/health';
+  }
 });
 
 // Middleware
@@ -87,6 +91,25 @@ app.use((req, res) => {
 
 // Error handling middleware
 app.use(errorHandler);
+
+// Schedule weather updates every 15 minutes
+const WEATHER_UPDATE_INTERVAL = 15 * 60 * 1000; // 15 minutes
+
+const scheduleWeatherUpdates = () => {
+  setInterval(async () => {
+    try {
+      logger.info('Starting scheduled weather update cycle');
+      await emitWeatherUpdatesToAllCenters();
+      logger.info('Scheduled weather update cycle completed');
+    } catch (error) {
+      logger.error('Error in scheduled weather update cycle:', error);
+    }
+  }, WEATHER_UPDATE_INTERVAL);
+};
+
+// Start weather update scheduler
+scheduleWeatherUpdates();
+logger.info('Weather update scheduler started (every 15 minutes)');
 
 // Graceful shutdown
 process.on('SIGTERM', () => {

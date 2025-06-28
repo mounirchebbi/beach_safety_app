@@ -427,3 +427,146 @@ Last Updated: June 26, 2025
 Total Debugging Time: ~8 hours
 Issues Resolved: 15+
 Status: Development Ready 
+
+SUMMARY OF ISSUES AND FIXES
+===========================
+
+1. INITIAL ISSUE: TypeScript Compilation Error
+==============================================
+Problem: "Property 'weather_condition' does not exist on type 'WeatherData'"
+Location: frontend/src/components/map/MapPage.tsx:117
+Error: TS2339: Property 'weather_condition' does not exist on type 'WeatherData'
+
+Root Cause: Frontend WeatherData type definition was missing properties that the backend actually returns.
+
+Solution: Updated frontend/src/types/index.ts to include all missing weather properties:
+- Added weather_condition, feels_like, humidity, pressure, sunrise, sunset
+- Updated WeatherData interface to match backend response structure
+
+Status: ✅ RESOLVED
+
+2. MAJOR ISSUE: Beach Centers Not Showing on Map
+===============================================
+Problem: Map showed "Beach Centers (0)" and "No beach centers found"
+Location: frontend/src/components/map/MapPage.tsx
+
+Root Cause: Public centers endpoint was not implemented in backend
+
+Solution: Implemented missing functionality in backend/src/controllers/publicController.js:
+- Added getAllCenters function to fetch real center data from database
+- Properly formatted location coordinates for frontend consumption
+- Added proper error handling and logging
+
+Status: ✅ RESOLVED
+
+3. CRITICAL ISSUE: Immediate Redirect to Login
+=============================================
+Problem: http://localhost:3000/map immediately redirected to http://localhost:3000/login
+Location: Multiple components
+
+Root Causes:
+a) Rate limiting was blocking public endpoints
+b) API response interceptor was redirecting on 401 errors for auth endpoints
+c) AuthContext wasn't properly setting isLoading to false when no token
+
+Solutions:
+a) Modified rate limiter in backend/src/app.js:
+   - Increased limit from 100 to 1000 requests per 15 minutes
+   - Added skip function to exclude public endpoints from rate limiting
+   - Excluded /api/v1/public/* and /health from rate limiting
+
+b) Fixed response interceptor in frontend/src/services/api.ts:
+   - Added check to only redirect for non-authentication endpoints
+   - Prevents redirect when getCurrentUser() fails (no token)
+
+c) Fixed AuthContext in frontend/src/context/AuthContext.tsx:
+   - Ensured isLoading is set to false whether token exists or not
+   - Proper error handling for invalid/expired tokens
+
+Status: ✅ RESOLVED
+
+4. AUTHENTICATION API CALLS FOR PUBLIC USERS
+===========================================
+Problem: MapPage was making authenticated API calls (getCenterLifeguards, getAlerts) for non-authenticated users
+Location: frontend/src/components/map/MapPage.tsx
+
+Root Cause: No authentication check before making API calls that require auth
+
+Solution: Added authentication checks in MapPage:
+- Added useAuth hook to check isAuthenticated status
+- Only fetch lifeguard data when user is authenticated
+- Only fetch alerts when user is authenticated
+- Graceful fallback for non-authenticated users
+
+Status: ✅ RESOLVED
+
+5. WEATHER API AUTHENTICATION ISSUE
+==================================
+Problem: "Error fetching centers data" due to weather API calls requiring authentication
+Location: frontend/src/components/map/MapPage.tsx
+
+Root Cause: getCurrentWeatherForCenter() requires authentication but was being called for all users
+
+Solution: Modified weather fetching strategy:
+- Replaced individual center weather calls with single public weather call
+- Used existing public endpoint: /api/v1/public/weather/current
+- Match weather data to centers by center_id
+- Graceful fallback when weather data is not available
+
+Status: ✅ RESOLVED
+
+6. ROUTING STRUCTURE ISSUE
+=========================
+Problem: TypeScript error "Property 'children' is missing in type '{}' but required in type 'LayoutProps'"
+Location: frontend/src/App.tsx
+
+Root Cause: Layout component was being used without children prop
+
+Solution: Fixed routing structure in App.tsx:
+- Properly wrapped authenticated routes with Layout component
+- Provided children (Routes) to Layout component
+- Restored proper role-based routing structure
+- Ensured map route is accessible to both authenticated and non-authenticated users
+
+Status: ✅ RESOLVED
+
+FINAL STATE
+==========
+✅ Beach Safety Map works perfectly for both authenticated and public users
+✅ No more redirects to login for public users
+✅ No more 401 errors or authentication issues
+✅ All beach centers display correctly with markers
+✅ Weather data shows for all users (from public endpoint)
+✅ Lifeguard data shows only for authenticated users
+✅ Alerts show only for authenticated users
+✅ No TypeScript compilation errors
+✅ No console errors or warnings
+
+TECHNICAL DETAILS
+================
+Backend Changes:
+- Modified rate limiting configuration
+- Implemented public centers endpoint
+- Public weather endpoint already existed and was utilized
+
+Frontend Changes:
+- Updated WeatherData type definition
+- Added authentication checks in MapPage
+- Fixed routing structure in App.tsx
+- Modified API call strategy for weather data
+- Fixed AuthContext initialization
+
+API Endpoints Used:
+- Public: /api/v1/public/centers, /api/v1/public/weather/current
+- Authenticated: /api/v1/centers/{id}/lifeguards, /api/v1/alerts
+
+Authentication Flow:
+- Non-authenticated users: Can access map with public data only
+- Authenticated users: Can access map with full features including lifeguard data and alerts
+
+Rate Limiting:
+- Public endpoints: No rate limiting
+- Authenticated endpoints: 1000 requests per 15 minutes
+- Health checks: No rate limiting
+
+All issues have been successfully resolved and the Beach Safety Map is now fully functional! 🏖️ 
