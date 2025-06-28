@@ -2,9 +2,9 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:870434) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:884780) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:870434) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:884780) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -18,4 +18,74 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                                         @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                                             @typescript-eslint/no-unused-vars
+  Line 44:15:  'ScheduleIcon' is defined but never used                                                                                                    @typescript-eslint/no-unused-vars
+  Line 45:11:  'InfoIcon' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+  Line 89:10:  'totalCount' is assigned a value but never used                                                                                             @typescript-eslint/no-unused-vars
+  Line 98:6:   React Hook useEffect has missing dependencies: 'loadCurrentFlag' and 'loadFlagHistory'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                                         @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                                             @typescript-eslint/no-unused-vars
+  Line 44:15:  'ScheduleIcon' is defined but never used                                                                                                    @typescript-eslint/no-unused-vars
+  Line 45:11:  'InfoIcon' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+  Line 89:10:  'totalCount' is assigned a value but never used                                                                                             @typescript-eslint/no-unused-vars
+  Line 98:6:   React Hook useEffect has missing dependencies: 'loadCurrentFlag' and 'loadFlagHistory'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                                         @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                                             @typescript-eslint/no-unused-vars
+  Line 44:15:  'ScheduleIcon' is defined but never used                                                                                                    @typescript-eslint/no-unused-vars
+  Line 45:11:  'InfoIcon' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+  Line 89:10:  'totalCount' is assigned a value but never used                                                                                             @typescript-eslint/no-unused-vars
+  Line 98:6:   React Hook useEffect has missing dependencies: 'loadCurrentFlag' and 'loadFlagHistory'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/lifeguard/ShiftManagement.tsx
+  Line 21:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 21:37:  'isBefore' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 27:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/services/api.ts
+  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
+  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                                         @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                                             @typescript-eslint/no-unused-vars
+  Line 44:15:  'ScheduleIcon' is defined but never used                                                                                                    @typescript-eslint/no-unused-vars
+  Line 45:11:  'InfoIcon' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+  Line 89:10:  'totalCount' is assigned a value but never used                                                                                             @typescript-eslint/no-unused-vars
+  Line 98:6:   React Hook useEffect has missing dependencies: 'loadCurrentFlag' and 'loadFlagHistory'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/lifeguard/ShiftManagement.tsx
+  Line 21:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 21:37:  'isBefore' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 27:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/services/api.ts
+  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
+  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
 No issues found.

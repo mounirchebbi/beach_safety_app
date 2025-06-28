@@ -495,7 +495,6 @@ const getLifeguardShifts = asyncHandler(async (req, res) => {
     `SELECT c.id as center_id
      FROM centers c
      JOIN users u ON u.center_id = c.id
-     JOIN users u ON u.id = l.user_id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]

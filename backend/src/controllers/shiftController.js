@@ -445,7 +445,22 @@ const deleteShift = asyncHandler(async (req, res) => {
 const checkInShift = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { location } = req.body;
-  const lifeguardId = req.user.id;
+  const lifeguardUserId = req.user.id;
+
+  // Get the lifeguard record for this user
+  const lifeguardResult = await query(
+    'SELECT l.id as lifeguard_id FROM lifeguards l WHERE l.user_id = $1',
+    [lifeguardUserId]
+  );
+
+  if (lifeguardResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lifeguard record not found'
+    });
+  }
+
+  const lifeguardId = lifeguardResult.rows[0].lifeguard_id;
 
   // Verify the shift belongs to this lifeguard
   const shiftResult = await query(
@@ -472,10 +487,10 @@ const checkInShift = asyncHandler(async (req, res) => {
   // Update shift status and check-in time
   const updateResult = await query(
     `UPDATE shifts 
-     SET status = 'active', check_in_time = NOW(), check_in_location = $1, updated_at = NOW()
-     WHERE id = $2
+     SET status = 'active', check_in_time = NOW(), check_in_location = ST_SetSRID(ST_MakePoint($1, $2), 4326), updated_at = NOW()
+     WHERE id = $3
      RETURNING *`,
-    [location, id]
+    [location.lng, location.lat, id]
   );
 
   logger.info('Lifeguard checked in to shift', {
@@ -495,7 +510,22 @@ const checkInShift = asyncHandler(async (req, res) => {
 // @access  Lifeguard
 const checkOutShift = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const lifeguardId = req.user.id;
+  const lifeguardUserId = req.user.id;
+
+  // Get the lifeguard record for this user
+  const lifeguardResult = await query(
+    'SELECT l.id as lifeguard_id FROM lifeguards l WHERE l.user_id = $1',
+    [lifeguardUserId]
+  );
+
+  if (lifeguardResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lifeguard record not found'
+    });
+  }
+
+  const lifeguardId = lifeguardResult.rows[0].lifeguard_id;
 
   // Verify the shift belongs to this lifeguard
   const shiftResult = await query(
@@ -523,7 +553,7 @@ const checkOutShift = asyncHandler(async (req, res) => {
   const updateResult = await query(
     `UPDATE shifts 
      SET status = 'completed', check_out_time = NOW(), updated_at = NOW()
-     WHERE id = $2
+     WHERE id = $1
      RETURNING *`,
     [id]
   );
@@ -540,6 +570,55 @@ const checkOutShift = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get lifeguard's own shifts
+// @route   GET /api/v1/shifts/my-shifts
+// @access  Lifeguard
+const getMyShifts = asyncHandler(async (req, res) => {
+  const lifeguardUserId = req.user.id;
+
+  // Get the lifeguard record for this user
+  const lifeguardResult = await query(
+    `SELECT l.id as lifeguard_id, l.center_id, c.name as center_name
+     FROM lifeguards l
+     JOIN centers c ON c.id = l.center_id
+     WHERE l.user_id = $1`,
+    [lifeguardUserId]
+  );
+
+  if (lifeguardResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lifeguard record not found'
+    });
+  }
+
+  const lifeguardId = lifeguardResult.rows[0].lifeguard_id;
+
+  // Get all shifts for this lifeguard
+  const result = await query(
+    `SELECT s.id, s.start_time, s.end_time, s.status, s.check_in_time, s.check_in_location, 
+            s.check_out_time, s.created_at, s.updated_at,
+            c.name as center_name, c.id as center_id
+     FROM shifts s
+     JOIN centers c ON c.id = s.center_id
+     WHERE s.lifeguard_id = $1
+     ORDER BY s.start_time DESC`,
+    [lifeguardId]
+  );
+
+  logger.info('Retrieved lifeguard own shifts', {
+    lifeguardId,
+    userId: lifeguardUserId,
+    count: result.rows.length
+  });
+
+  res.json({
+    success: true,
+    count: result.rows.length,
+    data: result.rows
+  });
+});
+
 module.exports = {
   getAllShifts,
   getShiftById,
@@ -547,5 +626,6 @@ module.exports = {
   updateShift,
   deleteShift,
   checkInShift,
-  checkOutShift
+  checkOutShift,
+  getMyShifts
 }; 

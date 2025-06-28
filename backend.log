@@ -2,441 +2,305 @@
 > beach-safety-backend@1.0.0 start
 > node src/app.js
 
-2025-06-28 05:09:23 [[32minfo[39m]: Server running on port 5000 {
+2025-06-28 05:40:10 [[32minfo[39m]: Server running on port 5000 {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:23 [[32minfo[39m]: Environment: development {
+2025-06-28 05:40:10 [[32minfo[39m]: Environment: development {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-28 05:40:24 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-28 05:40:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:24 +0000] "POST /api/v1/auth/login HTTP/1.1" 401 49 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:38 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 455 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:40:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:25 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:38 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 455 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:40:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:25 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 691 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Client connected {
+2025-06-28 05:40:25 [[32minfo[39m]: Client connected {
   "service": "beach-safety-api",
-  "socketId": "-7uahofwaBiLz9K_AAAC"
+  "socketId": "I_uK7ZReByuAENVOAAAC"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Client connected {
+2025-06-28 05:40:25 [[32minfo[39m]: Client joined center room {
   "service": "beach-safety-api",
-  "socketId": "tLC7Dz2DTDFBsB0lAAAD"
+  "socketId": "I_uK7ZReByuAENVOAAAC",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Client joined center room {
+2025-06-28 05:40:25 [[32minfo[39m]: Client connected {
   "service": "beach-safety-api",
-  "socketId": "-7uahofwaBiLz9K_AAAC",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab"
+  "socketId": "DVySxowzaoyvIsADAAAD"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: Client joined center room {
+2025-06-28 05:40:25 [[32minfo[39m]: Client joined center room {
   "service": "beach-safety-api",
-  "socketId": "tLC7Dz2DTDFBsB0lAAAD",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab"
+  "socketId": "DVySxowzaoyvIsADAAAD",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
 }
-2025-06-28 05:09:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:38 +0000] "POST /api/v1/auth/login HTTP/1.1" 401 49 "-" "curl/7.68.0" {
+2025-06-28 05:40:28 [[32minfo[39m]: User logged in successfully {
+  "service": "beach-safety-api",
+  "userId": "6febba35-92a1-4c41-9bfa-1120e741e638",
+  "email": "hammamet.lifeguard1@beachsafety.com",
+  "role": "lifeguard"
+}
+2025-06-28 05:40:28 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:28 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 464 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:42 [[32minfo[39m]: User logged in successfully {
+2025-06-28 05:40:32 [[32minfo[39m]: Lifeguard checked out from shift {
+  "service": "beach-safety-api",
+  "shiftId": "edbc0f9a-acd3-455e-bbbe-4fdea5396238",
+  "lifeguardId": "10f61176-5475-45ce-ba05-2c167885d325"
+}
+2025-06-28 05:40:32 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:32 +0000] "POST /api/v1/shifts/edbc0f9a-acd3-455e-bbbe-4fdea5396238/check-out HTTP/1.1" 200 561 "-" "curl/7.68.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:40:36 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "10f61176-5475-45ce-ba05-2c167885d325",
+  "userId": "6febba35-92a1-4c41-9bfa-1120e741e638",
+  "count": 1
+}
+2025-06-28 05:40:36 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:36 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 516 "-" "curl/7.68.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:40:40 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "10f61176-5475-45ce-ba05-2c167885d325",
+  "userId": "6febba35-92a1-4c41-9bfa-1120e741e638",
+  "count": 1
+}
+2025-06-28 05:40:40 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:40 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 516 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:40:40 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:40:40 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "10f61176-5475-45ce-ba05-2c167885d325",
+  "userId": "6febba35-92a1-4c41-9bfa-1120e741e638",
+  "count": 1
+}
+2025-06-28 05:40:40 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:40:40 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 516 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:41:15 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:41:15 [[32minfo[39m]: User logged out {
+  "service": "beach-safety-api",
+  "userId": "6febba35-92a1-4c41-9bfa-1120e741e638"
+}
+2025-06-28 05:41:15 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:15 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:41:15 [[32minfo[39m]: Client disconnected {
+  "service": "beach-safety-api",
+  "socketId": "DVySxowzaoyvIsADAAAD"
+}
+2025-06-28 05:41:23 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
   "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
   "email": "hammamet.admin@beachsafety.com",
   "role": "center_admin"
 }
-2025-06-28 05:09:42 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:42 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "-" "curl/7.68.0" {
+2025-06-28 05:41:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:23 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:45 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:45 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/current HTTP/1.1" 200 302 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:45 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-28 05:41:26 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:45 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:45 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/history?page=1&limit=10 HTTP/1.1" 200 407 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:45 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:46 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:46 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "-" "curl/7.68.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:50 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:41:26 [[32minfo[39m]: Retrieved lifeguards for center {
   "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 3,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:09:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:50 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1779 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:26 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:50 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:41:26 [[32minfo[39m]: Retrieved lifeguards for center {
   "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 3,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:09:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:50 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1779 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:26 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:41:26 [[32minfo[39m]: Retrieved shifts for center {
   "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
-  "count": 3,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "count": 1,
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:51 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1779 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:26 +0000] "GET /api/v1/shifts HTTP/1.1" 200 688 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:41:26 [[32minfo[39m]: Retrieved shifts for center {
   "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
-  "count": 3,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "count": 1,
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:51 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:41:26 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:41:26 +0000] "GET /api/v1/shifts HTTP/1.1" 200 688 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: Retrieved shifts for center {
+2025-06-28 05:42:26 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:42:26 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:42:26 +0000] "POST /api/v1/shifts HTTP/1.1" 400 83 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:09 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:09 [[32minfo[39m]: Created new shift {
   "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
+  "shiftId": "e500efa4-7055-49c1-bca1-05fd4743e33c",
+  "lifeguardId": "116ff880-67f5-4b19-b303-26327b468ec6",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
+  "startTime": "2025-06-28T04:00:00.000Z",
+  "endTime": "2025-06-28T14:00:00.000Z"
+}
+2025-06-28 05:43:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:09 +0000] "POST /api/v1/shifts HTTP/1.1" 201 621 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:09 [[32minfo[39m]: Retrieved shifts for center {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 2,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:51 +0000] "GET /api/v1/shifts HTTP/1.1" 200 1116 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:43:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:09 +0000] "GET /api/v1/shifts HTTP/1.1" 200 1247 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:09:51 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "f350b731-2da6-4e3d-9a9d-5fa3c8c985ab",
-  "count": 2,
-  "adminId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
-}
-2025-06-28 05:09:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:51 +0000] "GET /api/v1/shifts HTTP/1.1" 200 1116 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:53 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:53 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/current HTTP/1.1" 200 302 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:53 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:53 +0000] "GET /api/v1/safety/centers/f350b731-2da6-4e3d-9a9d-5fa3c8c985ab/history?page=1&limit=10 HTTP/1.1" 200 407 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:58 [[32minfo[39m]: User logged out {
-  "service": "beach-safety-api",
-  "userId": "12af34c1-4cdc-4e06-b4d7-9e78d0550bd6"
-}
-2025-06-28 05:09:58 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:09:58 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:09:58 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "tLC7Dz2DTDFBsB0lAAAD"
-}
-2025-06-28 05:10:31 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:32 [[32minfo[39m]: User logged in successfully {
-  "service": "beach-safety-api",
-  "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
-  "email": "hammamet.admin@beachsafety.com",
-  "role": "center_admin"
-}
-2025-06-28 05:10:32 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:32 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:37 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:43:09 [[32minfo[39m]: Retrieved lifeguards for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 3,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:10:37 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:37 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:43:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:09 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:10:37 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:37 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:10:37 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:37 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:39 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:39 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:39 +0000] "GET /api/v1/shifts HTTP/1.1" 200 36 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:10:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:39 +0000] "GET /api/v1/shifts HTTP/1.1" 200 36 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:56 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "-7uahofwaBiLz9K_AAAC"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "QrhWXpUzgx4_545vAAAG"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 105 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "YnEyDcZCet-fIX3KAAAH"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "QrhWXpUzgx4_545vAAAG",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 105 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:10:57 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:10:57 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "YnEyDcZCet-fIX3KAAAH",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-28 05:12:33 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:12:33 [[32minfo[39m]: User logged out {
+2025-06-28 05:43:32 [[32minfo[39m]: User logged out {
   "service": "beach-safety-api",
   "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:12:33 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:12:33 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:43:32 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:32 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:12:33 [[32minfo[39m]: Client disconnected {
+2025-06-28 05:43:39 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
-  "socketId": "YnEyDcZCet-fIX3KAAAH"
+  "userId": "bd7e3c19-49fd-4620-9ed1-c3e3e535e170",
+  "email": "hammamet.lifeguard3@beachsafety.com",
+  "role": "lifeguard"
 }
-2025-06-28 05:12:39 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "QrhWXpUzgx4_545vAAAG"
-}
-2025-06-28 05:13:58 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-28 05:43:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:39 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 462 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:13:58 [[32minfo[39m]: User logged in successfully {
+2025-06-28 05:43:46 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "116ff880-67f5-4b19-b303-26327b468ec6",
+  "userId": "bd7e3c19-49fd-4620-9ed1-c3e3e535e170",
+  "count": 1
+}
+2025-06-28 05:43:46 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:46 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 424 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:46 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:46 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "116ff880-67f5-4b19-b303-26327b468ec6",
+  "userId": "bd7e3c19-49fd-4620-9ed1-c3e3e535e170",
+  "count": 1
+}
+2025-06-28 05:43:46 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:46 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 424 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:51 [[32minfo[39m]: Lifeguard checked in to shift {
+  "service": "beach-safety-api",
+  "shiftId": "e500efa4-7055-49c1-bca1-05fd4743e33c",
+  "lifeguardId": "116ff880-67f5-4b19-b303-26327b468ec6"
+}
+2025-06-28 05:43:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:51 +0000] "POST /api/v1/shifts/e500efa4-7055-49c1-bca1-05fd4743e33c/check-in HTTP/1.1" 200 533 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:43:51 [[32minfo[39m]: Retrieved lifeguard own shifts {
+  "service": "beach-safety-api",
+  "lifeguardId": "116ff880-67f5-4b19-b303-26327b468ec6",
+  "userId": "bd7e3c19-49fd-4620-9ed1-c3e3e535e170",
+  "count": 1
+}
+2025-06-28 05:43:51 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:43:51 +0000] "GET /api/v1/shifts/my-shifts HTTP/1.1" 200 491 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:44:00 [[32minfo[39m]: User logged out {
+  "service": "beach-safety-api",
+  "userId": "bd7e3c19-49fd-4620-9ed1-c3e3e535e170"
+}
+2025-06-28 05:44:00 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:00 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-28 05:44:06 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
   "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
   "email": "hammamet.admin@beachsafety.com",
   "role": "center_admin"
 }
-2025-06-28 05:13:58 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:13:58 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:44:06 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:06 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:14:08 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:08 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:08 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:08 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:08 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:09 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:09 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:09 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:09 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 105 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: Client connected {
+2025-06-28 05:44:11 [[32minfo[39m]: Retrieved shifts for center {
   "service": "beach-safety-api",
-  "socketId": "IdDvljaEA0nVUb8IAAAK"
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "count": 2,
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:14:09 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "raZ7mx-EX9-o1tXlAAAL"
+2025-06-28 05:44:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:11 +0000] "GET /api/v1/shifts HTTP/1.1" 200 1314 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
 }
-2025-06-28 05:14:09 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "IdDvljaEA0nVUb8IAAAK",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-28 05:14:09 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "raZ7mx-EX9-o1tXlAAAL",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-28 05:14:16 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:44:11 [[32minfo[39m]: Retrieved lifeguards for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 3,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:16 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:44:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:11 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:16 +0000] "GET /api/v1/shifts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:44:11 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-28 05:44:11 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:16 [[32minfo[39m]: Retrieved lifeguards for center {
+2025-06-28 05:44:11 [[32minfo[39m]: Retrieved lifeguards for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
   "count": 3,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:16 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:44:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:11 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: Retrieved shifts for center {
+2025-06-28 05:44:11 [[32minfo[39m]: Retrieved shifts for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
+  "count": 2,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-28 05:14:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:16 +0000] "GET /api/v1/shifts HTTP/1.1" 200 36 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:18 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:18 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:18 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:18 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:18 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:18 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:20 +0000] "GET /api/v1/shifts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:20 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:20 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 0,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-28 05:14:20 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:20 +0000] "GET /api/v1/shifts HTTP/1.1" 200 36 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:23 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:23 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 404 48 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:23 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 105 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-28 05:14:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:14:23 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-28 05:44:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [28/Jun/2025:04:44:11 +0000] "GET /api/v1/shifts HTTP/1.1" 200 1314 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }

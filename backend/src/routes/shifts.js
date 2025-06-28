@@ -8,12 +8,14 @@ const {
   updateShift,
   deleteShift,
   checkInShift,
-  checkOutShift
+  checkOutShift,
+  getMyShifts
 } = require('../controllers/shiftController');
 
 const router = express.Router();
 
-// Routes
+// Routes - Specific routes must come before parameterized routes
+router.get('/my-shifts', verifyToken, requireLifeguard, asyncHandler(getMyShifts));
 router.get('/', verifyToken, requireCenterAdmin, asyncHandler(getAllShifts));
 router.post('/', verifyToken, requireCenterAdmin, asyncHandler(createShift));
 router.get('/:id', verifyToken, requireCenterAdmin, asyncHandler(getShiftById));
