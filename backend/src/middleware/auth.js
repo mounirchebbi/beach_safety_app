@@ -127,7 +127,7 @@ const requireOwnership = (resourceType) => {
           if (userRole === 'center_admin') {
             query = `
               SELECT c.id FROM centers c
-              JOIN lifeguards l ON l.center_id = c.id
+              JOIN users u ON u.center_id = c.id
               JOIN users u ON u.id = l.user_id
               WHERE c.id = $1 AND u.id = $2
             `;

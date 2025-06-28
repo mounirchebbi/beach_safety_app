@@ -101,7 +101,7 @@ const login = asyncHandler(async (req, res) => {
 
   // Find user by email
   const result = await query(
-    'SELECT id, email, password_hash, role, first_name, last_name, phone, is_active FROM users WHERE email = $1',
+    'SELECT id, email, password_hash, role, first_name, last_name, phone, center_id, is_active FROM users WHERE email = $1',
     [email]
   );
 
@@ -146,7 +146,8 @@ const login = asyncHandler(async (req, res) => {
         role: user.role,
         first_name: user.first_name,
         last_name: user.last_name,
-        phone: user.phone
+        phone: user.phone,
+        center_id: user.center_id
       },
       token
     }
@@ -160,7 +161,7 @@ const getMe = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
   const result = await query(
-    `SELECT u.id, u.email, u.role, u.first_name, u.last_name, u.phone, u.created_at
+    `SELECT u.id, u.email, u.role, u.first_name, u.last_name, u.phone, u.center_id, u.created_at
      FROM users u
      WHERE u.id = $1`,
     [userId]
@@ -192,17 +193,19 @@ const getMe = asyncHandler(async (req, res) => {
   }
 
   // If user is a center admin, get center info
-  if (user.role === 'center_admin') {
+  if (user.role === 'center_admin' && user.center_id) {
     const centerResult = await query(
-      `SELECT c.id, c.name, c.location
+      `SELECT c.id, c.name, ST_AsGeoJSON(c.location) as location
        FROM centers c
-       JOIN lifeguards l ON l.center_id = c.id
-       WHERE l.user_id = $1`,
-      [userId]
+       WHERE c.id = $1`,
+      [user.center_id]
     );
 
     if (centerResult.rows.length > 0) {
-      user.center_info = centerResult.rows[0];
+      user.center_info = {
+        ...centerResult.rows[0],
+        location: JSON.parse(centerResult.rows[0].location)
+      };
     }
   }
 

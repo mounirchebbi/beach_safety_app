@@ -13,8 +13,7 @@ const getAllLifeguards = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id, c.name as center_name
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
-     JOIN users u ON u.id = l.user_id
+     JOIN users u ON u.center_id = c.id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
@@ -66,8 +65,7 @@ const getLifeguardById = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
-     JOIN users u ON u.id = l.user_id
+     JOIN users u ON u.center_id = c.id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
@@ -142,8 +140,7 @@ const createLifeguard = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id, c.name as center_name
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
-     JOIN users u ON u.id = l.user_id
+     JOIN users u ON u.center_id = c.id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
@@ -253,8 +250,7 @@ const updateLifeguard = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
-     JOIN users u ON u.id = l.user_id
+     JOIN users u ON u.center_id = c.id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
@@ -409,8 +405,7 @@ const deleteLifeguard = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
-     JOIN users u ON u.id = l.user_id
+     JOIN users u ON u.center_id = c.id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
@@ -499,7 +494,7 @@ const getLifeguardShifts = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN lifeguards l ON l.center_id = c.id
+     JOIN users u ON u.center_id = c.id
      JOIN users u ON u.id = l.user_id
      WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,

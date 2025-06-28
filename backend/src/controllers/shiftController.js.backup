@@ -12,8 +12,8 @@ const getAllShifts = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id, c.name as center_name
      FROM centers c
-     JOIN users admin ON admin.center_id = c.id
-     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     JOIN users u ON u.center_id = c.id
+     WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
   );
@@ -66,8 +66,8 @@ const getShiftById = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN users admin ON admin.center_id = c.id
-     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     JOIN users u ON u.center_id = c.id
+     WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
   );
@@ -139,8 +139,8 @@ const createShift = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id, c.name as center_name
      FROM centers c
-     JOIN users admin ON admin.center_id = c.id
-     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     JOIN users u ON u.center_id = c.id
+     WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
   );
@@ -246,8 +246,8 @@ const updateShift = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN users admin ON admin.center_id = c.id
-     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     JOIN users u ON u.center_id = c.id
+     WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
   );
@@ -388,8 +388,8 @@ const deleteShift = asyncHandler(async (req, res) => {
   const centerResult = await query(
     `SELECT c.id as center_id
      FROM centers c
-     JOIN users admin ON admin.center_id = c.id
-     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     JOIN users u ON u.center_id = c.id
+     WHERE u.id = $1 AND u.role = 'center_admin'
      LIMIT 1`,
     [centerAdminId]
   );

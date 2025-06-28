@@ -19,6 +19,7 @@ const weatherRoutes = require('./routes/weather');
 const alertRoutes = require('./routes/alerts');
 const reportRoutes = require('./routes/reports');
 const publicRoutes = require('./routes/public');
+const safetyRoutes = require('./routes/safety');
 
 // Import services
 const { initializeSocket } = require('./services/socketService');
@@ -73,6 +74,7 @@ app.use('/api/v1/weather', weatherRoutes);
 app.use('/api/v1/alerts', alertRoutes);
 app.use('/api/v1/reports', reportRoutes);
 app.use('/api/v1/public', publicRoutes);
+app.use('/api/v1/safety', safetyRoutes);
 
 // 404 handler - catch all unmatched routes
 app.use((req, res) => {
