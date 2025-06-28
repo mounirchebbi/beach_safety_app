@@ -2,133 +2,33 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:818526) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:835251) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:818526) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:835251) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
-Compiled successfully!
-
-You can now view frontend in the browser.
-
-  Local:            http://localhost:3000
-  On Your Network:  http://192.168.1.17:3000
-
-Note that the development build is not optimized.
-To create a production build, use npm run build.
-
-webpack compiled successfully
-No issues found.
-Compiling...
 Compiled with warnings.
 
 [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
 No issues found.
@@ -136,63 +36,39 @@ Compiling...
 Compiled with warnings.
 
 [eslint] 
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
-Compiling...
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
 No issues found.
 Compiling...
 Compiled with warnings.
 
 [eslint] 
-src/components/admin/LifeguardManagement.tsx
-  Line 22:3:   'FormControl' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 23:3:   'InputLabel' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 24:3:   'Select' is defined but never used           @typescript-eslint/no-unused-vars
-  Line 25:3:   'MenuItem' is defined but never used         @typescript-eslint/no-unused-vars
-  Line 30:3:   'Fab' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 43:15:  'ScheduleIcon' is defined but never used     @typescript-eslint/no-unused-vars
-  Line 44:13:  'PersonIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 47:14:  'WarningIcon' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 48:18:  'CheckCircleIcon' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 49:13:  'CancelIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 54:37:  'addDays' is defined but never used          @typescript-eslint/no-unused-vars
-  Line 57:10:  'Lifeguard' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 79:11:  'user' is assigned a value but never used    @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 src/services/api.ts
   Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
@@ -203,20 +79,13 @@ Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/components/admin/LifeguardManagement.tsx
-  Line 22:3:   'FormControl' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 23:3:   'InputLabel' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 24:3:   'Select' is defined but never used           @typescript-eslint/no-unused-vars
-  Line 25:3:   'MenuItem' is defined but never used         @typescript-eslint/no-unused-vars
-  Line 30:3:   'Fab' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 43:15:  'ScheduleIcon' is defined but never used     @typescript-eslint/no-unused-vars
-  Line 44:13:  'PersonIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 47:14:  'WarningIcon' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 48:18:  'CheckCircleIcon' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 49:13:  'CancelIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 54:37:  'addDays' is defined but never used          @typescript-eslint/no-unused-vars
-  Line 57:10:  'Lifeguard' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 79:11:  'user' is assigned a value but never used    @typescript-eslint/no-unused-vars
+src/components/admin/ShiftScheduling.tsx
+  Line 21:3:   'TextField' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 41:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 50:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 50:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 77:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
 src/services/api.ts
   Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
@@ -224,56 +93,4 @@ src/services/api.ts
   Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/admin/LifeguardManagement.tsx
-  Line 22:3:   'FormControl' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 23:3:   'InputLabel' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 24:3:   'Select' is defined but never used           @typescript-eslint/no-unused-vars
-  Line 25:3:   'MenuItem' is defined but never used         @typescript-eslint/no-unused-vars
-  Line 30:3:   'Fab' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 43:15:  'ScheduleIcon' is defined but never used     @typescript-eslint/no-unused-vars
-  Line 44:13:  'PersonIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 47:14:  'WarningIcon' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 48:18:  'CheckCircleIcon' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 49:13:  'CancelIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 54:37:  'addDays' is defined but never used          @typescript-eslint/no-unused-vars
-  Line 57:10:  'Lifeguard' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 79:11:  'user' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/admin/LifeguardManagement.tsx
-  Line 22:3:   'FormControl' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 23:3:   'InputLabel' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 24:3:   'Select' is defined but never used           @typescript-eslint/no-unused-vars
-  Line 25:3:   'MenuItem' is defined but never used         @typescript-eslint/no-unused-vars
-  Line 30:3:   'Fab' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 43:15:  'ScheduleIcon' is defined but never used     @typescript-eslint/no-unused-vars
-  Line 44:13:  'PersonIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 47:14:  'WarningIcon' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 48:18:  'CheckCircleIcon' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 49:13:  'CancelIcon' is defined but never used       @typescript-eslint/no-unused-vars
-  Line 54:37:  'addDays' is defined but never used          @typescript-eslint/no-unused-vars
-  Line 57:10:  'Lifeguard' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 79:11:  'user' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-src/services/api.ts
-  Line 8:3:   'Lifeguard' is defined but never used   @typescript-eslint/no-unused-vars
-  Line 12:3:  'SafetyFlag' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 13:3:  'SafetyZone' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
 No issues found.

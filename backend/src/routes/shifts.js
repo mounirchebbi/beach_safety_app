@@ -16,7 +16,7 @@ const router = express.Router();
 // Routes
 router.get('/', verifyToken, requireCenterAdmin, asyncHandler(getAllShifts));
 router.post('/', verifyToken, requireCenterAdmin, asyncHandler(createShift));
-router.get('/:id', verifyToken, requireLifeguard, asyncHandler(getShiftById));
+router.get('/:id', verifyToken, requireCenterAdmin, asyncHandler(getShiftById));
 router.put('/:id', verifyToken, requireCenterAdmin, asyncHandler(updateShift));
 router.delete('/:id', verifyToken, requireCenterAdmin, asyncHandler(deleteShift));
 router.post('/:id/check-in', verifyToken, requireLifeguard, asyncHandler(checkInShift));
