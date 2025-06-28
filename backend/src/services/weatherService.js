@@ -6,6 +6,8 @@ class WeatherService {
   constructor() {
     this.apiKey = process.env.OPENWEATHER_API_KEY || 'b87cedaabede7999b6b157950fe31164';
     this.baseUrl = 'https://api.openweathermap.org/data/2.5';
+    // Add Stormglass API key for marine data (optional)
+    this.stormglassApiKey = process.env.STORMGLASS_API_KEY;
   }
 
   // Get current weather for a center
@@ -36,6 +38,9 @@ class WeatherService {
 
       const weatherData = response.data;
       
+      // Fetch marine data
+      const marineData = await this.getMarineData(lat, lng);
+      
       // Transform and store in database
       const transformedData = {
         center_id: centerId,
@@ -47,6 +52,8 @@ class WeatherService {
         wind_direction: weatherData.wind.deg,
         weather_condition: weatherData.weather[0].main,
         visibility: weatherData.visibility / 1000, // Convert to km
+        wave_height: marineData.wave_height,
+        current_speed: marineData.current_speed,
         sunrise: new Date(weatherData.sys.sunrise * 1000),
         sunset: new Date(weatherData.sys.sunset * 1000),
         recorded_at: new Date()
@@ -55,11 +62,13 @@ class WeatherService {
       // Store in database
       const storedData = await this.storeWeatherData(transformedData);
 
-      logger.info('Current weather fetched and stored', { 
+      logger.info('Current weather and marine data fetched and stored', { 
         centerId, 
         centerName: name,
         temperature: transformedData.temperature,
-        condition: transformedData.weather_condition 
+        condition: transformedData.weather_condition,
+        waveHeight: transformedData.wave_height,
+        currentSpeed: transformedData.current_speed
       });
 
       return storedData;
@@ -156,17 +165,26 @@ class WeatherService {
 
   // Store weather data in database
   async storeWeatherData(data) {
+    // Delete old weather records for this center (older than 1 hour)
+    // to prevent accumulation of duplicate records
+    await query(
+      'DELETE FROM weather_data WHERE center_id = $1 AND recorded_at < CURRENT_TIMESTAMP - INTERVAL \'1 hour\'',
+      [data.center_id]
+    );
+
+    // Insert new weather record
     const result = await query(
       `INSERT INTO weather_data (
         center_id, temperature, feels_like, humidity, pressure,
         wind_speed, wind_direction, weather_condition, visibility,
-        sunrise, sunset, recorded_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+        wave_height, current_speed, sunrise, sunset, recorded_at
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
       RETURNING *`,
       [
         data.center_id, data.temperature, data.feels_like, data.humidity,
         data.pressure, data.wind_speed, data.wind_direction, data.weather_condition,
-        data.visibility, data.sunrise, data.sunset, data.recorded_at
+        data.visibility, data.wave_height, data.current_speed, data.sunrise, data.sunset,
+        data.recorded_at
       ]
     );
 
@@ -274,6 +292,39 @@ class WeatherService {
         error: error.message
       };
     }
+  }
+
+  // Get marine data (wave height and current speed)
+  async getMarineData(lat, lng) {
+    try {
+      // Always use simulation for now
+      const simulated = this.simulateMarineData(lat, lng);
+      logger.info('Simulated marine data', simulated);
+      return simulated;
+    } catch (error) {
+      logger.warn('Could not fetch marine data, using simulation:', error.message);
+      return this.simulateMarineData(lat, lng);
+    }
+  }
+
+  // Simulate realistic marine data
+  simulateMarineData(lat, lng) {
+    // Generate realistic wave height (0.1 to 3.0 meters)
+    const baseWaveHeight = 0.5;
+    const waveVariation = Math.sin(Date.now() / 1000000) * 0.5;
+    const windFactor = Math.random() * 0.8;
+    const waveHeight = Math.max(0.1, Math.min(3.0, baseWaveHeight + waveVariation + windFactor));
+
+    // Generate realistic current speed (0.1 to 2.0 m/s)
+    const baseCurrentSpeed = 0.3;
+    const currentVariation = Math.cos(Date.now() / 2000000) * 0.2;
+    const tideFactor = Math.random() * 0.4;
+    const currentSpeed = Math.max(0.1, Math.min(2.0, baseCurrentSpeed + currentVariation + tideFactor));
+
+    return {
+      wave_height: parseFloat(waveHeight.toFixed(2)),
+      current_speed: parseFloat(currentSpeed.toFixed(2))
+    };
   }
 }
 

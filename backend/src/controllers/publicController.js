@@ -159,8 +159,90 @@ const getCurrentWeather = asyncHandler(async (req, res) => {
   }
 });
 
+const getLifeguardCounts = asyncHandler(async (req, res) => {
+  try {
+    const result = await query(
+      `SELECT 
+        c.id as center_id,
+        c.name as center_name,
+        COUNT(l.id) as lifeguard_count
+       FROM centers c
+       LEFT JOIN lifeguards l ON c.id = l.center_id
+       LEFT JOIN users u ON l.user_id = u.id
+       WHERE c.is_active = true 
+       AND (u.is_active = true OR u.is_active IS NULL)
+       GROUP BY c.id, c.name
+       ORDER BY c.name`,
+      []
+    );
+
+    const lifeguardCounts = result.rows.map(row => ({
+      center_id: row.center_id,
+      center_name: row.center_name,
+      lifeguard_count: parseInt(row.lifeguard_count)
+    }));
+
+    res.json({
+      success: true,
+      message: 'Lifeguard counts retrieved successfully',
+      data: lifeguardCounts
+    });
+  } catch (error) {
+    logger.error('Error getting public lifeguard counts:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve lifeguard counts',
+      error: error.message
+    });
+  }
+});
+
+const getSafetyFlags = asyncHandler(async (req, res) => {
+  try {
+    const result = await query(
+      `SELECT 
+        c.id as center_id,
+        c.name as center_name,
+        sf.flag_status,
+        sf.reason,
+        sf.set_at,
+        sf.expires_at
+       FROM centers c
+       LEFT JOIN safety_flags sf ON c.id = sf.center_id
+       AND (sf.expires_at IS NULL OR sf.expires_at > CURRENT_TIMESTAMP)
+       WHERE c.is_active = true
+       ORDER BY c.name`,
+      []
+    );
+
+    const safetyFlags = result.rows.map(row => ({
+      center_id: row.center_id,
+      center_name: row.center_name,
+      flag_status: row.flag_status || 'green', // Default to green if no flag set
+      reason: row.reason || null,
+      set_at: row.set_at,
+      expires_at: row.expires_at
+    }));
+
+    res.json({
+      success: true,
+      message: 'Safety flags retrieved successfully',
+      data: safetyFlags
+    });
+  } catch (error) {
+    logger.error('Error getting public safety flags:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve safety flags',
+      error: error.message
+    });
+  }
+});
+
 module.exports = {
   getAllCenters,
   getCenterStatus,
-  getCurrentWeather
+  getCurrentWeather,
+  getLifeguardCounts,
+  getSafetyFlags
 }; 
