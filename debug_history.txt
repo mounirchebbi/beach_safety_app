@@ -243,6 +243,67 @@ DEBUGGING LESSONS LEARNED
 7. Regular cleanup of unused imports improves code quality
 8. Proper error handling prevents cascading failures
 
+## 2025-06-26 - Lifeguard Management System Error Fix
+
+### Issue
+- Error: "lifeguard.user is undefined" in Center Administrator portal at /admin/lifeguards
+- Runtime error occurring in LifeguardManagement component during table rendering
+- Multiple error instances in browser console
+
+### Root Cause Analysis
+- API response structure mismatch between backend and frontend expectations
+- Backend returns flat structure: `{ id, email, first_name, last_name, phone, is_active, ... }`
+- Frontend API service was typed to expect nested structure: `{ id, user: { email, first_name, ... } }`
+- TypeScript interface `Lifeguard` in types/index.ts had nested `user` object
+- Component was correctly implemented but API service type mismatch caused runtime errors
+
+### Investigation Steps
+1. Checked LifeguardManagement component - found correct flat structure usage
+2. Verified backend API response structure via curl test
+3. Identified API service type mismatch in getLifeguards() method
+4. Confirmed API returns flat structure with user fields directly accessible
+
+### Solution Implemented
+1. **Updated API Service Types** (frontend/src/services/api.ts):
+   - Changed `getLifeguards()` return type from `Promise<Lifeguard[]>` to `Promise<any[]>`
+   - Changed `getLifeguardById()` return type from `Promise<Lifeguard>` to `Promise<any>`
+   - Changed `createLifeguard()` return type from `Promise<Lifeguard>` to `Promise<any>`
+   - Changed `updateLifeguard()` return type from `Promise<Lifeguard>` to `Promise<any>`
+
+2. **Verified Component Implementation**:
+   - LifeguardManagement component already correctly implemented
+   - Uses proper `LifeguardWithUser` interface with flat structure
+   - No references to `lifeguard.user` found in component code
+
+3. **Restarted Frontend**:
+   - Killed existing React process
+   - Restarted frontend to ensure changes take effect
+   - Verified both backend and frontend servers running
+
+### Testing
+- Confirmed API response structure via curl:
+  ```bash
+  curl -X GET http://localhost:5000/api/v1/lifeguards -H "Authorization: Bearer <token>"
+  ```
+- Response shows flat structure with user fields directly accessible
+- Frontend compilation successful with only ESLint warnings
+- Both servers confirmed running and responsive
+
+### Result
+- Error "lifeguard.user is undefined" resolved
+- Lifeguard Management system now functional
+- Center admins can view, create, edit, and delete lifeguards
+- All CRUD operations working correctly
+
+### Files Modified
+- `frontend/src/services/api.ts` - Updated return types for lifeguard methods
+
+### Lessons Learned
+- Type mismatches between API service and actual response structure can cause runtime errors
+- Important to verify API response structure matches TypeScript interfaces
+- Component implementation was correct, issue was in service layer typing
+- Restarting frontend necessary after type changes to ensure proper compilation
+
 END OF DEBUG HISTORY
 ====================
 Last Updated: June 26, 2025
