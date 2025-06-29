@@ -619,6 +619,74 @@ const getMyShifts = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get lifeguard's current shift
+// @route   GET /api/v1/shifts/current/:lifeguardId
+// @access  Lifeguard
+const getCurrentShift = asyncHandler(async (req, res) => {
+  const { lifeguardId } = req.params;
+  const lifeguardUserId = req.user.id;
+
+  // Get the lifeguard record for this user
+  const lifeguardResult = await query(
+    `SELECT l.id as lifeguard_id, l.center_id, c.name as center_name
+     FROM lifeguards l
+     JOIN centers c ON c.id = l.center_id
+     WHERE l.user_id = $1`,
+    [lifeguardUserId]
+  );
+
+  if (lifeguardResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lifeguard record not found'
+    });
+  }
+
+  const userLifeguardId = lifeguardResult.rows[0].lifeguard_id;
+
+  // Verify the requested lifeguard ID matches the authenticated user
+  if (userLifeguardId !== lifeguardId) {
+    return res.status(403).json({
+      success: false,
+      message: 'Access denied'
+    });
+  }
+
+  // Get current active shift for this lifeguard
+  const result = await query(
+    `SELECT s.id, s.start_time, s.end_time, s.status, s.check_in_time, s.check_in_location, 
+            s.check_out_time, s.created_at, s.updated_at,
+            c.name as center_name, c.id as center_id
+     FROM shifts s
+     JOIN centers c ON c.id = s.center_id
+     WHERE s.lifeguard_id = $1 
+     AND s.status IN ('active', 'scheduled')
+     AND s.start_time <= NOW()
+     AND s.end_time >= NOW()
+     ORDER BY s.start_time ASC
+     LIMIT 1`,
+    [lifeguardId]
+  );
+
+  if (result.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'No current shift found'
+    });
+  }
+
+  logger.info('Retrieved lifeguard current shift', {
+    lifeguardId,
+    userId: lifeguardUserId,
+    shiftId: result.rows[0].id
+  });
+
+  res.json({
+    success: true,
+    data: result.rows[0]
+  });
+});
+
 module.exports = {
   getAllShifts,
   getShiftById,
@@ -627,5 +695,6 @@ module.exports = {
   deleteShift,
   checkInShift,
   checkOutShift,
-  getMyShifts
+  getMyShifts,
+  getCurrentShift
 }; 

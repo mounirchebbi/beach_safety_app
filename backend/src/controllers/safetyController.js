@@ -493,13 +493,200 @@ const switchToManualMode = async (req, res) => {
       reason 
     });
 
-    res.status(201).json({
-      success: true,
-      message: 'Manual flag set successfully (automatic mode overridden)',
-      data: response
-    });
+    res.json(response);
   } catch (error) {
     logger.error('Error switching to manual mode:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Check and update expired flags for all centers (System Admin only)
+const checkAndUpdateExpiredFlags = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Only system admins can trigger expired flag checks
+    if (req.user.role !== 'system_admin') {
+      return res.status(403).json({ error: 'Insufficient permissions. System admin required.' });
+    }
+
+    const result = await weatherService.checkAndUpdateExpiredFlags();
+
+    res.json({
+      success: true,
+      message: `Expired flag check completed. ${result.updated} flags updated.`,
+      data: result
+    });
+  } catch (error) {
+    logger.error('Error checking expired flags:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Initialize safety flags for all centers (System Admin only)
+const initializeAllCenterFlags = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Only system admins can trigger flag initialization
+    if (req.user.role !== 'system_admin') {
+      return res.status(403).json({ error: 'Insufficient permissions. System admin required.' });
+    }
+
+    const result = await weatherService.ensureAllCentersHaveFlags();
+
+    res.json({
+      success: true,
+      message: `Flag initialization completed. ${result.initialized} centers initialized.`,
+      data: result
+    });
+  } catch (error) {
+    logger.error('Error initializing center flags:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Get comprehensive flag management status for all centers (System Admin only)
+const getAllCentersFlagStatus = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Only system admins can view all centers flag status
+    if (req.user.role !== 'system_admin') {
+      return res.status(403).json({ error: 'Insufficient permissions. System admin required.' });
+    }
+
+    const result = await query(
+      `SELECT 
+        c.id as center_id,
+        c.name as center_name,
+        c.is_active,
+        sf.flag_status,
+        sf.reason,
+        sf.set_at,
+        sf.expires_at,
+        u.first_name,
+        u.last_name,
+        u.email,
+        u.role as set_by_role,
+        CASE 
+          WHEN sf.expires_at IS NOT NULL AND sf.expires_at <= CURRENT_TIMESTAMP THEN 'expired'
+          WHEN u.role = 'system_admin' THEN 'automatic'
+          ELSE 'manual'
+        END as flag_mode
+       FROM centers c
+       LEFT JOIN safety_flags sf ON c.id = sf.center_id
+       AND sf.set_at = (
+         SELECT MAX(set_at) FROM safety_flags sf2 
+         WHERE sf2.center_id = c.id
+       )
+       LEFT JOIN users u ON sf.set_by = u.id
+       WHERE c.is_active = true
+       ORDER BY c.name`,
+      []
+    );
+
+    const centers = result.rows.map(row => ({
+      center_id: row.center_id,
+      center_name: row.center_name,
+      is_active: row.is_active,
+      flag_status: row.flag_status || 'none',
+      reason: row.reason || null,
+      set_at: row.set_at,
+      expires_at: row.expires_at,
+      set_by: row.first_name ? {
+        first_name: row.first_name,
+        last_name: row.last_name,
+        email: row.email,
+        role: row.set_by_role
+      } : null,
+      flag_mode: row.flag_mode || 'none',
+      needs_attention: row.flag_mode === 'expired' || row.flag_status === 'none'
+    }));
+
+    const summary = {
+      total_centers: centers.length,
+      automatic_flags: centers.filter(c => c.flag_mode === 'automatic').length,
+      manual_flags: centers.filter(c => c.flag_mode === 'manual').length,
+      expired_flags: centers.filter(c => c.flag_mode === 'expired').length,
+      no_flags: centers.filter(c => c.flag_status === 'none').length,
+      needs_attention: centers.filter(c => c.needs_attention).length
+    };
+
+    res.json({
+      success: true,
+      message: 'Flag status retrieved successfully',
+      data: {
+        centers,
+        summary
+      }
+    });
+  } catch (error) {
+    logger.error('Error getting all centers flag status:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Force automatic flag update for all centers (System Admin only)
+const forceUpdateAllCenterFlags = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Only system admins can force update all flags
+    if (req.user.role !== 'system_admin') {
+      return res.status(403).json({ error: 'Insufficient permissions. System admin required.' });
+    }
+
+    const centersResult = await query(
+      'SELECT id, name FROM centers WHERE is_active = true',
+      []
+    );
+
+    const updatePromises = centersResult.rows.map(async (center) => {
+      try {
+        const result = await weatherService.updateSafetyFlagAutomatically(center.id, userId);
+        return {
+          centerId: center.id,
+          centerName: center.name,
+          updated: result.updated,
+          oldFlag: result.old_flag,
+          newFlag: result.new_flag,
+          reason: result.update_reason
+        };
+      } catch (error) {
+        return {
+          centerId: center.id,
+          centerName: center.name,
+          updated: false,
+          error: error.message
+        };
+      }
+    });
+
+    const results = await Promise.allSettled(updatePromises);
+    const successfulUpdates = results
+      .filter(result => result.status === 'fulfilled' && result.value.updated)
+      .map(result => result.value);
+
+    const failedUpdates = results
+      .filter(result => result.status === 'fulfilled' && !result.value.updated)
+      .map(result => result.value);
+
+    res.json({
+      success: true,
+      message: `Force update completed. ${successfulUpdates.length} flags updated.`,
+      data: {
+        updated: successfulUpdates,
+        failed: failedUpdates,
+        summary: {
+          total_centers: centersResult.rows.length,
+          successful_updates: successfulUpdates.length,
+          failed_updates: failedUpdates.length
+        }
+      }
+    });
+  } catch (error) {
+    logger.error('Error forcing update all center flags:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -513,5 +700,9 @@ module.exports = {
   getAllSafetyFlags,
   getFlagManagementMode,
   triggerAutomaticFlagUpdate,
-  switchToManualMode
+  switchToManualMode,
+  checkAndUpdateExpiredFlags,
+  initializeAllCenterFlags,
+  getAllCentersFlagStatus,
+  forceUpdateAllCenterFlags
 }; 

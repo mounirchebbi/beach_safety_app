@@ -241,6 +241,32 @@ const emitWeatherUpdatesToAllCenters = async () => {
   }
 };
 
+// Emit alert status change
+const emitAlertStatusChange = (alertData) => {
+  if (io) {
+    io.to(`center_${alertData.center_id}`).emit('alert_status_change', {
+      alertId: alertData.id,
+      status: alertData.status,
+      assignedLifeguardId: alertData.assigned_lifeguard_id,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Also notify system admin
+    io.to('system_admin').emit('alert_status_change', {
+      alertId: alertData.id,
+      status: alertData.status,
+      assignedLifeguardId: alertData.assigned_lifeguard_id,
+      timestamp: new Date().toISOString()
+    });
+    
+    logger.info('Alert status change emitted', { 
+      alertId: alertData.id, 
+      centerId: alertData.center_id,
+      status: alertData.status 
+    });
+  }
+};
+
 // Emit new emergency alert
 const emitEmergencyAlert = (alertData) => {
   if (io) {
@@ -256,20 +282,6 @@ const emitEmergencyAlert = (alertData) => {
     });
     
     logger.info('Emergency alert emitted', { alertId: alertData.id, centerId: alertData.center_id });
-  }
-};
-
-// Emit alert status change
-const emitAlertStatusChange = (alertId, centerId, status, assignedLifeguardId = null) => {
-  if (io) {
-    io.to(`center_${centerId}`).emit('alert_status_change', {
-      alertId,
-      status,
-      assignedLifeguardId,
-      timestamp: new Date().toISOString()
-    });
-    
-    logger.info('Alert status change emitted', { alertId, status, centerId });
   }
 };
 

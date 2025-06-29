@@ -10,7 +10,11 @@ const {
   getAllSafetyFlags,
   getFlagManagementMode,
   triggerAutomaticFlagUpdate,
-  switchToManualMode
+  switchToManualMode,
+  checkAndUpdateExpiredFlags,
+  initializeAllCenterFlags,
+  getAllCentersFlagStatus,
+  forceUpdateAllCenterFlags
 } = require('../controllers/safetyController');
 
 // Get current safety flag for a center (Center Admin, System Admin)
@@ -74,6 +78,31 @@ router.post('/centers/:centerId/manual',
   verifyToken, 
   requireRole(['center_admin', 'system_admin']), 
   switchToManualMode
+);
+
+// System-wide flag management (System Admin only)
+router.get('/system/status', 
+  verifyToken, 
+  requireRole(['system_admin']), 
+  getAllCentersFlagStatus
+);
+
+router.post('/system/check-expired', 
+  verifyToken, 
+  requireRole(['system_admin']), 
+  checkAndUpdateExpiredFlags
+);
+
+router.post('/system/initialize-flags', 
+  verifyToken, 
+  requireRole(['system_admin']), 
+  initializeAllCenterFlags
+);
+
+router.post('/system/force-update-all', 
+  verifyToken, 
+  requireRole(['system_admin']), 
+  forceUpdateAllCenterFlags
 );
 
 module.exports = router; 

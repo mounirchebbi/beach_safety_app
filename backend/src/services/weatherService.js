@@ -291,6 +291,24 @@ class WeatherService {
       await Promise.allSettled(updatePromises);
       logger.info('Weather update cycle completed for all centers');
 
+      // Check for expired manual flags and update them
+      const expiredFlagResult = await this.checkAndUpdateExpiredFlags();
+      if (expiredFlagResult.updated > 0) {
+        logger.info('Expired manual flags updated', {
+          updated: expiredFlagResult.updated,
+          centers: expiredFlagResult.centers.map(c => c.centerName)
+        });
+      }
+
+      // Ensure all centers have safety flags set
+      const flagInitResult = await this.ensureAllCentersHaveFlags();
+      if (flagInitResult.initialized > 0) {
+        logger.info('Safety flags initialized for centers', {
+          initialized: flagInitResult.initialized,
+          centers: flagInitResult.centers.map(c => c.centerName)
+        });
+      }
+
       // Now update safety flags automatically for all centers
       const flagUpdatePromises = centersResult.rows.map(async (center) => {
         try {
@@ -300,7 +318,8 @@ class WeatherService {
               centerId: center.id, 
               centerName: center.name,
               oldFlag: flagResult.old_flag,
-              newFlag: flagResult.new_flag
+              newFlag: flagResult.new_flag,
+              reason: flagResult.update_reason
             });
           }
         } catch (error) {
@@ -459,19 +478,49 @@ class WeatherService {
       
       // Get current flag to compare
       const currentFlagResult = await query(
-        `SELECT id, flag_status, reason FROM safety_flags 
-         WHERE center_id = $1 
-         AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)
-         ORDER BY set_at DESC 
+        `SELECT sf.id, sf.flag_status, sf.reason, sf.expires_at, sf.set_by, u.role as set_by_role FROM safety_flags sf
+         JOIN users u ON sf.set_by = u.id
+         WHERE sf.center_id = $1 
+         AND (sf.expires_at IS NULL OR sf.expires_at > CURRENT_TIMESTAMP)
+         ORDER BY sf.set_at DESC 
          LIMIT 1`,
         [centerId]
       );
 
       const currentFlag = currentFlagResult.rows[0];
       
-      // Only update if flag status has changed or no current flag exists
-      if (!currentFlag || currentFlag.flag_status !== flagDecision.flag_status) {
-        // Get system admin user ID for automatic updates
+      // Check if we should update the flag
+      let shouldUpdate = false;
+      let updateReason = '';
+      
+      if (!currentFlag) {
+        // No current flag exists - set one automatically
+        shouldUpdate = true;
+        updateReason = 'No flag set - setting automatic flag';
+      } else if (currentFlag.set_by_role === 'system_admin') {
+        // Current flag is automatic - update if status changed
+        if (currentFlag.flag_status !== flagDecision.flag_status) {
+          shouldUpdate = true;
+          updateReason = 'Automatic flag status changed';
+        }
+      } else {
+        // Current flag is manual - check if expired
+        if (currentFlag.expires_at && new Date(currentFlag.expires_at) <= new Date()) {
+          shouldUpdate = true;
+          updateReason = 'Manual flag expired - reverting to automatic';
+        } else {
+          // Manual flag still valid - don't update
+          logger.info('Manual flag still valid - respecting manual override', {
+            centerId,
+            currentFlag: currentFlag.flag_status,
+            expiresAt: currentFlag.expires_at,
+            setByRole: currentFlag.set_by_role
+          });
+        }
+      }
+      
+      if (shouldUpdate) {
+        // Always use system admin user ID for automatic updates
         const systemUserResult = await query(
           'SELECT id FROM users WHERE role = $1 LIMIT 1',
           ['system_admin']
@@ -479,7 +528,7 @@ class WeatherService {
         
         const systemUserId = systemUserResult.rows[0]?.id || '83ba790b-dd5c-4c98-ae16-744cc83d39c2';
         
-        // Set the new flag
+        // Set the new flag (always use system admin ID for automatic updates)
         const result = await query(
           `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
            VALUES ($1, $2, $3, $4, $5)
@@ -488,7 +537,7 @@ class WeatherService {
             centerId, 
             flagDecision.flag_status, 
             flagDecision.reason, 
-            userId || systemUserId, // Use provided user ID or system admin
+            systemUserId, // Always use system admin for automatic updates
             new Date(Date.now() + 2 * 60 * 60 * 1000) // Expires in 2 hours
           ]
         );
@@ -498,7 +547,9 @@ class WeatherService {
           oldFlag: currentFlag?.flag_status || 'none',
           newFlag: flagDecision.flag_status,
           reason: flagDecision.reason,
-          alerts: flagDecision.alerts.length
+          alerts: flagDecision.alerts.length,
+          triggeredBy: userId || 'system',
+          updateReason: updateReason
         });
 
         return {
@@ -506,17 +557,158 @@ class WeatherService {
           old_flag: currentFlag?.flag_status || 'none',
           new_flag: flagDecision.flag_status,
           reason: flagDecision.reason,
-          alerts: flagDecision.alerts
+          alerts: flagDecision.alerts,
+          update_reason: updateReason
         };
       }
 
       return {
         updated: false,
         current_flag: currentFlag?.flag_status || 'none',
-        reason: currentFlag?.reason || 'No change needed'
+        reason: currentFlag?.reason || 'No change needed',
+        update_reason: currentFlag?.set_by_role === 'system_admin' ? 'Automatic flag unchanged' : 'Manual flag still valid'
       };
     } catch (error) {
       logger.error('Error updating safety flag automatically:', error);
+      throw error;
+    }
+  }
+
+  // Check and update expired manual flags for all centers
+  async checkAndUpdateExpiredFlags() {
+    try {
+      logger.info('Starting expired flag check cycle');
+      
+      // Get all centers with expired manual flags
+      const expiredFlagsResult = await query(
+        `SELECT DISTINCT sf.center_id, c.name as center_name
+         FROM safety_flags sf
+         JOIN centers c ON sf.center_id = c.id
+         JOIN users u ON sf.set_by = u.id
+         WHERE u.role != 'system_admin'
+         AND sf.expires_at IS NOT NULL
+         AND sf.expires_at <= CURRENT_TIMESTAMP
+         AND sf.center_id IN (
+           SELECT center_id FROM safety_flags 
+           WHERE set_at = (
+             SELECT MAX(set_at) FROM safety_flags sf2 
+             WHERE sf2.center_id = safety_flags.center_id
+           )
+         )`,
+        []
+      );
+
+      if (expiredFlagsResult.rows.length === 0) {
+        logger.info('No expired manual flags found');
+        return { updated: 0, centers: [] };
+      }
+
+      const updatePromises = expiredFlagsResult.rows.map(async (center) => {
+        try {
+          const result = await this.updateSafetyFlagAutomatically(center.center_id);
+          if (result.updated) {
+            logger.info('Expired manual flag updated to automatic', {
+              centerId: center.center_id,
+              centerName: center.center_name,
+              newFlag: result.new_flag
+            });
+            return { centerId: center.center_id, centerName: center.center_name, updated: true };
+          }
+          return { centerId: center.center_id, centerName: center.center_name, updated: false };
+        } catch (error) {
+          logger.error('Failed to update expired flag for center', {
+            centerId: center.center_id,
+            centerName: center.center_name,
+            error: error.message
+          });
+          return { centerId: center.center_id, centerName: center.center_name, updated: false, error: error.message };
+        }
+      });
+
+      const results = await Promise.allSettled(updatePromises);
+      const successfulUpdates = results
+        .filter(result => result.status === 'fulfilled' && result.value.updated)
+        .map(result => result.value);
+
+      logger.info('Expired flag check cycle completed', {
+        totalExpired: expiredFlagsResult.rows.length,
+        successfullyUpdated: successfulUpdates.length,
+        centers: successfulUpdates.map(c => c.centerName)
+      });
+
+      return {
+        updated: successfulUpdates.length,
+        centers: successfulUpdates
+      };
+    } catch (error) {
+      logger.error('Error in expired flag check cycle:', error);
+      throw error;
+    }
+  }
+
+  // Ensure all centers have safety flags set
+  async ensureAllCentersHaveFlags() {
+    try {
+      logger.info('Starting flag initialization check for all centers');
+      
+      // Get all active centers
+      const centersResult = await query(
+        'SELECT id, name FROM centers WHERE is_active = true',
+        []
+      );
+
+      const flagCheckPromises = centersResult.rows.map(async (center) => {
+        try {
+          // Check if center has a current flag
+          const currentFlagResult = await query(
+            `SELECT id FROM safety_flags 
+             WHERE center_id = $1 
+             AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)
+             ORDER BY set_at DESC 
+             LIMIT 1`,
+            [center.id]
+          );
+
+          if (currentFlagResult.rows.length === 0) {
+            // No current flag - set one automatically
+            const result = await this.updateSafetyFlagAutomatically(center.id);
+            if (result.updated) {
+              logger.info('Initialized safety flag for center', {
+                centerId: center.id,
+                centerName: center.name,
+                flag: result.new_flag
+              });
+              return { centerId: center.id, centerName: center.name, initialized: true, flag: result.new_flag };
+            }
+          }
+          return { centerId: center.id, centerName: center.name, initialized: false };
+        } catch (error) {
+          logger.error('Failed to check/initialize flag for center', {
+            centerId: center.id,
+            centerName: center.name,
+            error: error.message
+          });
+          return { centerId: center.id, centerName: center.name, initialized: false, error: error.message };
+        }
+      });
+
+      const results = await Promise.allSettled(flagCheckPromises);
+      const initializedCenters = results
+        .filter(result => result.status === 'fulfilled' && result.value.initialized)
+        .map(result => result.value);
+
+      logger.info('Flag initialization check completed', {
+        totalCenters: centersResult.rows.length,
+        initialized: initializedCenters.length,
+        centers: initializedCenters.map(c => c.centerName)
+      });
+
+      return {
+        initialized: initializedCenters.length,
+        centers: initializedCenters
+      };
+    } catch (error) {
+      logger.error('Error in flag initialization check:', error);
       throw error;
     }
   }

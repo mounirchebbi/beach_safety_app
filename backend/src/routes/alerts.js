@@ -6,13 +6,17 @@ const {
   getAllAlerts,
   getAlertById,
   updateAlertStatus,
-  assignAlert
+  assignAlert,
+  getEmergencyStats
 } = require('../controllers/alertController');
 
 const router = express.Router();
 
-// Routes
+// Public routes (no authentication required)
 router.post('/sos', asyncHandler(createSOSAlert)); // Public route for SOS
+router.get('/public/stats/:center_id', asyncHandler(getEmergencyStats)); // Public emergency statistics
+
+// Protected routes (authentication required)
 router.get('/', verifyToken, requireLifeguard, asyncHandler(getAllAlerts));
 router.get('/:id', verifyToken, requireLifeguard, asyncHandler(getAlertById));
 router.put('/:id/status', verifyToken, requireLifeguard, asyncHandler(updateAlertStatus));
