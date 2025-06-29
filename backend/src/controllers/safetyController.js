@@ -1,5 +1,6 @@
 const { query } = require('../config/database');
 const { logger } = require('../utils/logger');
+const weatherService = require('../services/weatherService');
 
 // Get current safety flag for a center
 const getCurrentSafetyFlag = async (req, res) => {
@@ -344,11 +345,173 @@ const getAllSafetyFlags = async (req, res) => {
   }
 };
 
+// Get flag management mode for a center
+const getFlagManagementMode = async (req, res) => {
+  try {
+    const { centerId } = req.params;
+    const userId = req.user.id;
+
+    // Check if center exists
+    const centerCheck = await query('SELECT id FROM centers WHERE id = $1', [centerId]);
+    if (centerCheck.rows.length === 0) {
+      return res.status(404).json({ error: 'Center not found' });
+    }
+
+    // Get the most recent flag to determine if it was set automatically or manually
+    const flagResult = await query(
+      `SELECT 
+        sf.id,
+        sf.flag_status,
+        sf.reason,
+        sf.set_at,
+        sf.set_by,
+        u.role as set_by_role
+      FROM safety_flags sf
+      JOIN users u ON sf.set_by = u.id
+      WHERE sf.center_id = $1
+      ORDER BY sf.set_at DESC
+      LIMIT 1`,
+      [centerId]
+    );
+
+    let mode = 'automatic'; // Default mode
+    let lastUpdate = null;
+    let currentFlag = null;
+
+    if (flagResult.rows.length > 0) {
+      const flag = flagResult.rows[0];
+      currentFlag = {
+        status: flag.flag_status,
+        reason: flag.reason,
+        set_at: flag.set_at
+      };
+      
+      // If the last flag was set by a system admin (automatic), mode is automatic
+      // If set by a center admin or lifeguard (manual), mode is manual
+      mode = flag.set_by_role === 'system_admin' ? 'automatic' : 'manual';
+      lastUpdate = flag.set_at;
+    }
+
+    res.json({
+      center_id: centerId,
+      mode: mode,
+      current_flag: currentFlag,
+      last_update: lastUpdate
+    });
+  } catch (error) {
+    logger.error('Error getting flag management mode:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Trigger automatic flag update for a center
+const triggerAutomaticFlagUpdate = async (req, res) => {
+  try {
+    const { centerId } = req.params;
+    const userId = req.user.id;
+
+    // Check if center exists
+    const centerCheck = await query('SELECT id FROM centers WHERE id = $1', [centerId]);
+    if (centerCheck.rows.length === 0) {
+      return res.status(404).json({ error: 'Center not found' });
+    }
+
+    // Trigger automatic flag update
+    const result = await weatherService.updateSafetyFlagAutomatically(centerId, userId);
+
+    res.json({
+      success: true,
+      message: result.updated ? 'Safety flag updated automatically' : 'No update needed',
+      data: result
+    });
+  } catch (error) {
+    logger.error('Error triggering automatic flag update:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Switch to manual mode (override automatic)
+const switchToManualMode = async (req, res) => {
+  try {
+    const { centerId } = req.params;
+    const { flag_status, reason, expires_at } = req.body;
+    const userId = req.user.id;
+
+    // Validate required fields
+    if (!flag_status) {
+      return res.status(400).json({ error: 'Flag status is required' });
+    }
+
+    // Validate flag status
+    const validStatuses = ['green', 'yellow', 'red', 'black'];
+    if (!validStatuses.includes(flag_status)) {
+      return res.status(400).json({ error: 'Invalid flag status. Must be green, yellow, red, or black' });
+    }
+
+    // Check if center exists
+    const centerCheck = await query('SELECT id FROM centers WHERE id = $1', [centerId]);
+    if (centerCheck.rows.length === 0) {
+      return res.status(404).json({ error: 'Center not found' });
+    }
+
+    // Set manual flag (this overrides automatic mode)
+    const result = await query(
+      `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING 
+         id,
+         flag_status,
+         reason,
+         set_at,
+         expires_at,
+         created_at`,
+      [centerId, flag_status, reason, userId, expires_at]
+    );
+
+    const newFlag = result.rows[0];
+
+    // Get user info for response
+    const userResult = await query(
+      'SELECT first_name, last_name, email FROM users WHERE id = $1',
+      [userId]
+    );
+
+    const response = {
+      ...newFlag,
+      set_by: {
+        id: userId,
+        first_name: userResult.rows[0].first_name,
+        last_name: userResult.rows[0].last_name,
+        email: userResult.rows[0].email
+      }
+    };
+
+    logger.info('Manual safety flag set (overriding automatic mode)', { 
+      centerId, 
+      flagStatus: flag_status, 
+      setBy: userId,
+      reason 
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Manual flag set successfully (automatic mode overridden)',
+      data: response
+    });
+  } catch (error) {
+    logger.error('Error switching to manual mode:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getCurrentSafetyFlag,
   getSafetyFlagHistory,
   setSafetyFlag,
   updateSafetyFlag,
   deleteSafetyFlag,
-  getAllSafetyFlags
+  getAllSafetyFlags,
+  getFlagManagementMode,
+  triggerAutomaticFlagUpdate,
+  switchToManualMode
 }; 

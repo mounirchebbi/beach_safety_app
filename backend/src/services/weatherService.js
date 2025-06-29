@@ -38,6 +38,25 @@ class WeatherService {
 
       const weatherData = response.data;
       
+      // Log raw API response for debugging
+      logger.info('Raw OpenWeatherMap API response', {
+        centerId,
+        centerName: name,
+        coordinates: { lat, lng },
+        visibility: weatherData.visibility,
+        weather_condition: weatherData.weather?.[0]?.main,
+        temperature: weatherData.main?.temp,
+        wind_speed: weatherData.wind?.speed,
+        humidity: weatherData.main?.humidity,
+        pressure: weatherData.main?.pressure,
+        raw_response: {
+          visibility: weatherData.visibility,
+          weather: weatherData.weather,
+          main: weatherData.main,
+          wind: weatherData.wind
+        }
+      });
+      
       // Fetch marine data
       const marineData = await this.getMarineData(lat, lng);
       
@@ -58,6 +77,19 @@ class WeatherService {
         sunset: new Date(weatherData.sys.sunset * 1000),
         recorded_at: new Date()
       };
+
+      // Log transformed data for debugging
+      logger.info('Transformed weather data', {
+        centerId,
+        centerName: name,
+        original_visibility_meters: weatherData.visibility,
+        transformed_visibility_km: transformedData.visibility,
+        temperature: transformedData.temperature,
+        wind_speed: transformedData.wind_speed,
+        weather_condition: transformedData.weather_condition,
+        wave_height: transformedData.wave_height,
+        current_speed: transformedData.current_speed
+      });
 
       // Store in database
       const storedData = await this.storeWeatherData(transformedData);
@@ -163,10 +195,9 @@ class WeatherService {
     return dailyForecasts;
   }
 
-  // Store weather data in database
+  // Store weather data
   async storeWeatherData(data) {
-    // Delete old weather records for this center (older than 1 hour)
-    // to prevent accumulation of duplicate records
+    // Clean old weather data (older than 1 hour)
     await query(
       'DELETE FROM weather_data WHERE center_id = $1 AND recorded_at < CURRENT_TIMESTAMP - INTERVAL \'1 hour\'',
       [data.center_id]
@@ -177,14 +208,14 @@ class WeatherService {
       `INSERT INTO weather_data (
         center_id, temperature, feels_like, humidity, pressure,
         wind_speed, wind_direction, weather_condition, visibility,
-        wave_height, current_speed, sunrise, sunset, recorded_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+        wave_height, current_speed, precipitation, sunrise, sunset, recorded_at
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
       RETURNING *`,
       [
         data.center_id, data.temperature, data.feels_like, data.humidity,
         data.pressure, data.wind_speed, data.wind_direction, data.weather_condition,
-        data.visibility, data.wave_height, data.current_speed, data.sunrise, data.sunset,
-        data.recorded_at
+        data.visibility, data.wave_height, data.current_speed, data.precipitation || 0,
+        data.sunrise, data.sunset, data.recorded_at
       ]
     );
 
@@ -259,6 +290,30 @@ class WeatherService {
 
       await Promise.allSettled(updatePromises);
       logger.info('Weather update cycle completed for all centers');
+
+      // Now update safety flags automatically for all centers
+      const flagUpdatePromises = centersResult.rows.map(async (center) => {
+        try {
+          const flagResult = await this.updateSafetyFlagAutomatically(center.id);
+          if (flagResult.updated) {
+            logger.info('Safety flag updated automatically for center', { 
+              centerId: center.id, 
+              centerName: center.name,
+              oldFlag: flagResult.old_flag,
+              newFlag: flagResult.new_flag
+            });
+          }
+        } catch (error) {
+          logger.error('Failed to update safety flag for center', { 
+            centerId: center.id, 
+            centerName: center.name, 
+            error: error.message 
+          });
+        }
+      });
+
+      await Promise.allSettled(flagUpdatePromises);
+      logger.info('Automatic safety flag update cycle completed for all centers');
     } catch (error) {
       logger.error('Error in weather update cycle:', error.message);
     }
@@ -291,6 +346,178 @@ class WeatherService {
         message: 'OpenWeatherMap API connection failed',
         error: error.message
       };
+    }
+  }
+
+  // Automatically determine safety flag status based on weather conditions
+  determineSafetyFlag(weatherData) {
+    const alerts = [];
+    
+    // Log weather data used for flag determination
+    logger.info('Weather data for flag determination', {
+      visibility: weatherData.visibility,
+      temperature: weatherData.temperature,
+      wind_speed: weatherData.wind_speed,
+      wave_height: weatherData.wave_height,
+      precipitation: weatherData.precipitation,
+      weather_condition: weatherData.weather_condition
+    });
+    
+    // Check wave height
+    if (weatherData.wave_height && weatherData.wave_height > 3) {
+      alerts.push({
+        type: 'wave',
+        severity: 'high',
+        description: `Dangerous wave conditions. Wave height: ${weatherData.wave_height}m`
+      });
+    }
+    
+    // Check wind speed
+    if (weatherData.wind_speed && weatherData.wind_speed > 25) {
+      alerts.push({
+        type: 'wind',
+        severity: 'high',
+        description: `Strong winds detected. Wind speed: ${weatherData.wind_speed} km/h`
+      });
+    }
+    
+    // Check visibility
+    if (weatherData.visibility && weatherData.visibility < 10) {
+      alerts.push({
+        type: 'visibility',
+        severity: 'critical',
+        description: `Poor visibility conditions. Visibility: ${weatherData.visibility}km`
+      });
+    }
+    
+    // Check precipitation
+    if (weatherData.precipitation && weatherData.precipitation > 10) {
+      alerts.push({
+        type: 'rain',
+        severity: 'medium',
+        description: `Heavy rainfall detected. Precipitation: ${weatherData.precipitation}mm`
+      });
+    }
+    
+    // Check temperature
+    if (weatherData.temperature && weatherData.temperature > 35) {
+      alerts.push({
+        type: 'heat',
+        severity: 'medium',
+        description: `High temperature detected. Temperature: ${weatherData.temperature}°C`
+      });
+    }
+
+    // Log alerts generated
+    logger.info('Alerts generated for flag determination', {
+      total_alerts: alerts.length,
+      alerts: alerts.map(alert => ({
+        type: alert.type,
+        severity: alert.severity,
+        description: alert.description
+      }))
+    });
+
+    // Determine flag status based on alerts
+    let flagStatus = 'green';
+    let reason = 'Safe conditions for beach activities';
+    
+    if (alerts.length > 0) {
+      // Find the highest severity alert
+      const criticalAlerts = alerts.filter(a => a.severity === 'critical');
+      const highAlerts = alerts.filter(a => a.severity === 'high');
+      const mediumAlerts = alerts.filter(a => a.severity === 'medium');
+      
+      if (criticalAlerts.length > 0) {
+        flagStatus = 'black';
+        reason = `CRITICAL: ${criticalAlerts[0].description}`;
+      } else if (highAlerts.length > 0) {
+        flagStatus = 'red';
+        reason = `DANGEROUS: ${highAlerts[0].description}`;
+      } else if (mediumAlerts.length > 0) {
+        flagStatus = 'yellow';
+        reason = `CAUTION: ${mediumAlerts[0].description}`;
+      }
+    }
+
+    return {
+      flag_status: flagStatus,
+      reason: reason,
+      alerts: alerts,
+      weather_conditions: weatherData
+    };
+  }
+
+  // Automatically update safety flag based on weather conditions
+  async updateSafetyFlagAutomatically(centerId, userId = null) {
+    try {
+      // Get current weather for the center
+      const weatherData = await this.getCurrentWeather(centerId);
+      
+      // Determine appropriate flag status
+      const flagDecision = this.determineSafetyFlag(weatherData);
+      
+      // Get current flag to compare
+      const currentFlagResult = await query(
+        `SELECT id, flag_status, reason FROM safety_flags 
+         WHERE center_id = $1 
+         AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)
+         ORDER BY set_at DESC 
+         LIMIT 1`,
+        [centerId]
+      );
+
+      const currentFlag = currentFlagResult.rows[0];
+      
+      // Only update if flag status has changed or no current flag exists
+      if (!currentFlag || currentFlag.flag_status !== flagDecision.flag_status) {
+        // Get system admin user ID for automatic updates
+        const systemUserResult = await query(
+          'SELECT id FROM users WHERE role = $1 LIMIT 1',
+          ['system_admin']
+        );
+        
+        const systemUserId = systemUserResult.rows[0]?.id || '83ba790b-dd5c-4c98-ae16-744cc83d39c2';
+        
+        // Set the new flag
+        const result = await query(
+          `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
+           VALUES ($1, $2, $3, $4, $5)
+           RETURNING *`,
+          [
+            centerId, 
+            flagDecision.flag_status, 
+            flagDecision.reason, 
+            userId || systemUserId, // Use provided user ID or system admin
+            new Date(Date.now() + 2 * 60 * 60 * 1000) // Expires in 2 hours
+          ]
+        );
+
+        logger.info('Safety flag updated automatically', {
+          centerId,
+          oldFlag: currentFlag?.flag_status || 'none',
+          newFlag: flagDecision.flag_status,
+          reason: flagDecision.reason,
+          alerts: flagDecision.alerts.length
+        });
+
+        return {
+          updated: true,
+          old_flag: currentFlag?.flag_status || 'none',
+          new_flag: flagDecision.flag_status,
+          reason: flagDecision.reason,
+          alerts: flagDecision.alerts
+        };
+      }
+
+      return {
+        updated: false,
+        current_flag: currentFlag?.flag_status || 'none',
+        reason: currentFlag?.reason || 'No change needed'
+      };
+    } catch (error) {
+      logger.error('Error updating safety flag automatically:', error);
+      throw error;
     }
   }
 
