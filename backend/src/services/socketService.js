@@ -421,6 +421,128 @@ const getConnectedClientsCount = () => {
   return 0;
 };
 
+// Emit inter-center support notification to target center
+const emitInterCenterSupportNotification = async (supportRequestData) => {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
+    // Get support request details with center and admin info
+    const result = await query(
+      `SELECT 
+        icsr.id,
+        icsr.request_type,
+        icsr.priority,
+        icsr.title,
+        icsr.description,
+        icsr.requested_resources,
+        icsr.status,
+        icsr.created_at,
+        icsr.target_center_id,
+        req_center.name as requesting_center_name,
+        req_admin.first_name,
+        req_admin.last_name,
+        req_admin.email as requesting_admin_email,
+        ee.escalation_type,
+        ee.priority as escalation_priority
+       FROM inter_center_support_requests icsr
+       JOIN centers req_center ON icsr.requesting_center_id = req_center.id
+       JOIN users req_admin ON icsr.requesting_admin_id = req_admin.id
+       LEFT JOIN emergency_escalations ee ON icsr.escalation_id = ee.id
+       WHERE icsr.id = $1`,
+      [supportRequestData.id]
+    );
+
+    if (result.rows.length > 0) {
+      const supportRequest = result.rows[0];
+      
+      // Emit to the target center
+      io.to(`center_${supportRequest.target_center_id}`).emit('new_inter_center_support', {
+        supportRequestId: supportRequest.id,
+        requestType: supportRequest.request_type,
+        priority: supportRequest.priority,
+        title: supportRequest.title,
+        description: supportRequest.description,
+        requestedResources: supportRequest.requested_resources,
+        requestingCenterName: supportRequest.requesting_center_name,
+        requestingAdminName: `${supportRequest.first_name} ${supportRequest.last_name}`,
+        requestingAdminEmail: supportRequest.requesting_admin_email,
+        escalationType: supportRequest.escalation_type,
+        escalationPriority: supportRequest.escalation_priority,
+        createdAt: supportRequest.created_at,
+        timestamp: new Date().toISOString()
+      });
+
+      logger.info('Inter-center support notification emitted', {
+        supportRequestId: supportRequest.id,
+        targetCenterId: supportRequest.target_center_id,
+        requestType: supportRequest.request_type,
+        priority: supportRequest.priority
+      });
+    }
+  } catch (error) {
+    logger.error('Error emitting inter-center support notification:', error);
+  }
+};
+
+// Emit inter-center support status update
+const emitInterCenterSupportStatusUpdate = async (supportRequestId, status, updatedBy) => {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
+    // Get support request details
+    const result = await query(
+      `SELECT 
+        icsr.id,
+        icsr.request_type,
+        icsr.priority,
+        icsr.status,
+        icsr.requesting_center_id,
+        icsr.target_center_id,
+        u.first_name,
+        u.last_name
+       FROM inter_center_support_requests icsr
+       LEFT JOIN users u ON icsr.acknowledged_by = u.id
+       WHERE icsr.id = $1`,
+      [supportRequestId]
+    );
+
+    if (result.rows.length > 0) {
+      const supportRequest = result.rows[0];
+      
+      // Emit to both requesting and target centers
+      const updateData = {
+        supportRequestId: supportRequest.id,
+        requestType: supportRequest.request_type,
+        priority: supportRequest.priority,
+        status: supportRequest.status,
+        updatedBy: supportRequest.first_name ? `${supportRequest.first_name} ${supportRequest.last_name}` : updatedBy,
+        timestamp: new Date().toISOString()
+      };
+
+      // Notify requesting center
+      io.to(`center_${supportRequest.requesting_center_id}`).emit('inter_center_support_status_updated', updateData);
+      
+      // Notify target center
+      io.to(`center_${supportRequest.target_center_id}`).emit('inter_center_support_status_updated', updateData);
+
+      logger.info('Inter-center support status update emitted', {
+        supportRequestId: supportRequest.id,
+        requestingCenterId: supportRequest.requesting_center_id,
+        targetCenterId: supportRequest.target_center_id,
+        status: supportRequest.status
+      });
+    }
+  } catch (error) {
+    logger.error('Error emitting inter-center support status update:', error);
+  }
+};
+
 module.exports = {
   initializeSocket,
   emitWeatherUpdate,
@@ -430,5 +552,7 @@ module.exports = {
   emitSystemNotification,
   emitEscalationNotification,
   emitEscalationStatusUpdate,
+  emitInterCenterSupportNotification,
+  emitInterCenterSupportStatusUpdate,
   getConnectedClientsCount
 }; 
