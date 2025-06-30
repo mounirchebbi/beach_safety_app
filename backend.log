@@ -2,1728 +2,518 @@
 > beach-safety-backend@1.0.0 start
 > node src/app.js
 
-2025-06-30 02:12:34 [[32minfo[39m]: Weather update scheduler started (every 15 minutes) {
+2025-06-30 02:50:43 [[32minfo[39m]: Weather update scheduler started (every 15 minutes) {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:34 [[32minfo[39m]: Server running on port 5000 {
+2025-06-30 02:50:43 [[32minfo[39m]: Server running on port 5000 {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:34 [[32minfo[39m]: Environment: development {
+2025-06-30 02:50:43 [[32minfo[39m]: Environment: development {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:49 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-30 02:50:58 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:49 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:49 +0000] "POST /api/v1/auth/login HTTP/1.1" 401 49 "-" "curl/7.68.0" {
+2025-06-30 02:50:58 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:58 +0000] "POST /api/v1/auth/login HTTP/1.1" 401 49 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:49 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:49 +0000] "GET /main.e45e21176ecd3a6a7cfb.hot-update.json HTTP/1.1" 404 97 "http://localhost:3000/admin/reports" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:50:58 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:58 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-30 02:50:58 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:58 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:50:59 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "2rsLtLTaT3ZxunwcAAAB"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "2rsLtLTaT3ZxunwcAAAB",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:50:59 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: Retrieved incident reports for center {
+2025-06-30 02:50:59 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "rCVcGciQ7XoIQXpoAAAE"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 200 29248 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "rCVcGciQ7XoIQXpoAAAE",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 200 29248 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:50:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:50:59 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:51:00 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "na0_AD4Mb7HG9yfgAAAG"
+}
+2025-06-30 02:51:02 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "na0_AD4Mb7HG9yfgAAAG",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:51:02 [[32minfo[39m]: Retrieved escalations for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
+  "count": 2,
+  "totalCount": 2,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 200 2167 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:02 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:02 +0000] "GET /api/v1/escalations/center?page=1&limit=10&status=&priority= HTTP/1.1" 200 1531 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: Retrieved incident reports for center {
+2025-06-30 02:51:02 [[32minfo[39m]: Retrieved escalations for center {
   "service": "beach-safety-api",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
+  "count": 2,
+  "totalCount": 2,
   "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 200 2167 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:02 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:02 +0000] "GET /api/v1/escalations/center?page=1&limit=10&status=&priority= HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:50 +0000] "GET /api/v1/public/centers HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "j4JPX645e-ptm9r2AAAE"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "SAa7tjsD0pemlbkMAAAF"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "j4JPX645e-ptm9r2AAAE",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "SAa7tjsD0pemlbkMAAAF",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "e3PqS0TyGGrK5wF0AAAG"
-}
-2025-06-30 02:12:50 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "ODTcT3Nq4jWfeQlsAAAH"
-}
-2025-06-30 02:12:51 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "e3PqS0TyGGrK5wF0AAAG",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:12:51 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "ODTcT3Nq4jWfeQlsAAAH",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:12:53 [[32minfo[39m]: User logged in successfully {
+2025-06-30 02:51:02 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
   "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
   "email": "hammamet.admin@beachsafety.com",
   "role": "center_admin"
 }
-2025-06-30 02:12:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:53 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "-" "curl/7.68.0" {
+2025-06-30 02:51:02 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:02 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:53 [[32minfo[39m]: Retrieved incident reports for center {
+2025-06-30 02:51:02 [[32minfo[39m]: Escalation resolved {
   "service": "beach-safety-api",
+  "escalationId": "388a4800-8973-4e55-9e8d-a8017debbf04",
+  "centerAdminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:51:02 [[32minfo[39m]: Escalation status update emitted {
+  "service": "beach-safety-api",
+  "escalationId": "388a4800-8973-4e55-9e8d-a8017debbf04",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
+  "status": "resolved"
 }
-2025-06-30 02:12:53 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:53 +0000] "GET /api/v1/reports?page=1&limit=10 HTTP/1.1" 200 2167 "-" "curl/7.68.0" {
+2025-06-30 02:51:02 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:02 +0000] "PUT /api/v1/escalations/388a4800-8973-4e55-9e8d-a8017debbf04/resolve HTTP/1.1" 200 621 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:12:55 [[32minfo[39m]: Retrieved incident reports for center {
+2025-06-30 02:51:09 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
+  "userId": "fe7e986f-983f-42a8-abb3-c59a54c4227a",
+  "email": "demo.lifeguard@beachsafety.com",
+  "role": "lifeguard"
+}
+2025-06-30 02:51:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:09 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 453 "-" "curl/7.68.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:51:09 [[32minfo[39m]: Created emergency escalation {
+  "service": "beach-safety-api",
+  "escalationId": "dce0b954-6863-47d0-86a4-b635e8b7c830",
+  "alertId": "84cf95d7-618d-47af-84e3-fc2d8a544ea8",
+  "lifeguardId": "d41739e3-78c1-48ff-a395-8aff586c9e8a",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
+  "escalationType": "equipment_request",
+  "priority": "medium"
 }
-2025-06-30 02:12:55 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:55 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:12:55 [[32minfo[39m]: Retrieved incident reports for center {
+2025-06-30 02:51:09 [[32minfo[39m]: Escalation notification emitted {
   "service": "beach-safety-api",
+  "escalationId": "dce0b954-6863-47d0-86a4-b635e8b7c830",
   "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
+  "escalationType": "equipment_request",
+  "priority": "medium"
 }
-2025-06-30 02:12:55 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:12:55 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 200 2167 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:09 +0000] "POST /api/v1/escalations HTTP/1.1" 201 548 "-" "curl/7.68.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:13:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:11 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:11 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:11 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 1.23,
-  "current_speed": 0.65
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 1.23,
-  "current_speed": 0.65
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 1.23,
-  "currentSpeed": 0.65
-}
-2025-06-30 02:13:13 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:13 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 1.28,
-  "current_speed": 0.53
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 1.28,
-  "current_speed": 0.53
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 1.28,
-  "currentSpeed": 0.53
-}
-2025-06-30 02:13:13 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:13 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:13:13 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:13 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:13 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:13:13 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:13 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:14 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:14 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:14 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:14 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:14 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:14 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:15 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:15 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:15 +0000] "GET /api/v1/shifts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:15 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:15 +0000] "GET /api/v1/shifts HTTP/1.1" 200 19923 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 317 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 1040 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 200 227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:16 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:17 [[32minfo[39m]: Retrieved incident reports for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:17 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:17 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 200 2167 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:17 [[32minfo[39m]: Retrieved incident reports for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:13:17 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:17 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:46 [[32minfo[39m]: User logged out {
+2025-06-30 02:51:31 [[32minfo[39m]: User logged out {
   "service": "beach-safety-api",
   "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
 }
-2025-06-30 02:13:46 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:46 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:31 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:31 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:13:46 [[32minfo[39m]: Client disconnected {
+2025-06-30 02:51:31 [[32minfo[39m]: Client disconnected {
   "service": "beach-safety-api",
-  "socketId": "ODTcT3Nq4jWfeQlsAAAH"
+  "socketId": "rCVcGciQ7XoIQXpoAAAE"
 }
-2025-06-30 02:13:50 [[32minfo[39m]: Client disconnected {
+2025-06-30 02:51:31 [[32minfo[39m]: Client disconnected {
   "service": "beach-safety-api",
-  "socketId": "e3PqS0TyGGrK5wF0AAAG"
+  "socketId": "na0_AD4Mb7HG9yfgAAAG"
 }
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/centers HTTP/1.1" 200 4499 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/centers HTTP/1.1" 200 4499 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 200 9590 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 200 1330 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/safety-zones/public HTTP/1.1" 200 1330 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 200 877 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/centers HTTP/1.1" 200 4499 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/lifeguards/counts HTTP/1.1" 200 877 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/centers HTTP/1.1" 200 4499 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 200 1254 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/safety/flags HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:13:52 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:13:52 +0000] "GET /api/v1/public/weather/current HTTP/1.1" 200 9590 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:45 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 401 51 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "j4JPX645e-ptm9r2AAAE"
-}
-2025-06-30 02:20:45 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "SAa7tjsD0pemlbkMAAAF"
-}
-2025-06-30 02:20:54 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:54 [[32minfo[39m]: User logged in successfully {
-  "service": "beach-safety-api",
-  "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
-  "email": "hammamet.admin@beachsafety.com",
-  "role": "center_admin"
-}
-2025-06-30 02:20:54 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:54 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:57 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:57 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "k1_OXgSaHcKHkKD3AAAK"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:57 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: Client connected {
-  "service": "beach-safety-api",
-  "socketId": "bCeq2yMzTH9I2wj8AAAL"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "k1_OXgSaHcKHkKD3AAAK",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:20:57 [[32minfo[39m]: Client joined center room {
-  "service": "beach-safety-api",
-  "socketId": "bCeq2yMzTH9I2wj8AAAL",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.77,
-  "current_speed": 0.37
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.77,
-  "current_speed": 0.37
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.85,
-  "current_speed": 0.56
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.85,
-  "current_speed": 0.56
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.85,
-  "currentSpeed": 0.56
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.77,
-  "currentSpeed": 0.37
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 1.02,
-  "current_speed": 0.52
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 1.02,
-  "current_speed": 0.52
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 1.02,
-  "currentSpeed": 0.52
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:20:59 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:20:59 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:20:59 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:00 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:00 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.74,
-  "current_speed": 0.49
-}
-2025-06-30 02:21:00 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.74,
-  "current_speed": 0.49
-}
-2025-06-30 02:21:00 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.74,
-  "currentSpeed": 0.49
-}
-2025-06-30 02:21:00 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:00 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:00 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:00 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:00 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.92,
-  "current_speed": 0.4
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.92,
-  "current_speed": 0.4
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.47,
-  "current_speed": 0.46
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.47,
-  "current_speed": 0.46
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.92,
-  "currentSpeed": 0.4
-}
-2025-06-30 02:21:01 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:01 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:01 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.47,
-  "currentSpeed": 0.46
-}
-2025-06-30 02:21:01 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:01 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.47,
-  "current_speed": 0.36
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.47,
-  "current_speed": 0.36
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.83,
-  "current_speed": 0.38
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.83,
-  "current_speed": 0.38
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.47,
-  "currentSpeed": 0.36
-}
-2025-06-30 02:21:03 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:03 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:03 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.83,
-  "currentSpeed": 0.38
-}
-2025-06-30 02:21:03 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:03 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:04 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:04 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:04 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:04 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:04 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:04 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:07 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:07 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:07 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:07 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:07 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:07 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:09 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:09 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:09 +0000] "GET /api/v1/shifts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:09 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:09 +0000] "GET /api/v1/shifts HTTP/1.1" 200 19923 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 317 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 1040 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 317 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 200 227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 200 227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:10 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:10 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 1040 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:12 [[32minfo[39m]: Retrieved incident reports for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:12 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:12 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:12 [[32minfo[39m]: Retrieved incident reports for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 4,
-  "totalCount": 4,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:12 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:12 +0000] "GET /api/v1/reports?page=1&limit=10&status=&lifeguard_id= HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 200 1040 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 200 227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 317 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/history?page=1&limit=10 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:19 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:19 +0000] "GET /api/v1/safety/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/mode HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:23 +0000] "GET /api/v1/shifts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:23 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:23 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: Retrieved shifts for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 35,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:23 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:23 +0000] "GET /api/v1/shifts HTTP/1.1" 200 19923 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:29 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:29 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:29 +0000] "GET /api/v1/lifeguards HTTP/1.1" 200 1837 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:29 [[32minfo[39m]: Retrieved lifeguards for center {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "count": 3,
-  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:29 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:29 +0000] "GET /api/v1/lifeguards HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:34 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:34 +0000] "GET /api/v1/safety-zones/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 200 1227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:34 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:34 +0000] "GET /api/v1/safety-zones/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 200 1227 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:36 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:36 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:36 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:36 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 200 571 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.68,
-  "current_speed": 0.46
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.68,
-  "current_speed": 0.46
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.81,
-  "current_speed": 0.67
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.81,
-  "current_speed": 0.67
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.68,
-  "currentSpeed": 0.46
-}
-2025-06-30 02:21:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:38 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:38 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.81,
-  "currentSpeed": 0.67
-}
-2025-06-30 02:21:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:38 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 1.17,
-  "current_speed": 0.59
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 1.17,
-  "current_speed": 0.59
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Raw OpenWeatherMap API response {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "coordinates": {
-    "lat": 36.4,
-    "lng": 10.6167
-  },
-  "visibility": 10000,
-  "weather_condition": "Clear",
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "humidity": 80,
-  "pressure": 1016,
-  "raw_response": {
-    "visibility": 10000,
-    "weather": [
-      {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
-      }
-    ],
-    "main": {
-      "temp": 23.85,
-      "feels_like": 24.38,
-      "temp_min": 23.85,
-      "temp_max": 23.85,
-      "pressure": 1016,
-      "humidity": 80,
-      "sea_level": 1016,
-      "grnd_level": 1008
-    },
-    "wind": {
-      "speed": 4.2,
-      "deg": 331,
-      "gust": 6.92
-    }
-  }
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Simulated marine data {
-  "service": "beach-safety-api",
-  "wave_height": 0.41,
-  "current_speed": 0.6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Transformed weather data {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "original_visibility_meters": 10000,
-  "transformed_visibility_km": 10,
-  "temperature": 23.85,
-  "wind_speed": 4.2,
-  "weather_condition": "Clear",
-  "wave_height": 0.41,
-  "current_speed": 0.6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 1.17,
-  "currentSpeed": 0.59
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Current weather and marine data fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "temperature": 23.85,
-  "condition": "Clear",
-  "waveHeight": 0.41,
-  "currentSpeed": 0.6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:39 [[32minfo[39m]: Weather forecast fetched and stored {
-  "service": "beach-safety-api",
-  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
-  "centerName": "Hammamet Beach Safety Center",
-  "forecastDays": 6
-}
-2025-06-30 02:21:39 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:39 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:44 [[32minfo[39m]: User logged out {
-  "service": "beach-safety-api",
-  "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
-}
-2025-06-30 02:21:44 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:21:44 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:21:44 [[32minfo[39m]: Client disconnected {
-  "service": "beach-safety-api",
-  "socketId": "bCeq2yMzTH9I2wj8AAAL"
-}
-2025-06-30 02:22:17 [[32minfo[39m]: Connected to PostgreSQL database {
-  "service": "beach-safety-api"
-}
-2025-06-30 02:22:17 [[32minfo[39m]: User logged in successfully {
+2025-06-30 02:51:35 [[32minfo[39m]: User logged in successfully {
   "service": "beach-safety-api",
   "userId": "0831e676-0b8f-463c-b182-2d3a062f5802",
   "email": "hammamet.lifeguard2@beachsafety.com",
   "role": "lifeguard"
 }
-2025-06-30 02:22:17 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:22:17 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 462 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:35 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:35 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 462 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:23:16 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-30 02:51:35 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "23N0K0Gt7vn33ncgAAAI"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: Retrieved lifeguard escalations {
+  "service": "beach-safety-api",
+  "lifeguardId": "a0ad886c-b5de-45de-8e03-bc60b4ab7c77",
+  "count": 0,
+  "totalCount": 0,
+  "lifeguardUserId": "0831e676-0b8f-463c-b182-2d3a062f5802"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:38 +0000] "GET /api/v1/escalations/my-escalations?page=1&limit=10 HTTP/1.1" 200 81 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }
-2025-06-30 02:23:16 [[32minfo[39m]: Connected to PostgreSQL database {
+2025-06-30 02:51:38 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-30 02:23:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:23:16 +0000] "GET /api/v1/alerts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:38 [[32minfo[39m]: Connected to PostgreSQL database {
   "service": "beach-safety-api"
 }
-2025-06-30 02:23:16 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:23:16 +0000] "GET /api/v1/alerts HTTP/1.1" 200 2763 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+2025-06-30 02:51:38 [[32minfo[39m]: Connected to PostgreSQL database {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: Retrieved lifeguard escalations {
+  "service": "beach-safety-api",
+  "lifeguardId": "a0ad886c-b5de-45de-8e03-bc60b4ab7c77",
+  "count": 0,
+  "totalCount": 0,
+  "lifeguardUserId": "0831e676-0b8f-463c-b182-2d3a062f5802"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:38 +0000] "GET /api/v1/escalations/my-escalations?page=1&limit=10 HTTP/1.1" 200 81 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:38 +0000] "GET /api/v1/alerts HTTP/1.1" 200 3279 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:51:38 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:51:38 +0000] "GET /api/v1/alerts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: Created emergency escalation {
+  "service": "beach-safety-api",
+  "escalationId": "65eb36bf-db5d-413e-b704-9d08105dc011",
+  "alertId": "57f60b8c-6825-481b-8292-c269557307c6",
+  "lifeguardId": "a0ad886c-b5de-45de-8e03-bc60b4ab7c77",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "escalationType": "backup_request",
+  "priority": "high"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: Escalation notification emitted {
+  "service": "beach-safety-api",
+  "escalationId": "65eb36bf-db5d-413e-b704-9d08105dc011",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "escalationType": "backup_request",
+  "priority": "high"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:04 +0000] "POST /api/v1/escalations HTTP/1.1" 201 496 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:04 +0000] "GET /api/v1/alerts HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: Retrieved lifeguard escalations {
+  "service": "beach-safety-api",
+  "lifeguardId": "a0ad886c-b5de-45de-8e03-bc60b4ab7c77",
+  "count": 1,
+  "totalCount": 1,
+  "lifeguardUserId": "0831e676-0b8f-463c-b182-2d3a062f5802"
+}
+2025-06-30 02:52:04 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:04 +0000] "GET /api/v1/escalations/my-escalations?page=1&limit=10 HTTP/1.1" 200 548 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:12 [[32minfo[39m]: User logged out {
+  "service": "beach-safety-api",
+  "userId": "0831e676-0b8f-463c-b182-2d3a062f5802"
+}
+2025-06-30 02:52:12 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:12 +0000] "POST /api/v1/auth/logout HTTP/1.1" 200 52 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:12 [[32minfo[39m]: Client disconnected {
+  "service": "beach-safety-api",
+  "socketId": "23N0K0Gt7vn33ncgAAAI"
+}
+2025-06-30 02:52:18 [[32minfo[39m]: User logged in successfully {
+  "service": "beach-safety-api",
+  "userId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba",
+  "email": "hammamet.admin@beachsafety.com",
+  "role": "center_admin"
+}
+2025-06-30 02:52:18 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:18 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 495 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:18 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "RdGVZwGFXDUZMyvsAAAK"
+}
+2025-06-30 02:52:23 [[32minfo[39m]: Client disconnected {
+  "service": "beach-safety-api",
+  "socketId": "RdGVZwGFXDUZMyvsAAAK"
+}
+2025-06-30 02:52:23 [[32minfo[39m]: Client disconnected {
+  "service": "beach-safety-api",
+  "socketId": "2rsLtLTaT3ZxunwcAAAB"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:24 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 458 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:24 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:24 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:24 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 200 571 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "N_1wAbAiRUCRq74vAAAP"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:24 +0000] "GET /api/v1/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "R3Mt1wg5N76oZljyAAAQ"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: Client connected {
+  "service": "beach-safety-api",
+  "socketId": "qoJhiXx-R3NnKNuBAAAR"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "N_1wAbAiRUCRq74vAAAP",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:52:24 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "R3Mt1wg5N76oZljyAAAQ",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Raw OpenWeatherMap API response {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "coordinates": {
+    "lat": 36.4,
+    "lng": 10.6167
+  },
+  "visibility": 10000,
+  "weather_condition": "Clear",
+  "temperature": 23.53,
+  "wind_speed": 4.21,
+  "humidity": 82,
+  "pressure": 1016,
+  "raw_response": {
+    "visibility": 10000,
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "main": {
+      "temp": 23.53,
+      "feels_like": 24.08,
+      "temp_min": 23.53,
+      "temp_max": 23.53,
+      "pressure": 1016,
+      "humidity": 82,
+      "sea_level": 1016,
+      "grnd_level": 1007
+    },
+    "wind": {
+      "speed": 4.21,
+      "deg": 323,
+      "gust": 7.02
+    }
+  }
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Simulated marine data {
+  "service": "beach-safety-api",
+  "wave_height": 0.68,
+  "current_speed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Transformed weather data {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "original_visibility_meters": 10000,
+  "transformed_visibility_km": 10,
+  "temperature": 23.53,
+  "wind_speed": 4.21,
+  "weather_condition": "Clear",
+  "wave_height": 0.68,
+  "current_speed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Current weather and marine data fetched and stored {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "temperature": 23.53,
+  "condition": "Clear",
+  "waveHeight": 0.68,
+  "currentSpeed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:25 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Raw OpenWeatherMap API response {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "coordinates": {
+    "lat": 36.4,
+    "lng": 10.6167
+  },
+  "visibility": 10000,
+  "weather_condition": "Clear",
+  "temperature": 23.53,
+  "wind_speed": 4.21,
+  "humidity": 82,
+  "pressure": 1016,
+  "raw_response": {
+    "visibility": 10000,
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "main": {
+      "temp": 23.53,
+      "feels_like": 24.08,
+      "temp_min": 23.53,
+      "temp_max": 23.53,
+      "pressure": 1016,
+      "humidity": 82,
+      "sea_level": 1016,
+      "grnd_level": 1007
+    },
+    "wind": {
+      "speed": 4.21,
+      "deg": 323,
+      "gust": 7.02
+    }
+  }
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Simulated marine data {
+  "service": "beach-safety-api",
+  "wave_height": 0.35,
+  "current_speed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Transformed weather data {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "original_visibility_meters": 10000,
+  "transformed_visibility_km": 10,
+  "temperature": 23.53,
+  "wind_speed": 4.21,
+  "weather_condition": "Clear",
+  "wave_height": 0.35,
+  "current_speed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Current weather and marine data fetched and stored {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "temperature": 23.53,
+  "condition": "Clear",
+  "waveHeight": 0.35,
+  "currentSpeed": 0.51
+}
+2025-06-30 02:52:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:25 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/current HTTP/1.1" 200 570 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Weather forecast fetched and stored {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "forecastDays": 6
+}
+2025-06-30 02:52:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:25 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:25 [[32minfo[39m]: Weather forecast fetched and stored {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "centerName": "Hammamet Beach Safety Center",
+  "forecastDays": 6
+}
+2025-06-30 02:52:25 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:25 +0000] "GET /api/v1/weather/centers/efe6b507-ecd3-4eac-bd21-82cbe1125cc0/forecast HTTP/1.1" 200 948 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:27 [[32minfo[39m]: Client joined center room {
+  "service": "beach-safety-api",
+  "socketId": "qoJhiXx-R3NnKNuBAAAR",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0"
+}
+2025-06-30 02:52:27 [[32minfo[39m]: Retrieved escalations for center {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "count": 4,
+  "totalCount": 4,
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
+}
+2025-06-30 02:52:27 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:27 +0000] "GET /api/v1/escalations/center?page=1&limit=10&status=&priority= HTTP/1.1" 200 2857 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
+  "service": "beach-safety-api"
+}
+2025-06-30 02:52:27 [[32minfo[39m]: Retrieved escalations for center {
+  "service": "beach-safety-api",
+  "centerId": "efe6b507-ecd3-4eac-bd21-82cbe1125cc0",
+  "count": 4,
+  "totalCount": 4,
+  "adminId": "ed748b3b-160e-4ab2-be0b-f6c973d65eba"
+}
+2025-06-30 02:52:27 [[32minfo[39m]: ::ffff:127.0.0.1 - - [30/Jun/2025:01:52:27 +0000] "GET /api/v1/escalations/center?page=1&limit=10&status=&priority= HTTP/1.1" 200 2857 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0" {
   "service": "beach-safety-api"
 }

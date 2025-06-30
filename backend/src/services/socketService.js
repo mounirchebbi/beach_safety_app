@@ -285,15 +285,131 @@ const emitEmergencyAlert = (alertData) => {
   }
 };
 
-// Emit system-wide notification
+// Emit system notification
 const emitSystemNotification = (notification) => {
-  if (io) {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
     io.to('system_admin').emit('system_notification', {
       ...notification,
       timestamp: new Date().toISOString()
     });
-    
-    logger.info('System notification emitted', { notification });
+
+    logger.info('System notification emitted', notification);
+  } catch (error) {
+    logger.error('Error emitting system notification:', error);
+  }
+};
+
+// Emit escalation notification to center admin
+const emitEscalationNotification = async (escalationData) => {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
+    // Get escalation details with lifeguard and alert info
+    const result = await query(
+      `SELECT 
+        ee.id,
+        ee.escalation_type,
+        ee.priority,
+        ee.description,
+        ee.status,
+        ee.created_at,
+        ea.center_id,
+        ea.alert_type,
+        ea.severity,
+        u.first_name,
+        u.last_name,
+        u.email as lifeguard_email
+       FROM emergency_escalations ee
+       JOIN emergency_alerts ea ON ee.alert_id = ea.id
+       JOIN lifeguards l ON ee.lifeguard_id = l.id
+       JOIN users u ON l.user_id = u.id
+       WHERE ee.id = $1`,
+      [escalationData.id]
+    );
+
+    if (result.rows.length > 0) {
+      const escalation = result.rows[0];
+      
+      // Emit to the specific center
+      io.to(`center_${escalation.center_id}`).emit('new_escalation', {
+        escalationId: escalation.id,
+        escalationType: escalation.escalation_type,
+        priority: escalation.priority,
+        description: escalation.description,
+        lifeguardName: `${escalation.first_name} ${escalation.last_name}`,
+        lifeguardEmail: escalation.lifeguard_email,
+        alertType: escalation.alert_type,
+        alertSeverity: escalation.severity,
+        createdAt: escalation.created_at,
+        timestamp: new Date().toISOString()
+      });
+
+      logger.info('Escalation notification emitted', {
+        escalationId: escalation.id,
+        centerId: escalation.center_id,
+        escalationType: escalation.escalation_type,
+        priority: escalation.priority
+      });
+    }
+  } catch (error) {
+    logger.error('Error emitting escalation notification:', error);
+  }
+};
+
+// Emit escalation status update
+const emitEscalationStatusUpdate = async (escalationId, status, updatedBy) => {
+  try {
+    if (!io) {
+      logger.warn('Socket.io not initialized');
+      return;
+    }
+
+    // Get escalation details
+    const result = await query(
+      `SELECT 
+        ee.id,
+        ee.escalation_type,
+        ee.priority,
+        ee.status,
+        ea.center_id,
+        u.first_name,
+        u.last_name
+       FROM emergency_escalations ee
+       JOIN emergency_alerts ea ON ee.alert_id = ea.id
+       LEFT JOIN users u ON ee.acknowledged_by = u.id
+       WHERE ee.id = $1`,
+      [escalationId]
+    );
+
+    if (result.rows.length > 0) {
+      const escalation = result.rows[0];
+      
+      // Emit to the specific center
+      io.to(`center_${escalation.center_id}`).emit('escalation_status_updated', {
+        escalationId: escalation.id,
+        escalationType: escalation.escalation_type,
+        priority: escalation.priority,
+        status: escalation.status,
+        updatedBy: escalation.first_name ? `${escalation.first_name} ${escalation.last_name}` : updatedBy,
+        timestamp: new Date().toISOString()
+      });
+
+      logger.info('Escalation status update emitted', {
+        escalationId: escalation.id,
+        centerId: escalation.center_id,
+        status: escalation.status
+      });
+    }
+  } catch (error) {
+    logger.error('Error emitting escalation status update:', error);
   }
 };
 
@@ -312,5 +428,7 @@ module.exports = {
   emitEmergencyAlert,
   emitAlertStatusChange,
   emitSystemNotification,
+  emitEscalationNotification,
+  emitEscalationStatusUpdate,
   getConnectedClientsCount
 }; 
