@@ -1,36 +1,23 @@
 const { query } = require('../config/database');
-const { logger } = require('../utils/logger');
+const logger = require('../utils/logger');
 
-// Get all safety zones for a center
+// Get safety zones by center
 const getSafetyZonesByCenter = async (req, res) => {
   try {
     const { centerId } = req.params;
-    const userId = req.user.id;
 
-    // Verify center exists and user has access
-    const centerCheck = await query(
-      'SELECT id FROM centers WHERE id = $1',
-      [centerId]
-    );
-
-    if (centerCheck.rows.length === 0) {
-      return res.status(404).json({ error: 'Center not found' });
-    }
-
-    // Get all safety zones for the center
     const result = await query(
       `SELECT 
-        id,
-        center_id,
-        name,
-        zone_type,
-        ST_AsGeoJSON(geometry) as geometry,
-        description,
-        created_at,
-        updated_at
-       FROM safety_zones 
-       WHERE center_id = $1
-       ORDER BY created_at DESC`,
+        sz.id,
+        sz.name,
+        sz.zone_type,
+        ST_AsGeoJSON(sz.geometry) as geometry,
+        sz.description,
+        sz.created_at,
+        sz.updated_at
+       FROM safety_zones sz
+       WHERE sz.center_id = $1
+       ORDER BY sz.created_at DESC`,
       [centerId]
     );
 
@@ -41,19 +28,19 @@ const getSafetyZonesByCenter = async (req, res) => {
 
     res.json({
       success: true,
+      message: 'Safety zones retrieved successfully',
       data: zones
     });
   } catch (error) {
-    logger.error('Error getting safety zones:', error);
+    logger.error('Error getting safety zones by center:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Get a specific safety zone
+// Get safety zone by ID
 const getSafetyZoneById = async (req, res) => {
   try {
     const { zoneId } = req.params;
-    const userId = req.user.id;
 
     const result = await query(
       `SELECT 
@@ -64,10 +51,8 @@ const getSafetyZoneById = async (req, res) => {
         ST_AsGeoJSON(sz.geometry) as geometry,
         sz.description,
         sz.created_at,
-        sz.updated_at,
-        c.name as center_name
+        sz.updated_at
        FROM safety_zones sz
-       JOIN centers c ON sz.center_id = c.id
        WHERE sz.id = $1`,
       [zoneId]
     );
@@ -83,98 +68,76 @@ const getSafetyZoneById = async (req, res) => {
 
     res.json({
       success: true,
+      message: 'Safety zone retrieved successfully',
       data: zone
     });
   } catch (error) {
-    logger.error('Error getting safety zone:', error);
+    logger.error('Error getting safety zone by ID:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Create a new safety zone
+// Create safety zone
 const createSafetyZone = async (req, res) => {
   try {
     const { centerId } = req.params;
-    const { name, zone_type, location, radius, description } = req.body;
+    const { name, zone_type, geometry, description } = req.body;
     const userId = req.user.id;
 
     // Validate required fields
-    if (!name || !zone_type || !location || !radius) {
+    if (!name || !zone_type || !geometry) {
       return res.status(400).json({ 
-        error: 'Name, zone_type, location, and radius are required' 
+        error: 'Name, zone_type, and geometry are required' 
       });
     }
 
-    // Validate zone type
-    const validTypes = ['no_swim', 'caution', 'safe'];
-    if (!validTypes.includes(zone_type)) {
+    // Validate zone_type
+    const validZoneTypes = ['no_swim', 'caution', 'safe'];
+    if (!validZoneTypes.includes(zone_type)) {
       return res.status(400).json({ 
-        error: 'Invalid zone type. Must be no_swim, caution, or safe' 
+        error: 'Invalid zone_type. Must be one of: no_swim, caution, safe' 
       });
     }
 
-    // Validate radius (max 100km = 100000m)
-    if (radius <= 0 || radius > 100000) {
+    // Validate geometry (expecting GeoJSON)
+    if (!geometry.type || !geometry.coordinates) {
       return res.status(400).json({ 
-        error: 'Radius must be between 0 and 100,000 meters (100km)' 
+        error: 'Invalid geometry format. Expected GeoJSON' 
       });
     }
 
-    // Verify center exists
-    const centerCheck = await query(
-      'SELECT id, ST_X(location) as lng, ST_Y(location) as lat FROM centers WHERE id = $1',
-      [centerId]
-    );
+    // Convert GeoJSON to PostGIS format
+    const geometryString = JSON.stringify(geometry);
 
-    if (centerCheck.rows.length === 0) {
-      return res.status(404).json({ error: 'Center not found' });
-    }
-
-    const center = centerCheck.rows[0];
-
-    // Calculate distance from center to zone location
-    const distance = calculateDistance(
-      center.lat, center.lng,
-      location.lat, location.lng
-    );
-
-    // Check if zone is within 100km of center
-    if (distance > 100) {
-      return res.status(400).json({ 
-        error: 'Zone location must be within 100km of the center' 
-      });
-    }
-
-    // Create circular polygon geometry
-    const circleGeometry = createCircleGeometry(location.lat, location.lng, radius);
-
-    // Insert the safety zone
     const result = await query(
-      `INSERT INTO safety_zones (center_id, name, zone_type, geometry, description)
-       VALUES ($1, $2, $3, ST_GeomFromText($4, 4326), $5)
-       RETURNING 
-         id,
-         center_id,
-         name,
-         zone_type,
-         ST_AsGeoJSON(geometry) as geometry,
-         description,
-         created_at,
-         updated_at`,
-      [centerId, name, zone_type, circleGeometry, description]
+      `INSERT INTO safety_zones (center_id, name, zone_type, geometry, description, created_at, updated_at)
+       VALUES ($1, $2, $3, ST_GeomFromGeoJSON($4), $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+       RETURNING id`,
+      [centerId, name, zone_type, geometryString, description]
+    );
+
+    const newZoneId = result.rows[0].id;
+
+    // Get the created zone
+    const zoneResult = await query(
+      `SELECT 
+        sz.id,
+        sz.center_id,
+        sz.name,
+        sz.zone_type,
+        ST_AsGeoJSON(sz.geometry) as geometry,
+        sz.description,
+        sz.created_at,
+        sz.updated_at
+       FROM safety_zones sz
+       WHERE sz.id = $1`,
+      [newZoneId]
     );
 
     const zone = {
-      ...result.rows[0],
-      geometry: JSON.parse(result.rows[0].geometry)
+      ...zoneResult.rows[0],
+      geometry: JSON.parse(zoneResult.rows[0].geometry)
     };
-
-    logger.info('Safety zone created', { 
-      zoneId: zone.id, 
-      centerId, 
-      zoneType: zone_type,
-      createdBy: userId 
-    });
 
     res.status(201).json({
       success: true,
@@ -187,116 +150,97 @@ const createSafetyZone = async (req, res) => {
   }
 };
 
-// Update a safety zone
+// Update safety zone
 const updateSafetyZone = async (req, res) => {
   try {
     const { zoneId } = req.params;
-    const { name, zone_type, location, radius, description } = req.body;
+    const { name, zone_type, geometry, description } = req.body;
     const userId = req.user.id;
 
-    // Get the zone and verify it exists
-    const zoneCheck = await query(
-      `SELECT sz.*, c.id as center_id, ST_X(c.location) as center_lng, ST_Y(c.location) as center_lat
+    // Check if zone exists
+    const existingZone = await query(
+      'SELECT id, center_id FROM safety_zones WHERE id = $1',
+      [zoneId]
+    );
+
+    if (existingZone.rows.length === 0) {
+      return res.status(404).json({ error: 'Safety zone not found' });
+    }
+
+    // Build update query dynamically
+    const updates = [];
+    const values = [];
+    let paramCount = 1;
+
+    if (name !== undefined) {
+      updates.push(`name = $${paramCount++}`);
+      values.push(name);
+    }
+
+    if (zone_type !== undefined) {
+      // Validate zone_type
+      const validZoneTypes = ['no_swim', 'caution', 'safe'];
+      if (!validZoneTypes.includes(zone_type)) {
+        return res.status(400).json({ 
+          error: 'Invalid zone_type. Must be one of: no_swim, caution, safe' 
+        });
+      }
+      updates.push(`zone_type = $${paramCount++}`);
+      values.push(zone_type);
+    }
+
+    if (geometry !== undefined) {
+      // Validate geometry
+      if (!geometry.type || !geometry.coordinates) {
+        return res.status(400).json({ 
+          error: 'Invalid geometry format. Expected GeoJSON' 
+        });
+      }
+      updates.push(`geometry = ST_GeomFromGeoJSON($${paramCount++})`);
+      values.push(JSON.stringify(geometry));
+    }
+
+    if (description !== undefined) {
+      updates.push(`description = $${paramCount++}`);
+      values.push(description);
+    }
+
+    if (updates.length === 0) {
+      return res.status(400).json({ error: 'No fields to update' });
+    }
+
+    updates.push(`updated_at = CURRENT_TIMESTAMP`);
+    values.push(zoneId);
+
+    const updateQuery = `
+      UPDATE safety_zones 
+      SET ${updates.join(', ')}
+      WHERE id = $${paramCount}
+      RETURNING id
+    `;
+
+    await query(updateQuery, values);
+
+    // Get the updated zone
+    const zoneResult = await query(
+      `SELECT 
+        sz.id,
+        sz.center_id,
+        sz.name,
+        sz.zone_type,
+        ST_AsGeoJSON(sz.geometry) as geometry,
+        sz.description,
+        sz.created_at,
+        sz.updated_at
        FROM safety_zones sz
-       JOIN centers c ON sz.center_id = c.id
        WHERE sz.id = $1`,
       [zoneId]
     );
 
-    if (zoneCheck.rows.length === 0) {
-      return res.status(404).json({ error: 'Safety zone not found' });
-    }
-
-    const existingZone = zoneCheck.rows[0];
-
-    // Validate zone type if provided
-    if (zone_type) {
-      const validTypes = ['no_swim', 'caution', 'safe'];
-      if (!validTypes.includes(zone_type)) {
-        return res.status(400).json({ 
-          error: 'Invalid zone type. Must be no_swim, caution, or safe' 
-        });
-      }
-    }
-
-    // Validate radius if provided
-    if (radius && (radius <= 0 || radius > 100000)) {
-      return res.status(400).json({ 
-        error: 'Radius must be between 0 and 100,000 meters (100km)' 
-      });
-    }
-
-    // Check distance if location is provided
-    if (location) {
-      const distance = calculateDistance(
-        existingZone.center_lat, existingZone.center_lng,
-        location.lat, location.lng
-      );
-
-      if (distance > 100) {
-        return res.status(400).json({ 
-          error: 'Zone location must be within 100km of the center' 
-        });
-      }
-    }
-
-    // Build update query
-    let updateFields = [];
-    let updateValues = [];
-    let paramCount = 1;
-
-    if (name !== undefined) {
-      updateFields.push(`name = $${paramCount++}`);
-      updateValues.push(name);
-    }
-
-    if (zone_type !== undefined) {
-      updateFields.push(`zone_type = $${paramCount++}`);
-      updateValues.push(zone_type);
-    }
-
-    if (location && radius) {
-      const circleGeometry = createCircleGeometry(location.lat, location.lng, radius);
-      updateFields.push(`geometry = ST_GeomFromText($${paramCount++}, 4326)`);
-      updateValues.push(circleGeometry);
-    }
-
-    if (description !== undefined) {
-      updateFields.push(`description = $${paramCount++}`);
-      updateValues.push(description);
-    }
-
-    updateFields.push(`updated_at = CURRENT_TIMESTAMP`);
-
-    // Add zoneId to values
-    updateValues.push(zoneId);
-
-    const result = await query(
-      `UPDATE safety_zones 
-       SET ${updateFields.join(', ')}
-       WHERE id = $${paramCount}
-       RETURNING 
-         id,
-         center_id,
-         name,
-         zone_type,
-         ST_AsGeoJSON(geometry) as geometry,
-         description,
-         created_at,
-         updated_at`,
-      updateValues
-    );
-
     const zone = {
-      ...result.rows[0],
-      geometry: JSON.parse(result.rows[0].geometry)
+      ...zoneResult.rows[0],
+      geometry: JSON.parse(zoneResult.rows[0].geometry)
     };
-
-    logger.info('Safety zone updated', { 
-      zoneId, 
-      centerId: existingZone.center_id,
-      updatedBy: userId 
-    });
 
     res.json({
       success: true,
@@ -309,36 +253,31 @@ const updateSafetyZone = async (req, res) => {
   }
 };
 
-// Delete a safety zone
+// Delete safety zone
 const deleteSafetyZone = async (req, res) => {
   try {
     const { zoneId } = req.params;
     const userId = req.user.id;
 
-    // Get the zone and verify it exists
-    const zoneCheck = await query(
-      'SELECT sz.*, c.id as center_id FROM safety_zones sz JOIN centers c ON sz.center_id = c.id WHERE sz.id = $1',
+    // Check if zone exists
+    const existingZone = await query(
+      'SELECT id FROM safety_zones WHERE id = $1',
       [zoneId]
     );
 
-    if (zoneCheck.rows.length === 0) {
+    if (existingZone.rows.length === 0) {
       return res.status(404).json({ error: 'Safety zone not found' });
     }
 
-    const zone = zoneCheck.rows[0];
+    // Delete the zone
+    await query(
+      'DELETE FROM safety_zones WHERE id = $1',
+      [zoneId]
+    );
 
-    // Delete the safety zone
-    await query('DELETE FROM safety_zones WHERE id = $1', [zoneId]);
-
-    logger.info('Safety zone deleted', { 
-      zoneId, 
-      centerId: zone.center_id,
-      deletedBy: userId 
-    });
-
-    res.json({ 
+    res.json({
       success: true,
-      message: 'Safety zone deleted successfully' 
+      message: 'Safety zone deleted successfully'
     });
   } catch (error) {
     logger.error('Error deleting safety zone:', error);
@@ -363,7 +302,8 @@ const getPublicSafetyZones = async (req, res) => {
        FROM safety_zones sz
        JOIN centers c ON sz.center_id = c.id
        WHERE c.is_active = true
-       ORDER BY c.name, sz.created_at DESC`
+       ORDER BY c.name, sz.created_at DESC`,
+      []
     );
 
     const zones = result.rows.map(row => ({
@@ -373,53 +313,13 @@ const getPublicSafetyZones = async (req, res) => {
 
     res.json({
       success: true,
+      message: 'Public safety zones retrieved successfully',
       data: zones
     });
   } catch (error) {
     logger.error('Error getting public safety zones:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-};
-
-// Helper function to calculate distance between two points (Haversine formula)
-const calculateDistance = (lat1, lng1, lat2, lng2) => {
-  const R = 6371; // Earth's radius in kilometers
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLng = (lng2 - lng1) * Math.PI / 180;
-  const a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-    Math.sin(dLng/2) * Math.sin(dLng/2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  return R * c; // Distance in kilometers
-};
-
-// Helper function to create circular polygon geometry
-const createCircleGeometry = (lat, lng, radius) => {
-  // Convert radius from meters to degrees
-  // 1 degree of latitude ≈ 111,320 meters
-  // 1 degree of longitude ≈ 111,320 * cos(latitude) meters
-  const latRad = lat * Math.PI / 180;
-  const metersPerDegreeLat = 111320;
-  const metersPerDegreeLng = 111320 * Math.cos(latRad);
-  
-  // Use the smaller conversion to ensure the circle fits within the specified radius
-  const radiusInDegreesLat = radius / metersPerDegreeLat;
-  const radiusInDegreesLng = radius / metersPerDegreeLng;
-  
-  // Create a 32-point circle
-  const points = [];
-  for (let i = 0; i < 32; i++) {
-    const angle = (i * 360) / 32;
-    const pointLng = lng + (radiusInDegreesLng * Math.cos(angle * Math.PI / 180));
-    const pointLat = lat + (radiusInDegreesLat * Math.sin(angle * Math.PI / 180));
-    points.push(`${pointLng} ${pointLat}`);
-  }
-  
-  // Close the polygon
-  points.push(points[0]);
-  
-  return `POLYGON((${points.join(',')}))`;
 };
 
 module.exports = {

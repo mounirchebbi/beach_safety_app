@@ -687,6 +687,173 @@ const getCurrentShift = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Create weekly schedule
+// @route   POST /api/v1/shifts/weekly
+// @access  Center Admin
+const createWeeklySchedule = asyncHandler(async (req, res) => {
+  const {
+    lifeguard_id,
+    start_time,
+    end_time,
+    days_of_week, // Array of day numbers (0-6, where 0 is Sunday)
+    start_date, // Start date for the weekly schedule
+    weeks_count = 4 // Number of weeks to create shifts for
+  } = req.body;
+
+  const centerAdminId = req.user.id;
+
+  // Validate required fields
+  if (!lifeguard_id || !start_time || !end_time || !days_of_week || !start_date) {
+    return res.status(400).json({
+      success: false,
+      message: 'Lifeguard ID, start time, end time, days of week, and start date are required'
+    });
+  }
+
+  // Validate days_of_week array
+  if (!Array.isArray(days_of_week) || days_of_week.length === 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'Days of week must be a non-empty array'
+    });
+  }
+
+  // Validate day numbers (0-6)
+  const validDays = days_of_week.every(day => day >= 0 && day <= 6);
+  if (!validDays) {
+    return res.status(400).json({
+      success: false,
+      message: 'Days of week must be numbers between 0 (Sunday) and 6 (Saturday)'
+    });
+  }
+
+  // Get the center ID for this center admin
+  const centerResult = await query(
+    `SELECT c.id as center_id, c.name as center_name
+     FROM centers c
+     JOIN users admin ON admin.center_id = c.id
+     WHERE admin.id = $1 AND admin.role = 'center_admin'
+     LIMIT 1`,
+    [centerAdminId]
+  );
+
+  if (centerResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Center not found for this admin'
+    });
+  }
+
+  const centerId = centerResult.rows[0].center_id;
+
+  // Verify the lifeguard belongs to this center
+  const lifeguardResult = await query(
+    `SELECT l.id, u.first_name, u.last_name
+     FROM lifeguards l
+     JOIN users u ON u.id = l.user_id
+     WHERE l.id = $1 AND l.center_id = $2`,
+    [lifeguard_id, centerId]
+  );
+
+  if (lifeguardResult.rows.length === 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'Lifeguard not found or does not belong to this center'
+    });
+  }
+
+  // Parse the start time to get hours and minutes
+  const startTimeDate = new Date(`2000-01-01T${start_time}`);
+  const endTimeDate = new Date(`2000-01-01T${end_time}`);
+  const startHour = startTimeDate.getHours();
+  const startMinute = startTimeDate.getMinutes();
+  const endHour = endTimeDate.getHours();
+  const endMinute = endTimeDate.getMinutes();
+
+  // Parse start date
+  const startDate = new Date(start_date);
+  if (isNaN(startDate.getTime())) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid start date format'
+    });
+  }
+
+  const createdShifts = [];
+  const skippedShifts = [];
+
+  // Create shifts for each week
+  for (let week = 0; week < weeks_count; week++) {
+    // For each day of the week
+    for (const dayOfWeek of days_of_week) {
+      // Calculate the date for this day
+      const currentDate = new Date(startDate);
+      currentDate.setDate(startDate.getDate() + (week * 7) + (dayOfWeek - startDate.getDay() + 7) % 7);
+
+      // Create the full start and end times for this day
+      const shiftStartTime = new Date(currentDate);
+      shiftStartTime.setHours(startHour, startMinute, 0, 0);
+
+      const shiftEndTime = new Date(currentDate);
+      shiftEndTime.setHours(endHour, endMinute, 0, 0);
+
+      // Check for overlapping shifts
+      const overlapResult = await query(
+        `SELECT id FROM shifts 
+         WHERE lifeguard_id = $1 
+         AND status != 'cancelled'
+         AND (
+           (start_time <= $2 AND end_time > $2) OR
+           (start_time < $3 AND end_time >= $3) OR
+           (start_time >= $2 AND end_time <= $3)
+         )`,
+        [lifeguard_id, shiftStartTime.toISOString(), shiftEndTime.toISOString()]
+      );
+
+      if (overlapResult.rows.length > 0) {
+        skippedShifts.push({
+          date: currentDate.toISOString().split('T')[0],
+          reason: 'Overlaps with existing shift'
+        });
+        continue;
+      }
+
+      // Create the shift
+      const shiftResult = await query(
+        `INSERT INTO shifts (lifeguard_id, center_id, start_time, end_time, status)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING id, lifeguard_id, center_id, start_time, end_time, status, created_at, updated_at`,
+        [lifeguard_id, centerId, shiftStartTime.toISOString(), shiftEndTime.toISOString(), 'scheduled']
+      );
+
+      createdShifts.push(shiftResult.rows[0]);
+    }
+  }
+
+  logger.info('Created weekly schedule', {
+    lifeguardId: lifeguard_id,
+    centerId,
+    adminId: centerAdminId,
+    startTime: start_time,
+    endTime: end_time,
+    daysOfWeek: days_of_week,
+    weeksCount: weeks_count,
+    createdShifts: createdShifts.length,
+    skippedShifts: skippedShifts.length
+  });
+
+  res.status(201).json({
+    success: true,
+    message: `Weekly schedule created successfully. ${createdShifts.length} shifts created, ${skippedShifts.length} skipped due to conflicts.`,
+    data: {
+      created_shifts: createdShifts,
+      skipped_shifts: skippedShifts,
+      total_created: createdShifts.length,
+      total_skipped: skippedShifts.length
+    }
+  });
+});
+
 module.exports = {
   getAllShifts,
   getShiftById,
@@ -696,5 +863,6 @@ module.exports = {
   checkInShift,
   checkOutShift,
   getMyShifts,
-  getCurrentShift
+  getCurrentShift,
+  createWeeklySchedule
 }; 

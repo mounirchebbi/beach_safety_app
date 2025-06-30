@@ -5,12 +5,14 @@ const {
   getAllReports,
   getReportById,
   createReport,
-  updateReport
+  updateReport,
+  getMyReports
 } = require('../controllers/reportController');
 
 const router = express.Router();
 
-// Routes
+// Routes - Specific routes must come before parameterized routes
+router.get('/my-reports', verifyToken, requireLifeguard, asyncHandler(getMyReports));
 router.get('/', verifyToken, requireCenterAdmin, asyncHandler(getAllReports));
 router.post('/', verifyToken, requireLifeguard, asyncHandler(createReport));
 router.get('/:id', verifyToken, requireCenterAdmin, asyncHandler(getReportById));

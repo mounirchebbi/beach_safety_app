@@ -5,6 +5,7 @@ const {
   getAllShifts,
   getShiftById,
   createShift,
+  createWeeklySchedule,
   updateShift,
   deleteShift,
   checkInShift,
@@ -20,6 +21,7 @@ router.get('/my-shifts', verifyToken, requireLifeguard, asyncHandler(getMyShifts
 router.get('/current/:lifeguardId', verifyToken, requireLifeguard, asyncHandler(getCurrentShift));
 router.get('/', verifyToken, requireCenterAdmin, asyncHandler(getAllShifts));
 router.post('/', verifyToken, requireCenterAdmin, asyncHandler(createShift));
+router.post('/weekly', verifyToken, requireCenterAdmin, asyncHandler(createWeeklySchedule));
 router.get('/:id', verifyToken, requireCenterAdmin, asyncHandler(getShiftById));
 router.put('/:id', verifyToken, requireCenterAdmin, asyncHandler(updateShift));
 router.delete('/:id', verifyToken, requireCenterAdmin, asyncHandler(deleteShift));
