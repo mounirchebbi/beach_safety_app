@@ -57,11 +57,28 @@ const getCenterById = asyncHandler(async (req, res) => {
 const createCenter = asyncHandler(async (req, res) => {
   const { name, description, location, address, phone, email, operating_hours } = req.body;
 
+  // Handle operating_hours - convert empty string to null, validate JSON
+  let processedOperatingHours = null;
+  if (operating_hours && operating_hours !== '') {
+    if (typeof operating_hours === 'string') {
+      try {
+        processedOperatingHours = JSON.parse(operating_hours);
+      } catch (error) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid operating hours format'
+        });
+      }
+    } else if (typeof operating_hours === 'object') {
+      processedOperatingHours = operating_hours;
+    }
+  }
+
   const result = await query(
     `INSERT INTO centers (name, description, location, address, phone, email, operating_hours)
      VALUES ($1, $2, ST_GeomFromText($3, 4326), $4, $5, $6, $7)
      RETURNING id, name, description, ST_AsGeoJSON(location) as location, address, phone, email, operating_hours, created_at, updated_at, is_active`,
-    [name, description, `POINT(${location.lng} ${location.lat})`, address, phone, email, operating_hours]
+    [name, description, `POINT(${location.lng} ${location.lat})`, address, phone, email, processedOperatingHours]
   );
 
   const center = {
@@ -85,6 +102,23 @@ const updateCenter = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { name, description, location, address, phone, email, operating_hours } = req.body;
 
+  // Handle operating_hours - convert empty string to null, validate JSON
+  let processedOperatingHours = null;
+  if (operating_hours && operating_hours !== '') {
+    if (typeof operating_hours === 'string') {
+      try {
+        processedOperatingHours = JSON.parse(operating_hours);
+      } catch (error) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid operating hours format'
+        });
+      }
+    } else if (typeof operating_hours === 'object') {
+      processedOperatingHours = operating_hours;
+    }
+  }
+
   const result = await query(
     `UPDATE centers 
      SET name = COALESCE($1, name),
@@ -97,7 +131,7 @@ const updateCenter = asyncHandler(async (req, res) => {
          updated_at = CURRENT_TIMESTAMP
      WHERE id = $8
      RETURNING id, name, description, ST_AsGeoJSON(location) as location, address, phone, email, operating_hours, created_at, updated_at, is_active`,
-    [name, description, location ? `POINT(${location.lng} ${location.lat})` : null, address, phone, email, operating_hours, id]
+    [name, description, location ? `POINT(${location.lng} ${location.lat})` : null, address, phone, email, processedOperatingHours, id]
   );
 
   if (result.rows.length === 0) {

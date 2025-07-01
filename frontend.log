@@ -2,9 +2,9 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:1296645) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:1334821) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:1296645) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:1334821) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -20,106 +20,4 @@ To create a production build, use npm run build.
 webpack compiled successfully
 Files successfully emitted, waiting for typecheck results...
 Issues checking in progress...
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-ERROR in src/services/api.ts:665:5
-TS2741: Property 'pagination' is missing in type 'ApiResponse<{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }>' but required in type '{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }'.
-    663 |       };
-    664 |     }>> = await this.api.get(`/api/v1/inter-center-support/incoming?page=${page}&limit=${limit}`);
-  > 665 |     return response.data;
-        |     ^^^^^^^^^^^^^^^^^^^^^
-    666 |   }
-    667 |
-    668 |   async getOutgoingSupportRequests(page: number = 1, limit: number = 10): Promise<{
-
-ERROR in src/services/api.ts:686:5
-TS2741: Property 'pagination' is missing in type 'ApiResponse<{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }>' but required in type '{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }'.
-    684 |       };
-    685 |     }>> = await this.api.get(`/api/v1/inter-center-support/outgoing?page=${page}&limit=${limit}`);
-  > 686 |     return response.data;
-        |     ^^^^^^^^^^^^^^^^^^^^^
-    687 |   }
-    688 |
-    689 |   async getSupportRequestById(id: string): Promise<any> {
-
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-ERROR in src/services/api.ts:665:5
-TS2741: Property 'pagination' is missing in type 'ApiResponse<{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }>' but required in type '{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }'.
-    663 |         pages: number;
-    664 |       };
-  > 665 |     }> = await this.api.get(`/api/v1/inter-center-support/incoming?page=${page}&limit=${limit}`);
-        |     ^^^^^^^^^^^^^^^^^^^^^
-    666 |     return response.data;
-    667 |   }
-    668 |
-
-ERROR in src/services/api.ts:686:5
-TS2741: Property 'pagination' is missing in type 'ApiResponse<{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }>' but required in type '{ data: any[]; pagination: { page: number; limit: number; total: number; pages: number; }; }'.
-    684 |         total: number;
-    685 |         pages: number;
-  > 686 |       };
-        |     ^^^^^^^^^^^^^^^^^^^^^
-    687 |     }> = await this.api.get(`/api/v1/inter-center-support/outgoing?page=${page}&limit=${limit}`);
-    688 |     return response.data;
-    689 |   }
-
-Compiled with warnings.
-
-[eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/services/api.ts
-  Line 8:3:  'Lifeguard' is defined but never used  @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
 No issues found.
