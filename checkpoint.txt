@@ -34,6 +34,18 @@
   - **Details:** Fixed `backend/src/routes/auth.js` and `backend/src/controllers/authController.js`
   - **Status:** ✅ RESOLVED - Users can be created without center assignment
 
+- **FIXED: Emergency Description Default Value**
+  - **Issue:** Emergency Description field was empty by default in Emergency Alert dialog
+  - **Solution:** Set default value to "SOS" for better user experience
+  - **Details:** Updated `frontend/src/components/public/EmergencyAlert.tsx` formData initialization
+  - **Status:** ✅ RESOLVED - Emergency Description now defaults to "SOS"
+
+- **FIXED: Removed "Lifeguards on Duty:" Text from Map Popups**
+  - **Issue:** Center marker popups showed "Lifeguards on Duty:" text before the number
+  - **Solution:** Removed the label text, keeping only the lifeguard count number
+  - **Details:** Updated `frontend/src/components/public/PublicDashboard.tsx` and `frontend/src/components/map/BeachMap.tsx`
+  - **Status:** ✅ RESOLVED - Map popups now show only the lifeguard count number
+
 ### 🏗️ System Architecture
 - **Backend:** Node.js/Express API (Port 5000) ✅ Running
 - **Frontend:** React/TypeScript (Port 3000) ✅ Running  
