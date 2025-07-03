@@ -146,3 +146,7 @@
 
 ## ✅ SYSTEM HEALTH: EXCELLENT
 All core features are operational and tested. The application is ready for production use.
+
+---
+TODO: At the end of development, implement a systemd timer to automate weather updates by regularly triggering the backend weather ingestion endpoint. This will ensure real-time weather data is always available for the app in production. See assistant recommendations for details.
+---

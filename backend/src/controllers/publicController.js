@@ -131,10 +131,15 @@ const getCurrentWeather = asyncHandler(async (req, res) => {
        FROM weather_data wd
        JOIN centers c ON wd.center_id = c.id
        WHERE c.is_active = true
-       AND wd.recorded_at >= CURRENT_TIMESTAMP - INTERVAL '1 hour'
+       AND wd.recorded_at >= CURRENT_TIMESTAMP - INTERVAL '24 hours'
        ORDER BY wd.recorded_at DESC`,
       []
     );
+
+    logger.info('Public weather query result:', {
+      totalRows: result.rows.length,
+      centers: result.rows.map(row => ({ center_id: row.center_id, center_name: row.center_name, recorded_at: row.recorded_at }))
+    });
 
     const weatherData = result.rows.map(row => ({
       ...row,
@@ -239,10 +244,112 @@ const getSafetyFlags = asyncHandler(async (req, res) => {
   }
 });
 
+const getMobileGPSLocation = asyncHandler(async (req, res) => {
+  try {
+    logger.info('Fetching mobile GPS data from 192.168.1.12:8080');
+    
+    const axios = require('axios');
+    const response = await axios.get('http://192.168.1.12:8080/', {
+      timeout: 15000,
+      headers: {
+        'User-Agent': 'BeachSafetyApp/1.0'
+      },
+      responseType: 'text' // Handle raw text response
+    });
+
+    logger.info('Mobile GPS raw response received:', response.data);
+    
+    // Parse the raw JSON response
+    let data;
+    try {
+      // The response might contain multiple JSON objects or extra text
+      // Find the last valid JSON object in the response
+      const jsonMatches = response.data.match(/\{[^}]*"longitude"[^}]*"latitude"[^}]*\}/g);
+      if (jsonMatches && jsonMatches.length > 0) {
+        // Use the last (most recent) GPS reading
+        const lastJson = jsonMatches[jsonMatches.length - 1];
+        data = JSON.parse(lastJson);
+        logger.info('Parsed GPS data from raw response:', data);
+      } else {
+        throw new Error('No valid GPS JSON found in response');
+      }
+    } catch (parseError) {
+      logger.error('Failed to parse GPS JSON:', parseError.message);
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid GPS data format received',
+        error: parseError.message,
+        raw_response: response.data.substring(0, 200) + '...' // Show first 200 chars
+      });
+    }
+
+    // Parse GPS data with multiple format support
+    let latitude, longitude;
+    // Use the parsed 'data' from above
+
+    // Handle the specific format from your mobile GPS service
+    if (data.latitude && data.longitude) {
+      latitude = parseFloat(data.latitude);
+      longitude = parseFloat(data.longitude);
+    } else if (data.lat && data.lng) {
+      latitude = parseFloat(data.lat);
+      longitude = parseFloat(data.lng);
+    } else if (data.coords) {
+      latitude = parseFloat(data.coords.latitude || data.coords.lat);
+      longitude = parseFloat(data.coords.longitude || data.coords.lng);
+    } else if (data.gps) {
+      latitude = parseFloat(data.gps.latitude || data.gps.lat);
+      longitude = parseFloat(data.gps.longitude || data.gps.lng);
+    } else if (data.position) {
+      latitude = parseFloat(data.position.latitude || data.position.lat);
+      longitude = parseFloat(data.position.longitude || data.position.lng);
+    } else {
+      logger.error('No valid GPS coordinates found in mobile data');
+      logger.error('Available keys:', Object.keys(data));
+      return res.status(400).json({
+        success: false,
+        message: 'No valid GPS coordinates found in mobile data',
+        received_data: data
+      });
+    }
+
+    if (isNaN(latitude) || isNaN(longitude)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid GPS coordinates received',
+        received_data: data
+      });
+    }
+
+    const locationData = {
+      latitude,
+      longitude,
+      source: 'mobile_gps',
+      raw_data: data
+    };
+
+    logger.info('Mobile GPS location parsed successfully:', locationData);
+
+    res.json({
+      success: true,
+      message: 'Mobile GPS location retrieved successfully',
+      data: locationData
+    });
+  } catch (error) {
+    logger.error('Error getting mobile GPS location:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve mobile GPS location',
+      error: error.message
+    });
+  }
+});
+
 module.exports = {
   getAllCenters,
   getCenterStatus,
   getCurrentWeather,
   getLifeguardCounts,
-  getSafetyFlags
+  getSafetyFlags,
+  getMobileGPSLocation
 }; 

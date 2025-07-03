@@ -5,7 +5,8 @@ const {
   getCenterStatus,
   getCurrentWeather,
   getLifeguardCounts,
-  getSafetyFlags
+  getSafetyFlags,
+  getMobileGPSLocation
 } = require('../controllers/publicController');
 
 const router = express.Router();
@@ -16,5 +17,6 @@ router.get('/centers/:id/status', asyncHandler(getCenterStatus));
 router.get('/weather/current', asyncHandler(getCurrentWeather));
 router.get('/lifeguards/counts', asyncHandler(getLifeguardCounts));
 router.get('/safety/flags', asyncHandler(getSafetyFlags));
+router.get('/mobile-gps', asyncHandler(getMobileGPSLocation));
 
 module.exports = router; 
