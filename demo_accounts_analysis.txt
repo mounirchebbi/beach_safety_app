@@ -1,0 +1,148 @@
+BEACH SAFETY APP - DEMO & TEST ACCOUNTS ANALYSIS
+================================================
+
+Database Analysis Date: 2025-07-03
+Total Users in Database: 28 users
+
+1. DEMO ACCOUNTS (Official Demo Users)
+=====================================
+
+1.1 System Administrator Demo
+-----------------------------
+- ID: be4f180b-a12f-47af-a146-11c76c0d1ec6
+- Email: demo.admin@beachsafety.com
+- Role: system_admin
+- Name: Demo Administrator
+- Phone: +1-555-9999
+- Center ID: NULL (system admin has no center)
+- Created: 2025-06-26 07:50:35
+- Status: Active
+
+1.2 Center Administrator Demo
+-----------------------------
+- ID: 797fe7c4-3303-4388-b0df-160f6f8c5914
+- Email: demo.center@beachsafety.com
+- Role: center_admin
+- Name: Demo CenterAdmin
+- Phone: +1-555-9998
+- Center ID: NULL (⚠️ ISSUE: Demo center admin has no center assigned)
+- Created: 2025-06-26 07:50:42
+- Status: Active
+
+1.3 Lifeguard Demo
+------------------
+- ID: fe7e986f-983f-42a8-abb3-c59a54c4227a
+- Email: demo.lifeguard@beachsafety.com
+- Role: lifeguard
+- Name: Demo Lifeguard
+- Phone: +1-555-9997
+- Center ID: NULL (⚠️ ISSUE: Demo lifeguard has no center assigned)
+- Created: 2025-06-26 07:50:47
+- Status: Active
+
+2. TEST ACCOUNTS (Development/Testing Users)
+============================================
+
+2.1 Test Center Administrator
+-----------------------------
+- ID: 2240419a-8b6e-45bb-960c-02bc48166df4
+- Email: test.center@beachsafety.com
+- Role: center_admin
+- Name: Test CenterAdmin
+- Center ID: NULL (⚠️ ISSUE: Test center admin has no center assigned)
+- Status: Active
+
+2.2 Test Lifeguards
+-------------------
+- ID: 076c18c3-9550-400a-944f-2efc5d868d7c
+- Email: test123@test.com
+- Role: lifeguard
+- Name: abc efg
+- Center ID: NULL (⚠️ ISSUE: Test lifeguard has no center assigned)
+- Status: Active
+
+- ID: e6569088-8ebb-443c-91d3-4b9be1300433
+- Email: ali@test.com
+- Role: lifeguard
+- Name: ali baldi
+- Center ID: NULL (⚠️ ISSUE: Test lifeguard has no center assigned)
+- Status: Active
+
+- ID: 1b002a2d-dac8-4f28-89e2-35b5171b5871
+- Email: test@subs.com
+- Role: lifeguard
+- Name: testsub sub
+- Center ID: NULL (⚠️ ISSUE: Test lifeguard has no center assigned)
+- Status: Active
+
+3. TEST CENTERS
+===============
+
+3.1 Test Center
+---------------
+- ID: d96bc8f7-3578-4878-90e1-ba4831a65563
+- Name: Test Center
+- Description: A test center
+- Email: test@center.com
+- Status: Active
+- Created: 2025-06-30 06:00:01
+
+3.2 Test Center 2
+-----------------
+- ID: bb68181c-9639-4c8d-8543-2b51c7895033
+- Name: Test Center 2
+- Description: Another test center
+- Email: test2@center.com
+- Status: Active
+- Created: 2025-06-30 06:00:11
+
+4. STATISTICS BY ROLE
+=====================
+
+Role           | Total Users | Demo/Test Users | Percentage
+---------------|-------------|-----------------|------------
+center_admin   | 8           | 2               | 25%
+lifeguard      | 18          | 4               | 22%
+system_admin   | 2           | 1               | 50%
+
+Total Demo/Test Users: 7 out of 28 (25%)
+
+5. ISSUES IDENTIFIED
+====================
+
+⚠️ CRITICAL ISSUES:
+- All demo and test users have NULL center_id
+- This prevents them from accessing center-specific features
+- Demo center admin cannot manage any center
+- Demo lifeguard cannot be assigned to shifts
+- Test users cannot perform their intended functions
+
+6. RECOMMENDATIONS
+==================
+
+6.1 For Production:
+- Remove all demo and test accounts
+- Remove test centers
+- Clean up any test data
+
+6.2 For Development:
+- Assign demo users to appropriate centers
+- Create proper test scenarios
+- Ensure test users can access their intended features
+
+6.3 For Testing:
+- Use real center accounts (like hammamet.admin@beachsafety.com)
+- Test with actual center data
+- Avoid using demo accounts for functional testing
+
+7. REAL CENTER ACCOUNTS (Recommended for Testing)
+=================================================
+
+Center Admin Accounts with Centers:
+- hammamet.admin@beachsafety.com (Center: Hammamet Beach Safety Center)
+- sousse.admin@beachsafety.com (Center: Sousse Beach Safety Center)
+- monastir.admin@beachsafety.com (Center: Monastir Beach Safety Center)
+- djerba.admin@beachsafety.com (Center: Djerba Beach Safety Center)
+- tabarka.admin@beachsafety.com (Center: Tabarka Beach Safety Center)
+
+These accounts have proper center assignments and can be used for testing all features. 

@@ -18,6 +18,9 @@ const createInterCenterSupportRequest = asyncHandler(async (req, res) => {
     requested_resources
   } = req.body;
 
+  // Handle empty string escalation_id as null
+  const normalizedEscalationId = escalation_id && escalation_id.trim() !== '' ? escalation_id : null;
+
   try {
     // Validate required fields
     if (!target_center_id || !request_type || !title || !description) {
@@ -72,10 +75,10 @@ const createInterCenterSupportRequest = asyncHandler(async (req, res) => {
     }
 
     // Verify escalation exists if provided
-    if (escalation_id) {
+    if (normalizedEscalationId) {
       const escalationResult = await db.query(
         'SELECT id FROM emergency_escalations WHERE id = $1',
-        [escalation_id]
+        [normalizedEscalationId]
       );
 
       if (escalationResult.rows.length === 0) {
@@ -92,7 +95,7 @@ const createInterCenterSupportRequest = asyncHandler(async (req, res) => {
        (requesting_center_id, requesting_admin_id, target_center_id, escalation_id, request_type, priority, title, description, requested_resources)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
        RETURNING *`,
-      [requestingCenterId, centerAdminId, target_center_id, escalation_id, request_type, priority, title, description, requested_resources]
+      [requestingCenterId, centerAdminId, target_center_id, normalizedEscalationId, request_type, priority, title, description, requested_resources]
     );
 
     const supportRequest = result.rows[0];
