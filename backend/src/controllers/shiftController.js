@@ -484,6 +484,46 @@ const checkInShift = asyncHandler(async (req, res) => {
     });
   }
 
+  // Validation 1: Check if shift is scheduled for the current day
+  const shiftStartDate = new Date(shift.start_time);
+  const currentDate = new Date();
+  const isSameDay = shiftStartDate.toDateString() === currentDate.toDateString();
+  
+  if (!isSameDay) {
+    return res.status(400).json({
+      success: false,
+      message: `Check-in is only allowed for shifts scheduled for the current day. This shift is scheduled for ${shiftStartDate.toLocaleDateString()}.`
+    });
+  }
+
+  // Validation 2: Check if shift has already ended
+  const shiftEndTime = new Date(shift.end_time);
+  if (currentDate > shiftEndTime) {
+    return res.status(400).json({
+      success: false,
+      message: 'Check-in is not allowed for shifts that have already ended.'
+    });
+  }
+
+  // Validation 3: Check if check-in is within allowed time window (1 hour before to 2 hours after start)
+  const shiftStartTime = new Date(shift.start_time);
+  const timeDifferenceMs = currentDate.getTime() - shiftStartTime.getTime();
+  const timeDifferenceHours = timeDifferenceMs / (1000 * 60 * 60); // Convert to hours
+  
+  if (timeDifferenceHours < -1) {
+    return res.status(400).json({
+      success: false,
+      message: 'Check-in is only allowed up to 1 hour before the shift start time.'
+    });
+  }
+  
+  if (timeDifferenceHours > 2) {
+    return res.status(400).json({
+      success: false,
+      message: 'Check-in is only allowed up to 2 hours after the shift start time.'
+    });
+  }
+
   // Update shift status and check-in time
   const updateResult = await query(
     `UPDATE shifts 
