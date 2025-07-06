@@ -1,0 +1,56 @@
+Beach_Safety_App/
+├── backend/
+│   ├── env.example                # Example environment variables for backend
+│   ├── logs/                      # Backend log files
+│   ├── package.json               # Backend Node.js dependencies and scripts
+│   ├── package-lock.json          # Backend dependency lock file
+│   ├── README.md                  # Backend documentation
+│   ├── scripts/                   # Backend utility scripts
+│   ├── server.log                 # Main backend log file
+│   └── src/
+│       ├── app.js                 # Main Express app entry point
+│       ├── config/                # Backend configuration (e.g., database)
+│       ├── controllers/           # Express route controllers (business logic)
+│       ├── middleware/            # Express middleware (auth, error handling)
+│       ├── models/                # Database models (ORM/Schema)
+│       ├── routes/                # Express route definitions
+│       ├── scripts/               # Data seeding/utility scripts
+│       ├── services/              # Service layer (e.g., weather, sockets)
+│       └── utils/                 # Utility functions (e.g., logger)
+├── backend.log                    # General backend log
+├── checkpoint.txt                 # Progress or checkpoint notes
+├── context.txt                    # Project context and summary
+├── database_comprehension.txt     # Database schema and relationship analysis
+├── database_setup.sql             # SQL script to set up the database
+├── debug_history.txt              # Debugging session history
+├── demo_accounts_analysis.txt     # Analysis of demo accounts
+├── demo_accounts_cleanup_summary.txt # Summary of demo account cleanup
+├── edit_history.txt               # Edit/change history
+├── frontend/
+│   ├── package.json               # Frontend Node.js dependencies and scripts
+│   ├── package-lock.json          # Frontend dependency lock file
+│   ├── public/                    # Static assets (HTML, icons, manifest)
+│   ├── README.md                  # Frontend documentation
+│   └── src/
+│       ├── App.tsx                # Main React app entry point and routing
+│       ├── App.css                # Main app styles
+│       ├── components/            # React UI components (by role/feature)
+│       ├── context/               # React context providers (e.g., Auth)
+│       ├── hooks/                 # Custom React hooks
+│       ├── index.tsx              # React app bootstrap
+│       ├── index.css              # Global styles
+│       ├── services/              # API and socket service modules
+│       ├── types/                 # TypeScript type definitions
+│       └── utils/                 # Frontend utility functions
+├── frontend_backup/               # Backup of the frontend directory
+├── frontend.log                   # General frontend log
+├── generate_hash.js               # Utility script for generating hashes
+├── inter_center_support_setup.sql # SQL for inter-center support feature
+├── README_DATABASE.md             # Database documentation
+├── README.md                      # Main project documentation
+├── restart_app.sh                 # Shell script to restart the app
+├── setup_database.sh              # Shell script to set up the database
+├── stop_app.sh                    # Shell script to stop the app
+├── users_credentials.txt          # User credentials (for testing/demo)
+├── WEATHER_INTEGRATION_SUMMARY.md # Weather integration documentation
+├── weather_integration.sql        # SQL for weather integration 

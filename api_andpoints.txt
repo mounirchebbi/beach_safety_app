@@ -1,0 +1,131 @@
+# Main API Endpoints for Beach Safety App
+
+## Authentication
+- **POST /api/v1/auth/login**
+  - User login, returns JWT and user info
+- **POST /api/v1/auth/register**
+  - User registration
+- **GET /api/v1/auth/me**
+  - Get current authenticated user
+- **PUT /api/v1/auth/profile**
+  - Update user profile
+- **POST /api/v1/auth/logout**
+  - Logout user
+
+## Centers
+- **GET /api/v1/centers**
+  - List all centers
+- **GET /api/v1/centers/:id**
+  - Get center details by ID
+- **POST /api/v1/centers**
+  - Create a new center
+- **PUT /api/v1/centers/:id**
+  - Update center details
+- **DELETE /api/v1/centers/:id**
+  - Delete a center
+
+## Lifeguards
+- **GET /api/v1/lifeguards**
+  - List all lifeguards
+- **GET /api/v1/lifeguards/:id**
+  - Get lifeguard details
+- **POST /api/v1/lifeguards**
+  - Create a new lifeguard
+- **PUT /api/v1/lifeguards/:id**
+  - Update lifeguard details
+- **DELETE /api/v1/lifeguards/:id**
+  - Delete a lifeguard
+
+## Shifts
+- **GET /api/v1/shifts**
+  - List all shifts
+- **GET /api/v1/shifts/:id**
+  - Get shift details
+- **POST /api/v1/shifts**
+  - Create a new shift
+- **PUT /api/v1/shifts/:id**
+  - Update shift details
+- **DELETE /api/v1/shifts/:id**
+  - Delete a shift
+
+## Safety Flags
+- **GET /api/v1/safety/centers/:centerId/current**
+  - Get current safety flag for a center
+- **GET /api/v1/safety/centers/:centerId/history**
+  - Get flag history for a center
+- **POST /api/v1/safety/centers/:centerId/flags**
+  - Set a new safety flag (manual)
+- **POST /api/v1/safety/centers/:centerId/auto-update**
+  - Trigger automatic flag update
+- **POST /api/v1/safety/centers/:centerId/manual**
+  - Switch to manual flag mode
+- **GET /api/v1/safety/centers/:centerId/mode**
+  - Get flag management mode (automatic/manual)
+
+## Emergency Alerts
+- **GET /api/v1/alerts**
+  - List all emergency alerts
+- **GET /api/v1/alerts/:id**
+  - Get alert details
+- **POST /api/v1/alerts**
+  - Create a new emergency alert
+- **PUT /api/v1/alerts/:id/status**
+  - Update alert status
+- **POST /api/v1/alerts/:id/assign**
+  - Assign alert to a lifeguard
+
+## Incident Reports
+- **GET /api/v1/reports**
+  - List all incident reports
+- **GET /api/v1/reports/:id**
+  - Get incident report details
+- **POST /api/v1/reports**
+  - Create a new incident report
+- **PUT /api/v1/reports/:id**
+  - Update incident report
+
+## Weather
+- **GET /api/v1/weather/centers/:centerId/current**
+  - Get current weather for a center
+- **GET /api/v1/weather/centers/:centerId/forecast**
+  - Get weather forecast for a center
+
+## Inter-Center Support
+- **POST /api/v1/support/requests**
+  - Create inter-center support request
+- **GET /api/v1/support/requests/incoming**
+  - List incoming support requests
+- **GET /api/v1/support/requests/outgoing**
+  - List outgoing support requests
+- **GET /api/v1/support/requests/:id**
+  - Get support request details
+- **POST /api/v1/support/requests/:id/acknowledge**
+  - Acknowledge a support request
+- **POST /api/v1/support/requests/:id/resolve**
+  - Resolve a support request
+- **POST /api/v1/support/requests/:id/decline**
+  - Decline a support request
+
+## Users
+- **GET /api/v1/users**
+  - List all users
+- **GET /api/v1/users/:id**
+  - Get user details
+- **POST /api/v1/users**
+  - Create a new user
+- **PUT /api/v1/users/:id**
+  - Update user details
+- **DELETE /api/v1/users/:id**
+  - Delete a user
+- **POST /api/v1/users/:id/reset-password**
+  - Reset user password
+
+## Public Endpoints
+- **GET /api/v1/public/centers**
+  - List public center info
+- **GET /api/v1/public/weather/current**
+  - Get current weather for all centers
+- **GET /api/v1/public/lifeguards/counts**
+  - Get lifeguard counts per center
+- **GET /api/v1/public/safety/flags**
+  - Get public safety flags for all centers 
