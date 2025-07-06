@@ -118,17 +118,16 @@ const requireOwnership = (resourceType) => {
         return next();
       }
 
-      let query;
+      let sqlQuery;
       let params;
 
       switch (resourceType) {
         case 'center':
           // Center admin can only access their own center
           if (userRole === 'center_admin') {
-            query = `
+            sqlQuery = `
               SELECT c.id FROM centers c
               JOIN users u ON u.center_id = c.id
-              JOIN users u ON u.id = l.user_id
               WHERE c.id = $1 AND u.id = $2
             `;
             params = [resourceId, userId];
@@ -138,7 +137,7 @@ const requireOwnership = (resourceType) => {
         case 'lifeguard':
           // Center admin can only access lifeguards in their center
           if (userRole === 'center_admin') {
-            query = `
+            sqlQuery = `
               SELECT l.id FROM lifeguards l
               JOIN users u ON u.id = l.user_id
               JOIN lifeguards admin_lifeguard ON admin_lifeguard.user_id = $1
@@ -151,14 +150,14 @@ const requireOwnership = (resourceType) => {
         case 'shift':
           // Users can only access their own shifts, center admin can access shifts in their center
           if (userRole === 'center_admin') {
-            query = `
+            sqlQuery = `
               SELECT s.id FROM shifts s
               JOIN lifeguards admin_lifeguard ON admin_lifeguard.user_id = $1
               WHERE s.id = $2 AND s.center_id = admin_lifeguard.center_id
             `;
             params = [userId, resourceId];
           } else if (userRole === 'lifeguard') {
-            query = `
+            sqlQuery = `
               SELECT s.id FROM shifts s
               JOIN lifeguards l ON l.id = s.lifeguard_id
               WHERE s.id = $1 AND l.user_id = $2
@@ -174,8 +173,8 @@ const requireOwnership = (resourceType) => {
           });
       }
 
-      if (query) {
-        const result = await query(query, params);
+      if (sqlQuery) {
+        const result = await query(sqlQuery, params);
         if (result.rows.length === 0) {
           return res.status(403).json({
             success: false,

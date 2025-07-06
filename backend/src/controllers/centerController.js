@@ -261,6 +261,89 @@ const getCenterWeather = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Update center location check-in setting
+// @route   PUT /api/v1/centers/:id/location-check-in
+// @access  Center Admin
+const updateLocationCheckInSetting = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { require_location_check_in } = req.body;
+
+  // Verify the center exists and belongs to this center admin
+  const centerResult = await query(
+    `SELECT c.id, c.name 
+     FROM centers c
+     JOIN users admin ON admin.center_id = c.id
+     WHERE c.id = $1 AND admin.id = $2 AND admin.role = 'center_admin'
+     LIMIT 1`,
+    [id, req.user.id]
+  );
+
+  if (centerResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Center not found or you do not have permission to modify this center'
+    });
+  }
+
+  // Update the location check-in setting
+  const result = await query(
+    `UPDATE centers 
+     SET require_location_check_in = $1, updated_at = CURRENT_TIMESTAMP
+     WHERE id = $2
+     RETURNING id, name, require_location_check_in`,
+    [require_location_check_in, id]
+  );
+
+  logger.info('Center location check-in setting updated', { 
+    centerId: id, 
+    name: result.rows[0].name,
+    require_location_check_in: require_location_check_in 
+  });
+
+  res.json({
+    success: true,
+    message: `Location-based check-in ${require_location_check_in ? 'enabled' : 'disabled'} successfully`,
+    data: {
+      id: result.rows[0].id,
+      name: result.rows[0].name,
+      require_location_check_in: result.rows[0].require_location_check_in
+    }
+  });
+});
+
+// @desc    Get center location check-in setting
+// @route   GET /api/v1/centers/:id/location-check-in
+// @access  Center Admin
+const getLocationCheckInSetting = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  // Verify the center exists and belongs to this center admin
+  const centerResult = await query(
+    `SELECT c.id, c.name, c.require_location_check_in
+     FROM centers c
+     JOIN users admin ON admin.center_id = c.id
+     WHERE c.id = $1 AND admin.id = $2 AND admin.role = 'center_admin'
+     LIMIT 1`,
+    [id, req.user.id]
+  );
+
+  if (centerResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Center not found or you do not have permission to access this center'
+    });
+  }
+
+  res.json({
+    success: true,
+    data: {
+      id: centerResult.rows[0].id,
+      name: centerResult.rows[0].name,
+      require_location_check_in: centerResult.rows[0].require_location_check_in
+    }
+  });
+});
+
 module.exports = {
   getAllCenters,
   getCenterById,
@@ -269,5 +352,7 @@ module.exports = {
   deleteCenter,
   getCenterLifeguards,
   getCenterShifts,
-  getCenterWeather
+  getCenterWeather,
+  updateLocationCheckInSetting,
+  getLocationCheckInSetting
 }; 

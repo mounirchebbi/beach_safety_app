@@ -449,7 +449,7 @@ const checkInShift = asyncHandler(async (req, res) => {
 
   // Get the lifeguard record for this user
   const lifeguardResult = await query(
-    'SELECT l.id as lifeguard_id FROM lifeguards l WHERE l.user_id = $1',
+    'SELECT l.id as lifeguard_id, l.center_id FROM lifeguards l WHERE l.user_id = $1',
     [lifeguardUserId]
   );
 
@@ -461,6 +461,7 @@ const checkInShift = asyncHandler(async (req, res) => {
   }
 
   const lifeguardId = lifeguardResult.rows[0].lifeguard_id;
+  const centerId = lifeguardResult.rows[0].center_id;
 
   // Verify the shift belongs to this lifeguard
   const shiftResult = await query(
@@ -484,6 +485,38 @@ const checkInShift = asyncHandler(async (req, res) => {
     });
   }
 
+  // --- LOCATION CHECK-IN RESTRICTION ---
+  // Get center's location and require_location_check_in flag
+  const centerResult = await query(
+    'SELECT location, require_location_check_in FROM centers WHERE id = $1',
+    [centerId]
+  );
+  if (centerResult.rows.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'Center not found'
+    });
+  }
+  const center = centerResult.rows[0];
+  if (center.require_location_check_in) {
+    // Check if lifeguard's location is within 10km of center
+    const distanceResult = await query(
+      `SELECT ST_Distance(
+        ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography,
+        $3::geography
+      ) AS distance_meters`,
+      [location.lng, location.lat, center.location]
+    );
+    const distance = distanceResult.rows[0].distance_meters;
+    if (distance > 10000) {
+      return res.status(400).json({
+        success: false,
+        message: 'Check-in denied: You must be within 10km of the center location.'
+      });
+    }
+  }
+
+  // --- EXISTING VALIDATION LOGIC (date/time window) ---
   // Validation 1: Check if shift is scheduled for the current day
   const shiftStartDate = new Date(shift.start_time);
   const currentDate = new Date();

@@ -10,7 +10,9 @@ const {
   deleteCenter,
   getCenterLifeguards,
   getCenterShifts,
-  getCenterWeather
+  getCenterWeather,
+  updateLocationCheckInSetting,
+  getLocationCheckInSetting
 } = require('../controllers/centerController');
 
 const router = express.Router();
@@ -62,15 +64,6 @@ router.get('/', verifyToken, requireSystemAdmin, asyncHandler(getAllCenters));
 // POST /api/v1/centers - Create new center (System Admin only)
 router.post('/', verifyToken, requireSystemAdmin, validateCenter, asyncHandler(createCenter));
 
-// GET /api/v1/centers/:id - Get center by ID
-router.get('/:id', verifyToken, asyncHandler(getCenterById));
-
-// PUT /api/v1/centers/:id - Update center (Center Admin or System Admin)
-router.put('/:id', verifyToken, requireCenterAdmin, requireOwnership('center'), validateCenter, asyncHandler(updateCenter));
-
-// DELETE /api/v1/centers/:id - Delete center (System Admin only)
-router.delete('/:id', verifyToken, requireSystemAdmin, asyncHandler(deleteCenter));
-
 // GET /api/v1/centers/:id/lifeguards - Get center lifeguards
 router.get('/:id/lifeguards', verifyToken, requireCenterAdmin, requireOwnership('center'), asyncHandler(getCenterLifeguards));
 
@@ -79,5 +72,20 @@ router.get('/:id/shifts', verifyToken, requireCenterAdmin, requireOwnership('cen
 
 // GET /api/v1/centers/:id/weather - Get center weather data
 router.get('/:id/weather', verifyToken, requireCenterAdmin, requireOwnership('center'), asyncHandler(getCenterWeather));
+
+// GET /api/v1/centers/:id/location-check-in - Get center location check-in setting
+router.get('/:id/location-check-in', verifyToken, requireCenterAdmin, requireOwnership('center'), asyncHandler(getLocationCheckInSetting));
+
+// PUT /api/v1/centers/:id/location-check-in - Update center location check-in setting
+router.put('/:id/location-check-in', verifyToken, requireCenterAdmin, requireOwnership('center'), asyncHandler(updateLocationCheckInSetting));
+
+// GET /api/v1/centers/:id - Get center by ID
+router.get('/:id', verifyToken, asyncHandler(getCenterById));
+
+// PUT /api/v1/centers/:id - Update center (Center Admin or System Admin)
+router.put('/:id', verifyToken, requireCenterAdmin, requireOwnership('center'), validateCenter, asyncHandler(updateCenter));
+
+// DELETE /api/v1/centers/:id - Delete center (System Admin only)
+router.delete('/:id', verifyToken, requireSystemAdmin, asyncHandler(deleteCenter));
 
 module.exports = router; 
