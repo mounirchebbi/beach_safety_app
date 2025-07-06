@@ -1,5 +1,5 @@
 const express = require('express');
-const { verifyToken, requireCenterAdmin } = require('../middleware/auth');
+const { verifyToken, requireLifeguard } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const {
   getCurrentWeather,
@@ -11,10 +11,10 @@ const weatherService = require('../services/weatherService');
 
 const router = express.Router();
 
-// Routes
-router.get('/centers/:id/current', verifyToken, requireCenterAdmin, asyncHandler(getCurrentWeather));
-router.get('/centers/:id/forecast', verifyToken, requireCenterAdmin, asyncHandler(getWeatherForecast));
-router.get('/centers/:id/history', verifyToken, requireCenterAdmin, asyncHandler(getWeatherHistory));
+// Routes - Allow lifeguards and center admins to access weather data
+router.get('/centers/:id/current', verifyToken, requireLifeguard, asyncHandler(getCurrentWeather));
+router.get('/centers/:id/forecast', verifyToken, requireLifeguard, asyncHandler(getWeatherForecast));
+router.get('/centers/:id/history', verifyToken, requireLifeguard, asyncHandler(getWeatherHistory));
 
 // Test route (no authentication required for debugging)
 router.get('/test', asyncHandler(testWeatherApi));

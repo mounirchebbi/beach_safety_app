@@ -143,7 +143,18 @@ const getAllAlerts = asyncHandler(async (req, res) => {
   
   const result = await query(`
     SELECT 
-      ea.*,
+      ea.id,
+      ea.center_id,
+      ea.alert_type,
+      ea.severity,
+      ea.description,
+      ea.reported_by,
+      ea.status,
+      ea.assigned_lifeguard_id,
+      ea.created_at,
+      ea.resolved_at,
+      ea.updated_at,
+      ST_AsGeoJSON(ea.location)::json as location,
       c.name as center_name,
       l.first_name as lifeguard_first_name,
       l.last_name as lifeguard_last_name
@@ -210,7 +221,18 @@ const getAlertById = asyncHandler(async (req, res) => {
   
   const result = await query(`
     SELECT 
-      ea.*,
+      ea.id,
+      ea.center_id,
+      ea.alert_type,
+      ea.severity,
+      ea.description,
+      ea.reported_by,
+      ea.status,
+      ea.assigned_lifeguard_id,
+      ea.created_at,
+      ea.resolved_at,
+      ea.updated_at,
+      ST_AsGeoJSON(ea.location)::json as location,
       c.name as center_name,
       l.first_name as lifeguard_first_name,
       l.last_name as lifeguard_last_name
