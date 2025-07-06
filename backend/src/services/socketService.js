@@ -282,6 +282,8 @@ const emitEmergencyAlert = (alertData) => {
     });
     
     logger.info('Emergency alert emitted', { alertId: alertData.id, centerId: alertData.center_id });
+  } else {
+    logger.warn('Socket.io not initialized, cannot emit emergency alert');
   }
 };
 

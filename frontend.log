@@ -2,20 +2,391 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:72747) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:104406) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:72747) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:104406) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
-Compiled successfully!
+Compiled with warnings.
 
-You can now view frontend in the browser.
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
-  Local:            http://localhost:3000
-  On Your Network:  http://192.168.1.20:3000
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
-Note that the development build is not optimized.
-To create a production build, use npm run build.
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
-webpack compiled successfully
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 173:6:  React Hook useCallback has a missing dependency: 'user.center_info'. Either include it or remove the dependency array       react-hooks/exhaustive-deps
+  Line 189:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 247:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 173:6:  React Hook useCallback has a missing dependency: 'user.center_info'. Either include it or remove the dependency array       react-hooks/exhaustive-deps
+  Line 189:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 247:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 190:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 206:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 264:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 188:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 204:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 262:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 188:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 204:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 262:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 188:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 204:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 262:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/NoSwimZoneManagement.tsx
+  Line 73:6:  React Hook useEffect has a missing dependency: 'loadZones'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/admin/ShiftCalendar.tsx
+  Line 10:3:    'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 16:3:    'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
+  Line 23:13:   'PersonIcon' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 35:3:    'isSameWeek' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 42:3:    'isWithinInterval' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 325:19:  'isCurrentMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/admin/ShiftScheduling.tsx
+  Line 32:3:   'Divider' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 46:13:  'PersonIcon' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 58:28:  'isAfter' is defined but never used        @typescript-eslint/no-unused-vars
+  Line 58:47:  'addHours' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 86:11:  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/lifeguard/LifeguardDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+  Line 26:20:  'NotificationsIcon' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 31:17:  'TrendingIcon' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 148:6:  React Hook useEffect has a missing dependency: 'updateActiveAlertsCount'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 188:6:  React Hook useCallback has a missing dependency: 'user'. Either include it or remove the dependency array                   react-hooks/exhaustive-deps
+  Line 204:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 262:9:  'formatDate' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
 No issues found.

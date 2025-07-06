@@ -109,6 +109,31 @@ const createSafetyZone = async (req, res) => {
     // Convert GeoJSON to PostGIS format
     const geometryString = JSON.stringify(geometry);
 
+    // Check for overlapping safety zones in the same center
+    const overlapResult = await query(
+      `SELECT id, name, zone_type 
+       FROM safety_zones 
+       WHERE center_id = $1 
+       AND ST_Intersects(geometry, ST_GeomFromGeoJSON($2))`,
+      [centerId, geometryString]
+    );
+
+    if (overlapResult.rows.length > 0) {
+      const overlappingZones = overlapResult.rows.map(row => ({
+        id: row.id,
+        name: row.name,
+        zone_type: row.zone_type
+      }));
+      
+      return res.status(409).json({
+        error: 'Safety zone overlaps with existing zones',
+        details: {
+          message: 'The new safety zone overlaps with one or more existing zones',
+          overlappingZones: overlappingZones
+        }
+      });
+    }
+
     const result = await query(
       `INSERT INTO safety_zones (center_id, name, zone_type, geometry, description, created_at, updated_at)
        VALUES ($1, $2, $3, ST_GeomFromGeoJSON($4), $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
@@ -196,6 +221,34 @@ const updateSafetyZone = async (req, res) => {
           error: 'Invalid geometry format. Expected GeoJSON' 
         });
       }
+
+      // Check for overlapping safety zones (excluding the current zone being updated)
+      const geometryString = JSON.stringify(geometry);
+      const overlapResult = await query(
+        `SELECT id, name, zone_type 
+         FROM safety_zones 
+         WHERE center_id = (SELECT center_id FROM safety_zones WHERE id = $1)
+         AND id != $1
+         AND ST_Intersects(geometry, ST_GeomFromGeoJSON($2))`,
+        [zoneId, geometryString]
+      );
+
+      if (overlapResult.rows.length > 0) {
+        const overlappingZones = overlapResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          zone_type: row.zone_type
+        }));
+        
+        return res.status(409).json({
+          error: 'Safety zone overlaps with existing zones',
+          details: {
+            message: 'The updated safety zone overlaps with one or more existing zones',
+            overlappingZones: overlappingZones
+          }
+        });
+      }
+
       updates.push(`geometry = ST_GeomFromGeoJSON($${paramCount++})`);
       values.push(JSON.stringify(geometry));
     }

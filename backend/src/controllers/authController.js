@@ -134,21 +134,63 @@ const login = asyncHandler(async (req, res) => {
   // Generate token
   const token = generateToken(user.id);
 
+  // Prepare user data for response
+  let userData = {
+    id: user.id,
+    email: user.email,
+    role: user.role,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    phone: user.phone,
+    center_id: user.center_id
+  };
+
+  // If user is a lifeguard, get additional info from lifeguards table
+  if (user.role === 'lifeguard') {
+    const lifeguardResult = await query(
+      `SELECT l.id, l.certification_level, l.certification_expiry, l.emergency_contact,
+              c.id as center_id, c.name as center_name, c.location
+       FROM lifeguards l
+       JOIN centers c ON c.id = l.center_id
+       WHERE l.user_id = $1`,
+      [user.id]
+    );
+
+    if (lifeguardResult.rows.length > 0) {
+      const lifeguardInfo = lifeguardResult.rows[0];
+      userData.lifeguard_info = lifeguardInfo;
+      userData.center_info = {
+        id: lifeguardInfo.center_id,
+        name: lifeguardInfo.center_name,
+        location: lifeguardInfo.location
+      };
+    }
+  }
+
+  // If user is a center admin, get center info
+  if (user.role === 'center_admin' && user.center_id) {
+    const centerResult = await query(
+      `SELECT c.id, c.name, ST_AsGeoJSON(c.location) as location
+       FROM centers c
+       WHERE c.id = $1`,
+      [user.center_id]
+    );
+
+    if (centerResult.rows.length > 0) {
+      userData.center_info = {
+        ...centerResult.rows[0],
+        location: JSON.parse(centerResult.rows[0].location)
+      };
+    }
+  }
+
   logger.info('User logged in successfully', { userId: user.id, email: user.email, role: user.role });
 
   res.json({
     success: true,
     message: 'Login successful',
     data: {
-      user: {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        phone: user.phone,
-        center_id: user.center_id
-      },
+      user: userData,
       token
     }
   });
