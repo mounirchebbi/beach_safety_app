@@ -2,9 +2,9 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:163030) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:830833) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:163030) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:830833) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -12,944 +12,138 @@ Compiled successfully!
 You can now view frontend in the browser.
 
   Local:            http://localhost:3000
-  On Your Network:  http://192.168.1.20:3000
+  On Your Network:  http://192.168.1.17:3000
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 132:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 132:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 132:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 132:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
 Files successfully emitted, waiting for typecheck results...
 Issues checking in progress...
-No issues found.
-Compiled with warnings.
+ERROR in src/components/admin/SafetyManagement.tsx:526:66
+TS2322: Type 'Date | null' is not assignable to type 'Date | undefined'.
+  Type 'null' is not assignable to type 'Date | undefined'.
+    524 |               label="Expiration Date & Time (Optional)"
+    525 |               value={formData.expires_at}
+  > 526 |               onChange={(newValue) => setFormData({ ...formData, expires_at: newValue })}
+        |                                                                  ^^^^^^^^^^
+    527 |               minDateTime={new Date()}
+    528 |               maxDateTime={new Date(Date.now() + 24* 60 *60*1000)} // 24 hours from now
+    529 |               slotProps={{
 
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
 Compiling...
 Compiled with warnings.
 
 [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
+  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
+  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
 Compiling...
-No issues found.
+ERROR in src/components/admin/SafetyManagement.tsx:526:66
+TS2322: Type 'Date | null' is not assignable to type 'Date | undefined'.
+  Type 'null' is not assignable to type 'Date | undefined'.
+    524 |               label="Expiration Date & Time (Optional)"
+    525 |               value={formData.expires_at}
+  > 526 |               onChange={(newValue) => setFormData({ ...formData, expires_at: newValue || undefined })}
+        |                                                                  ^^^^^^^^^^
+    527 |               minDateTime={new Date()}
+    528 |               maxDateTime={new Date(Date.now() + 24* 60 *60*1000)} // 24 hours from now
+    529 |               slotProps={{
+
 Compiled with warnings.
 
 [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
+  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 134:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 140:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 140:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
+src/components/admin/SafetyManagement.tsx
+  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
+  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 140:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 140:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-  Line 147:20:  'setMapReady' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-  Line 147:20:  'setMapReady' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-  Line 147:20:  'setMapReady' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-  Line 147:20:  'setMapReady' is assigned a value but never used    @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-  Line 147:10:  'mapReady' is assigned a value but never used       @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-Compiling...
-No issues found.
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
-No issues found.
-Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/lifeguard/ShiftManagement.tsx
-  Line 29:17:   'MonthIcon' is defined but never used               @typescript-eslint/no-unused-vars
-  Line 37:11:   'StopIcon' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 41:71:   'startOfMonth' is defined but never used            @typescript-eslint/no-unused-vars
-  Line 41:85:   'endOfMonth' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 41:178:  'eachWeekOfInterval' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 41:198:  'isWithinInterval' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 178:9:   'navigateMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/lifeguard/EmergencyAlerts.tsx
-  Line 13:3:   'Tooltip' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 22:3:   'TextField' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 23:3:   'Divider' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 29:3:   'ListItemSecondaryAction' is defined but never used  @typescript-eslint/no-unused-vars
-  Line 38:17:  'ViewIcon' is defined but never used                 @typescript-eslint/no-unused-vars
-  Line 41:17:  'LocationIcon' is defined but never used             @typescript-eslint/no-unused-vars
-
-src/components/lifeguard/ShiftManagement.tsx
-  Line 29:17:   'MonthIcon' is defined but never used               @typescript-eslint/no-unused-vars
-  Line 37:11:   'StopIcon' is defined but never used                @typescript-eslint/no-unused-vars
-  Line 41:71:   'startOfMonth' is defined but never used            @typescript-eslint/no-unused-vars
-  Line 41:85:   'endOfMonth' is defined but never used              @typescript-eslint/no-unused-vars
-  Line 41:178:  'eachWeekOfInterval' is defined but never used      @typescript-eslint/no-unused-vars
-  Line 41:198:  'isWithinInterval' is defined but never used        @typescript-eslint/no-unused-vars
-  Line 178:9:   'navigateMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
-
-src/components/map/BeachMap.tsx
-  Line 1:28:    'useRef' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 3:16:    'LatLng' is defined but never used                  @typescript-eslint/no-unused-vars
-  Line 5:27:    'Paper' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 5:40:    'Alert' is defined but never used                   @typescript-eslint/no-unused-vars
-  Line 13:5:    'DefaultIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 36:7:    'lifeguardIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 38:7:    'warningIcon' is assigned a value but never used    @typescript-eslint/no-unused-vars
-  Line 145:19:  'setMapZoom' is assigned a value but never used     @typescript-eslint/no-unused-vars
-
-webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
 No issues found.

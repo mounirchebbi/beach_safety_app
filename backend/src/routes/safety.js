@@ -14,7 +14,7 @@ const {
   checkAndUpdateExpiredFlags,
   initializeAllCenterFlags,
   getAllCentersFlagStatus,
-  forceUpdateAllCenterFlags
+  forceUpdateAllCenterFlags,
 } = require('../controllers/safetyController');
 
 // Get current safety flag for a center (Center Admin, System Admin)

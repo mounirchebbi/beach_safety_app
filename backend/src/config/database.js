@@ -70,10 +70,31 @@ const closePool = async () => {
   logger.info('Database pool closed');
 };
 
+// Initialize all tables
+const initializeTables = async () => {
+  try {
+    await createUsersTable();
+    await createCentersTable();
+    await createLifeguardsTable();
+    await createShiftsTable();
+    await createWeatherDataTable();
+    await createAlertsTable();
+    await createReportsTable();
+    await createSafetyZonesTable();
+    await createEscalationsTable();
+    await createInterCenterSupportTable();
+    logger.info('All database tables initialized successfully');
+  } catch (error) {
+    logger.error('Error initializing database tables:', error);
+    throw error;
+  }
+};
+
 module.exports = {
   pool,
   query,
   getClient,
   testConnection,
-  closePool
+  closePool,
+  initializeTables
 }; 

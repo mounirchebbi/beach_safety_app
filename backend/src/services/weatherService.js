@@ -369,11 +369,12 @@ class WeatherService {
   }
 
   // Automatically determine safety flag status based on weather conditions
-  determineSafetyFlag(weatherData) {
+  async determineSafetyFlag(weatherData, centerId) {
     const alerts = [];
     
     // Log weather data used for flag determination
     logger.info('Weather data for flag determination', {
+      centerId,
       visibility: weatherData.visibility,
       temperature: weatherData.temperature,
       wind_speed: weatherData.wind_speed,
@@ -382,88 +383,102 @@ class WeatherService {
       weather_condition: weatherData.weather_condition
     });
     
-    // Check wave height
-    if (weatherData.wave_height && weatherData.wave_height > 3) {
-      alerts.push({
-        type: 'wave',
-        severity: 'high',
-        description: `Dangerous wave conditions. Wave height: ${weatherData.wave_height}m`
-      });
-    }
-    
-    // Check wind speed
-    if (weatherData.wind_speed && weatherData.wind_speed > 25) {
-      alerts.push({
-        type: 'wind',
-        severity: 'high',
-        description: `Strong winds detected. Wind speed: ${weatherData.wind_speed} km/h`
-      });
-    }
-    
-    // Check visibility
-    if (weatherData.visibility && weatherData.visibility < 10) {
+    // Check visibility (most critical)
+    if (weatherData.visibility < 5) {
       alerts.push({
         type: 'visibility',
         severity: 'critical',
-        description: `Poor visibility conditions. Visibility: ${weatherData.visibility}km`
+        message: 'Poor visibility - beach closed',
+        flag_status: 'black'
+      });
+    } else if (weatherData.visibility < 10) {
+      alerts.push({
+        type: 'visibility',
+        severity: 'high',
+        message: 'Reduced visibility - caution advised',
+        flag_status: 'red'
       });
     }
-    
+
+    // Check wave height
+    if (weatherData.wave_height > 3) {
+      alerts.push({
+        type: 'wave_height',
+        severity: 'high',
+        message: 'Dangerous wave conditions - swimming prohibited',
+        flag_status: 'red'
+      });
+    } else if (weatherData.wave_height > 1.5) {
+      alerts.push({
+        type: 'wave_height',
+        severity: 'medium',
+        message: 'Moderate wave conditions - caution advised',
+        flag_status: 'yellow'
+      });
+    }
+
+    // Check wind speed
+    if (weatherData.wind_speed > 25) {
+      alerts.push({
+        type: 'wind_speed',
+        severity: 'high',
+        message: 'Strong winds - dangerous conditions',
+        flag_status: 'red'
+      });
+    } else if (weatherData.wind_speed > 15) {
+      alerts.push({
+        type: 'wind_speed',
+        severity: 'medium',
+        message: 'Moderate winds - caution advised',
+        flag_status: 'yellow'
+      });
+    }
+
     // Check precipitation
-    if (weatherData.precipitation && weatherData.precipitation > 10) {
+    if (weatherData.precipitation > 10) {
       alerts.push({
-        type: 'rain',
+        type: 'precipitation',
         severity: 'medium',
-        description: `Heavy rainfall detected. Precipitation: ${weatherData.precipitation}mm`
+        message: 'Heavy rainfall - caution advised',
+        flag_status: 'yellow'
       });
     }
-    
+
     // Check temperature
-    if (weatherData.temperature && weatherData.temperature > 35) {
+    if (weatherData.temperature > 35) {
       alerts.push({
-        type: 'heat',
+        type: 'temperature',
         severity: 'medium',
-        description: `High temperature detected. Temperature: ${weatherData.temperature}°C`
+        message: 'High temperature - heat stress risk',
+        flag_status: 'yellow'
+      });
+    } else if (weatherData.temperature < 10) {
+      alerts.push({
+        type: 'temperature',
+        severity: 'medium',
+        message: 'Low temperature - hypothermia risk',
+        flag_status: 'yellow'
       });
     }
 
-    // Log alerts generated
-    logger.info('Alerts generated for flag determination', {
-      total_alerts: alerts.length,
-      alerts: alerts.map(alert => ({
-        type: alert.type,
-        severity: alert.severity,
-        description: alert.description
-      }))
-    });
-
-    // Determine flag status based on alerts
+    // Determine overall flag status based on highest severity alert
     let flagStatus = 'green';
-    let reason = 'Safe conditions for beach activities';
-    
+    let reason = 'Safe conditions';
+
     if (alerts.length > 0) {
-      // Find the highest severity alert
-      const criticalAlerts = alerts.filter(a => a.severity === 'critical');
-      const highAlerts = alerts.filter(a => a.severity === 'high');
-      const mediumAlerts = alerts.filter(a => a.severity === 'medium');
+      // Sort alerts by severity (critical > high > medium > low)
+      const severityOrder = { 'critical': 4, 'high': 3, 'medium': 2, 'low': 1 };
+      alerts.sort((a, b) => severityOrder[b.severity] - severityOrder[a.severity]);
       
-      if (criticalAlerts.length > 0) {
-        flagStatus = 'black';
-        reason = `CRITICAL: ${criticalAlerts[0].description}`;
-      } else if (highAlerts.length > 0) {
-        flagStatus = 'red';
-        reason = `DANGEROUS: ${highAlerts[0].description}`;
-      } else if (mediumAlerts.length > 0) {
-        flagStatus = 'yellow';
-        reason = `CAUTION: ${mediumAlerts[0].description}`;
-      }
+      const highestSeverityAlert = alerts[0];
+      flagStatus = highestSeverityAlert.flag_status;
+      reason = highestSeverityAlert.message;
     }
 
     return {
       flag_status: flagStatus,
       reason: reason,
-      alerts: alerts,
-      weather_conditions: weatherData
+      alerts: alerts
     };
   }
 
@@ -474,7 +489,7 @@ class WeatherService {
       const weatherData = await this.getCurrentWeather(centerId);
       
       // Determine appropriate flag status
-      const flagDecision = this.determineSafetyFlag(weatherData);
+      const flagDecision = await this.determineSafetyFlag(weatherData, centerId);
       
       // Get current flag to compare
       const currentFlagResult = await query(
@@ -529,6 +544,13 @@ class WeatherService {
         const systemUserId = systemUserResult.rows[0]?.id || '83ba790b-dd5c-4c98-ae16-744cc83d39c2';
         
         // Set the new flag (always use system admin ID for automatic updates)
+        // For automatic flags, expire just before the next 15-minute update cycle
+        // For manual flags, maintain 2-hour expiration
+        const isAutomaticUpdate = !userId || userId === systemUserId;
+        const expirationTime = isAutomaticUpdate 
+          ? new Date(Date.now() + 14 * 60 * 1000) // 14 minutes for automatic flags
+          : new Date(Date.now() + 2 * 60 * 60 * 1000); // 2 hours for manual flags
+        
         const result = await query(
           `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
            VALUES ($1, $2, $3, $4, $5)
@@ -538,7 +560,7 @@ class WeatherService {
             flagDecision.flag_status, 
             flagDecision.reason, 
             systemUserId, // Always use system admin for automatic updates
-            new Date(Date.now() + 2 * 60 * 60 * 1000) // Expires in 2 hours
+            expirationTime
           ]
         );
 

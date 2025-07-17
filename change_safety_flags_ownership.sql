@@ -1,0 +1,1 @@
+ALTER TABLE safety_flags OWNER TO myapp_user; 

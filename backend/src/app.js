@@ -26,6 +26,7 @@ const interCenterSupportRoutes = require('./routes/interCenterSupport');
 
 // Import services
 const { initializeSocket, emitWeatherUpdatesToAllCenters } = require('./services/socketService');
+const weatherService = require('./services/weatherService');
 
 const app = express();
 const server = http.createServer(app);
@@ -113,9 +114,104 @@ const scheduleWeatherUpdates = () => {
   }, WEATHER_UPDATE_INTERVAL);
 };
 
+// Schedule safety flag auto-updates every 15 minutes
+const SAFETY_FLAG_UPDATE_INTERVAL = 15 * 60 * 1000; // 15 minutes
+
+const scheduleSafetyFlagUpdates = () => {
+  setInterval(async () => {
+    try {
+      logger.info('Starting scheduled safety flag auto-update cycle');
+      
+      // Get all active centers
+      const { query } = require('./config/database');
+      
+      const centersResult = await query(
+        'SELECT id, name FROM centers WHERE is_active = true'
+      );
+
+      const updatePromises = centersResult.rows.map(async (center) => {
+        try {
+          const result = await weatherService.updateSafetyFlagAutomatically(center.id);
+          if (result.updated) {
+            logger.info('Safety flag auto-updated for center', { 
+              centerId: center.id, 
+              centerName: center.name,
+              oldFlag: result.old_flag,
+              newFlag: result.new_flag,
+              reason: result.update_reason
+            });
+          } else {
+            logger.info('Safety flag auto-update check completed for center', { 
+              centerId: center.id, 
+              centerName: center.name,
+              currentFlag: result.current_flag,
+              reason: result.update_reason
+            });
+          }
+        } catch (error) {
+          logger.error('Failed to auto-update safety flag for center', { 
+            centerId: center.id, 
+            centerName: center.name, 
+            error: error.message 
+          });
+        }
+      });
+
+      await Promise.allSettled(updatePromises);
+      logger.info('Scheduled safety flag auto-update cycle completed');
+    } catch (error) {
+      logger.error('Error in scheduled safety flag auto-update cycle:', error);
+    }
+  }, SAFETY_FLAG_UPDATE_INTERVAL);
+};
+
 // Start weather update scheduler
 scheduleWeatherUpdates();
 logger.info('Weather update scheduler started (every 15 minutes)');
+
+// Immediately trigger safety flag auto-update for all centers at startup
+(async () => {
+  try {
+    logger.info('Triggering initial safety flag auto-update for all centers at startup');
+    const { query } = require('./config/database');
+    const centersResult = await query('SELECT id, name FROM centers WHERE is_active = true');
+    const updatePromises = centersResult.rows.map(async (center) => {
+      try {
+        const result = await weatherService.updateSafetyFlagAutomatically(center.id);
+        if (result.updated) {
+          logger.info('Safety flag auto-updated for center (startup)', {
+            centerId: center.id,
+            centerName: center.name,
+            oldFlag: result.old_flag,
+            newFlag: result.new_flag,
+            reason: result.update_reason
+          });
+        } else {
+          logger.info('Safety flag auto-update check completed for center (startup)', {
+            centerId: center.id,
+            centerName: center.name,
+            currentFlag: result.current_flag,
+            reason: result.update_reason
+          });
+        }
+      } catch (error) {
+        logger.error('Failed to auto-update safety flag for center (startup)', {
+          centerId: center.id,
+          centerName: center.name,
+          error: error.message
+        });
+      }
+    });
+    await Promise.allSettled(updatePromises);
+    logger.info('Initial safety flag auto-update for all centers completed');
+  } catch (error) {
+    logger.error('Error in initial safety flag auto-update at startup:', error);
+  }
+})();
+
+// Start safety flag auto-update scheduler
+scheduleSafetyFlagUpdates();
+logger.info('Safety flag auto-update scheduler started (every 15 minutes)');
 
 // Graceful shutdown
 process.on('SIGTERM', () => {

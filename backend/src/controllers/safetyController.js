@@ -116,6 +116,31 @@ const setSafetyFlag = async (req, res) => {
       return res.status(404).json({ error: 'Center not found' });
     }
 
+    // Validate expiration date if provided
+    let expirationDate;
+    if (expires_at) {
+      expirationDate = new Date(expires_at);
+      const now = new Date();
+      const maxExpiration = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+      
+      if (expirationDate <= now) {
+        return res.status(400).json({ error: 'Expiration date must be in the future' });
+      }
+      
+      if (expirationDate > maxExpiration) {
+        return res.status(400).json({ error: 'Expiration date cannot be more than 24 hours from now' });
+      }
+    } else {
+      // Set default 2-hour expiration for manual flags if not provided
+      expirationDate = new Date(Date.now() + 2 * 60 * 60 * 1000);
+    }
+    
+    // Expire all previous flags for this center immediately
+    await query(
+      `UPDATE safety_flags SET expires_at = CURRENT_TIMESTAMP WHERE center_id = $1 AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)`,
+      [centerId]
+    );
+    
     // Insert new safety flag
     const result = await query(
       `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
@@ -127,7 +152,7 @@ const setSafetyFlag = async (req, res) => {
          set_at,
          expires_at,
          created_at`,
-      [centerId, flag_status, reason, userId, expires_at]
+      [centerId, flag_status, reason, userId, expirationDate]
     );
 
     const newFlag = result.rows[0];
@@ -152,7 +177,8 @@ const setSafetyFlag = async (req, res) => {
       centerId, 
       flagStatus: flag_status, 
       setBy: userId,
-      reason 
+      reason,
+      expiresAt: expirationDate
     });
 
     res.status(201).json(response);
@@ -182,7 +208,7 @@ const updateSafetyFlag = async (req, res) => {
 
     // Get the flag and verify it exists
     const flagResult = await query(
-      'SELECT sf.*, c.id as center_id FROM safety_flags sf JOIN centers c ON sf.center_id = c.id WHERE sf.id = $1',
+      `SELECT sf.*, c.id as center_id FROM safety_flags sf JOIN centers c ON sf.center_id = c.id WHERE sf.id = $1`,
       [flagId]
     );
 
@@ -192,6 +218,31 @@ const updateSafetyFlag = async (req, res) => {
 
     const flag = flagResult.rows[0];
 
+    // Validate expiration date if provided
+    let expirationDate;
+    if (expires_at) {
+      expirationDate = new Date(expires_at);
+      const now = new Date();
+      const maxExpiration = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+      
+      if (expirationDate <= now) {
+        return res.status(400).json({ error: 'Expiration date must be in the future' });
+      }
+      
+      if (expirationDate > maxExpiration) {
+        return res.status(400).json({ error: 'Expiration date cannot be more than 24 hours from now' });
+      }
+    } else {
+      // Set default 2-hour expiration for manual flags if not provided
+      expirationDate = new Date(Date.now() + 2 * 60 * 60 * 1000);
+    }
+    
+    // Expire all previous flags for this center immediately
+    await query(
+      `UPDATE safety_flags SET expires_at = CURRENT_TIMESTAMP WHERE center_id = $1 AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)`,
+      [flag.center_id]
+    );
+    
     // Update the safety flag
     const result = await query(
       `UPDATE safety_flags 
@@ -204,7 +255,7 @@ const updateSafetyFlag = async (req, res) => {
          set_at,
          expires_at,
          created_at`,
-      [flag_status, reason, expires_at, flagId]
+      [flag_status, reason, expirationDate, flagId]
     );
 
     const updatedFlag = result.rows[0];
@@ -230,7 +281,8 @@ const updateSafetyFlag = async (req, res) => {
       centerId: flag.center_id,
       flagStatus: flag_status, 
       setBy: userId,
-      reason 
+      reason,
+      expiresAt: expirationDate
     });
 
     res.json(response);
@@ -454,6 +506,31 @@ const switchToManualMode = async (req, res) => {
       return res.status(404).json({ error: 'Center not found' });
     }
 
+    // Validate expiration date if provided
+    let expirationDate;
+    if (expires_at) {
+      expirationDate = new Date(expires_at);
+      const now = new Date();
+      const maxExpiration = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+      
+      if (expirationDate <= now) {
+        return res.status(400).json({ error: 'Expiration date must be in the future' });
+      }
+      
+      if (expirationDate > maxExpiration) {
+        return res.status(400).json({ error: 'Expiration date cannot be more than 24 hours from now' });
+      }
+    } else {
+      // Set default 2-hour expiration for manual flags if not provided
+      expirationDate = new Date(Date.now() + 2 * 60 * 60 * 1000);
+    }
+    
+    // Expire all previous flags for this center immediately
+    await query(
+      `UPDATE safety_flags SET expires_at = CURRENT_TIMESTAMP WHERE center_id = $1 AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP)`,
+      [centerId]
+    );
+    
     // Set manual flag (this overrides automatic mode)
     const result = await query(
       `INSERT INTO safety_flags (center_id, flag_status, reason, set_by, expires_at)
@@ -465,7 +542,7 @@ const switchToManualMode = async (req, res) => {
          set_at,
          expires_at,
          created_at`,
-      [centerId, flag_status, reason, userId, expires_at]
+      [centerId, flag_status, reason, userId, expirationDate]
     );
 
     const newFlag = result.rows[0];
@@ -490,7 +567,8 @@ const switchToManualMode = async (req, res) => {
       centerId, 
       flagStatus: flag_status, 
       setBy: userId,
-      reason 
+      reason,
+      expiresAt: expirationDate
     });
 
     res.json(response);
