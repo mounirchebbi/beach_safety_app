@@ -24,7 +24,7 @@ const getCurrentSafetyFlag = async (req, res) => {
       JOIN users u ON sf.set_by = u.id
       WHERE sf.center_id = $1
       ORDER BY sf.set_at DESC
-      LIMIT 1`,
+      LIMIT1`,
       [centerId]
     );
 

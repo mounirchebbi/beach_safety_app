@@ -2,9 +2,9 @@
 > frontend@0.1.0 start
 > react-scripts start
 
-(node:830833) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:1068282) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:830833) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:1068282) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -18,132 +18,1356 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-ERROR in src/components/admin/SafetyManagement.tsx:526:66
-TS2322: Type 'Date | null' is not assignable to type 'Date | undefined'.
-  Type 'null' is not assignable to type 'Date | undefined'.
-    524 |               label="Expiration Date & Time (Optional)"
-    525 |               value={formData.expires_at}
-  > 526 |               onChange={(newValue) => setFormData({ ...formData, expires_at: newValue })}
-        |                                                                  ^^^^^^^^^^
-    527 |               minDateTime={new Date()}
-    528 |               maxDateTime={new Date(Date.now() + 24* 60 *60*1000)} // 24 hours from now
-    529 |               slotProps={{
-
+No issues found.
 Compiling...
 Compiled with warnings.
 
 [eslint] 
-src/components/admin/SafetyManagement.tsx
-  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
-  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
-  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
-  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
-  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
-  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
-  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
-  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
-  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
-  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 742:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/components/admin/SafetyManagement.tsx
-  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
-  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
-  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
-  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
-  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
-  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
-  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
-  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
-  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
-  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 742:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
+No issues found.
 Compiling...
-ERROR in src/components/admin/SafetyManagement.tsx:526:66
-TS2322: Type 'Date | null' is not assignable to type 'Date | undefined'.
-  Type 'null' is not assignable to type 'Date | undefined'.
-    524 |               label="Expiration Date & Time (Optional)"
-    525 |               value={formData.expires_at}
-  > 526 |               onChange={(newValue) => setFormData({ ...formData, expires_at: newValue || undefined })}
-        |                                                                  ^^^^^^^^^^
-    527 |               minDateTime={new Date()}
-    528 |               maxDateTime={new Date(Date.now() + 24* 60 *60*1000)} // 24 hours from now
-    529 |               slotProps={{
-
 Compiled with warnings.
 
 [eslint] 
-src/components/admin/SafetyManagement.tsx
-  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
-  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
-  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
-  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
-  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
-  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
-  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
-  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
-  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
-  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 WARNING in [eslint] 
-src/components/admin/SafetyManagement.tsx
-  Line 29:3:   'Divider' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
-  Line 31:3:   'Fab' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
-  Line 35:3:   'Badge' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
-  Line 37:3:   'List' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
-  Line 38:3:   'ListItem' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 39:3:   'ListItemText' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 40:3:   'ListItemIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 41:3:   'Accordion' is defined but never used                                                                               @typescript-eslint/no-unused-vars
-  Line 42:3:   'AccordionSummary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 43:3:   'AccordionDetails' is defined but never used                                                                        @typescript-eslint/no-unused-vars
-  Line 50:14:  'WarningIcon' is defined but never used                                                                             @typescript-eslint/no-unused-vars
-  Line 51:18:  'CheckCircleIcon' is defined but never used                                                                         @typescript-eslint/no-unused-vars
-  Line 52:13:  'CancelIcon' is defined but never used                                                                              @typescript-eslint/no-unused-vars
-  Line 53:15:  'ScheduleIcon' is defined but never used                                                                            @typescript-eslint/no-unused-vars
-  Line 54:11:  'InfoIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 56:11:  'SaveIcon' is defined but never used                                                                                @typescript-eslint/no-unused-vars
-  Line 57:17:  'ExpandMoreIcon' is defined but never used                                                                          @typescript-eslint/no-unused-vars
-  Line 108:6:  React Hook useEffect has a missing dependency: 'loadSafetyFlags'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  Line 164:9:  'handleAutoUpdate' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
 
 webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 401:39:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 402:22:  Unexpected mix of '&&' and '||'. Use parentheses to clarify the intended order of operations                        no-mixed-operators
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 749:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 760:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 760:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 760:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 760:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 772:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 772:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:686:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    684 |             zoomControl={true}
+    685 |             scrollWheelZoom={true}
+  > 686 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    687 |               // Ensure map is properly initialized
+    688 |               try {
+    689 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:686:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    684 |             zoomControl={true}
+    685 |             scrollWheelZoom={true}
+  > 686 |             whenCreated={(map) => {
+        |                           ^^^
+    687 |               // Ensure map is properly initialized
+    688 |               try {
+    689 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 772:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 95:6:    React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 772:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:686:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    684 |             zoomControl={true}
+    685 |             scrollWheelZoom={true}
+  > 686 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    687 |               // Ensure map is properly initialized
+    688 |               try {
+    689 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:686:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    684 |             zoomControl={true}
+    685 |             scrollWheelZoom={true}
+  > 686 |             whenCreated={(map) => {
+        |                           ^^^
+    687 |               // Ensure map is properly initialized
+    688 |               try {
+    689 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 779:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 779:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 779:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 779:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 790:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 790:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 790:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 790:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 801:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 801:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 801:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 801:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:693:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:693:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    691 |             zoomControl={true}
+    692 |             scrollWheelZoom={true}
+  > 693 |             whenCreated={(map) => {
+        |                           ^^^
+    694 |               // Ensure map is properly initialized
+    695 |               try {
+    696 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:698:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:698:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |                           ^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:698:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:698:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |                           ^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 1:38:    'Component' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:49:    'ErrorInfo' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:60:    'ReactNode' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 1:38:    'Component' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:49:    'ErrorInfo' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:60:    'ReactNode' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:698:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:698:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |                           ^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 1:38:    'Component' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:49:    'ErrorInfo' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:60:    'ReactNode' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 1:38:    'Component' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:49:    'ErrorInfo' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 1:60:    'ReactNode' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 102:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 806:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:698:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:698:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    696 |             zoomControl={true}
+    697 |             scrollWheelZoom={true}
+  > 698 |             whenCreated={(map) => {
+        |                           ^^^
+    699 |               // Ensure map is properly initialized
+    700 |               try {
+    701 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 54:7:    'MapErrorBoundary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 843:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 54:7:    'MapErrorBoundary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 843:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:735:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    733 |             zoomControl={true}
+    734 |             scrollWheelZoom={true}
+  > 735 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    736 |               // Ensure map is properly initialized
+    737 |               try {
+    738 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:735:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    733 |             zoomControl={true}
+    734 |             scrollWheelZoom={true}
+  > 735 |             whenCreated={(map) => {
+        |                           ^^^
+    736 |               // Ensure map is properly initialized
+    737 |               try {
+    738 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 54:7:    'MapErrorBoundary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 843:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 54:7:    'MapErrorBoundary' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 843:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:735:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    733 |             zoomControl={true}
+    734 |             scrollWheelZoom={true}
+  > 735 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    736 |               // Ensure map is properly initialized
+    737 |               try {
+    738 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:735:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    733 |             zoomControl={true}
+    734 |             scrollWheelZoom={true}
+  > 735 |             whenCreated={(map) => {
+        |                           ^^^
+    736 |               // Ensure map is properly initialized
+    737 |               try {
+    738 |                 map.invalidateSize();
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+Syntax error: JSX element 'MapErrorBoundary' has no corresponding closing tag (723:9)
+ERROR in ./src/components/public/PublicDashboard.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/moon/Holberton/Beach_Safety_App/frontend/src/components/public/PublicDashboard.tsx: Expected corresponding JSX closing tag for <MapErrorBoundary>. (1375:6)
+
+  1373 |           />
+  1374 |         </Box>
+> 1375 |       </Box>
+       |       ^
+  1376 |
+  1377 |       {/* How to Use the App Instructions (below the map) */}
+  1378 |       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 4, mb: 2 }}>
+    at constructor (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:363:19)
+    at TypeScriptParserMixin.raise (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:6609:19)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4739:16)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4710:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4710:32)
+    at TypeScriptParserMixin.jsxParseElement (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4761:17)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4771:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11012:23)
+    at TypeScriptParserMixin.parseUpdate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10997:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10977:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9794:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10830:61)
+    at TypeScriptParserMixin.parseExprOps (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10835:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10812:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10765:21)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9732:39
+    at TypeScriptParserMixin.tryParse (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:6918:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9732:18)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10734:39
+    at TypeScriptParserMixin.allowInAnd (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12361:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10734:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11608:28)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11262:23)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4776:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11012:23)
+    at TypeScriptParserMixin.parseUpdate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10997:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10977:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9794:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10830:61)
+    at TypeScriptParserMixin.parseExprOps (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10835:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10812:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10765:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9743:20)
+    at TypeScriptParserMixin.parseExpressionBase (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10718:23)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10714:39
+    at TypeScriptParserMixin.allowInAnd (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12356:16)
+    at TypeScriptParserMixin.parseExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10714:17)
+    at TypeScriptParserMixin.parseReturnStatement (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13061:28)
+    at TypeScriptParserMixin.parseStatementContent (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12716:21)
+    at TypeScriptParserMixin.parseStatementContent (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9469:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12685:17)
+    at TypeScriptParserMixin.parseStatementListItem (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12665:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13235:61)
+    at TypeScriptParserMixin.parseBlockBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13228:10)
+    at TypeScriptParserMixin.parseBlock (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13216:10)
+    at TypeScriptParserMixin.parseFunctionBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12035:24)
+    at TypeScriptParserMixin.parseArrowExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12010:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11620:12)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11262:23)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4776:20)
+
+ERROR in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 723:9:  Parsing error: JSX element 'MapErrorBoundary' has no corresponding closing tag
+
+webpack compiled with 2 errors
+Compiling...
 Files successfully emitted, waiting for typecheck results...
 Issues checking in progress...
+ERROR in src/components/public/PublicDashboard.tsx:723:10
+TS17008: JSX element 'MapErrorBoundary' has no corresponding closing tag.
+    721 |       <Box sx={{ position: 'relative', height: 'calc(100vh - 72px)', width: '100vw' }}>
+    722 |         {/* Map Container */}
+  > 723 |         <MapErrorBoundary>
+        |          ^^^^^^^^^^^^^^^^
+    724 |           <Box 
+    725 |             sx={{ height: '100%', width: '100%' }}
+    726 |             onError={(error) => {
+
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:736:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |                           ^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+Failed to compile.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+Syntax error: JSX element 'MapErrorBoundary' has no corresponding closing tag (723:9)
+ERROR in ./src/components/public/PublicDashboard.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/moon/Holberton/Beach_Safety_App/frontend/src/components/public/PublicDashboard.tsx: Expected corresponding JSX closing tag for <MapErrorBoundary>. (1375:6)
+
+  1373 |           />
+  1374 |         </Box>
+> 1375 |       </Box>
+       |       ^
+  1376 |
+  1377 |       {/* How to Use the App Instructions (below the map) */}
+  1378 |       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 4, mb: 2 }}>
+    at constructor (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:363:19)
+    at TypeScriptParserMixin.raise (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:6609:19)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4739:16)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4710:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4710:32)
+    at TypeScriptParserMixin.jsxParseElement (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4761:17)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4771:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11012:23)
+    at TypeScriptParserMixin.parseUpdate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10997:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10977:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9794:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10830:61)
+    at TypeScriptParserMixin.parseExprOps (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10835:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10812:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10765:21)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9732:39
+    at TypeScriptParserMixin.tryParse (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:6918:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9732:18)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10734:39
+    at TypeScriptParserMixin.allowInAnd (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12361:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10734:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11608:28)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11262:23)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4776:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11012:23)
+    at TypeScriptParserMixin.parseUpdate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10997:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10977:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9794:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10830:61)
+    at TypeScriptParserMixin.parseExprOps (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10835:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10812:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10765:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9743:20)
+    at TypeScriptParserMixin.parseExpressionBase (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10718:23)
+    at /home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10714:39
+    at TypeScriptParserMixin.allowInAnd (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12356:16)
+    at TypeScriptParserMixin.parseExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:10714:17)
+    at TypeScriptParserMixin.parseReturnStatement (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13061:28)
+    at TypeScriptParserMixin.parseStatementContent (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12716:21)
+    at TypeScriptParserMixin.parseStatementContent (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:9469:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12685:17)
+    at TypeScriptParserMixin.parseStatementListItem (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12665:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13235:61)
+    at TypeScriptParserMixin.parseBlockBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13228:10)
+    at TypeScriptParserMixin.parseBlock (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:13216:10)
+    at TypeScriptParserMixin.parseFunctionBody (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12035:24)
+    at TypeScriptParserMixin.parseArrowExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:12010:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11620:12)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:11262:23)
+    at TypeScriptParserMixin.parseExprAtom (/home/moon/Holberton/Beach_Safety_App/frontend/node_modules/@babel/parser/lib/index.js:4776:20)
+
+ERROR in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 723:9:  Parsing error: JSX element 'MapErrorBoundary' has no corresponding closing tag
+
+webpack compiled with 2 errors
+ERROR in src/components/public/PublicDashboard.tsx:723:10
+TS17008: JSX element 'MapErrorBoundary' has no corresponding closing tag.
+    721 |       <Box sx={{ position: 'relative', height: 'calc(100vh - 72px)', width: '100vw' }}>
+    722 |         {/* Map Container */}
+  > 723 |         <MapErrorBoundary>
+        |          ^^^^^^^^^^^^^^^^
+    724 |           <Box 
+    725 |             sx={{ height: '100%', width: '100%' }}
+    726 |             onError={(error) => {
+
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:736:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |                           ^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 844:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 844:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:736:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |                           ^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 844:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 844:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '{ children: (Element | Element[] | null)[]; center: [number, number]; zoom: number; style: { height: string; width: string; }; zoomControl: true; scrollWheelZoom: true; whenCreated: (map: any) => void; whenReady: () => void; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'.
+  Property 'whenCreated' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<Map>'. Did you mean 'whenReady'?
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |             ^^^^^^^^^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+ERROR in src/components/public/PublicDashboard.tsx:736:27
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenCreated={(map) => {
+        |                           ^^^
+    737 |               // Ensure map is properly initialized
+    738 |               try {
+    739 |                 map.invalidateSize();
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 841:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 841:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '(map: any) => void' is not assignable to type '() => void'.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenReady={(map) => {
+        |             ^^^^^^^^^
+    737 |               // Map is ready
+    738 |               console.log('Map is ready');
+    739 |               try {
+
+ERROR in src/components/public/PublicDashboard.tsx:736:25
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenReady={(map) => {
+        |                         ^^^
+    737 |               // Map is ready
+    738 |               console.log('Map is ready');
+    739 |               try {
+
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 841:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 841:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/public/PublicDashboard.tsx:736:13
+TS2322: Type '(map: any) => void' is not assignable to type '() => void'.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenReady={(map) => {
+        |             ^^^^^^^^^
+    737 |               // Map is ready
+    738 |               console.log('Map is ready');
+    739 |               try {
+
+ERROR in src/components/public/PublicDashboard.tsx:736:25
+TS7006: Parameter 'map' implicitly has an 'any' type.
+    734 |             zoomControl={true}
+    735 |             scrollWheelZoom={true}
+  > 736 |             whenReady={(map) => {
+        |                         ^^^
+    737 |               // Map is ready
+    738 |               console.log('Map is ready');
+    739 |               try {
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 836:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 836:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+No issues found.
+Compiled with warnings.
+
+[eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 836:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/public/PublicDashboard.tsx
+  Line 5:3:     'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 8:3:     'Grid' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  Line 16:3:    'Warning' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 17:3:    'CheckCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 19:3:    'Security' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 139:6:   React Hook useEffect has a missing dependency: 'getUserLocation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  Line 836:21:  'lifeguardCount' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
 No issues found.
