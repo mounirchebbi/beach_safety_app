@@ -139,6 +139,7 @@ class WeatherService {
       // Process and store forecasts (group by day)
       const dailyForecasts = this.groupForecastsByDay(forecasts);
       
+      // Store forecasts in database
       for (const [date, forecast] of Object.entries(dailyForecasts)) {
         const forecastData = {
           center_id: centerId,
@@ -155,13 +156,29 @@ class WeatherService {
         await this.storeForecast(forecastData);
       }
 
+      // Return forecast data in the format expected by frontend
+      const forecastArray = Object.entries(dailyForecasts).map(([date, forecast]) => ({
+        center_id: centerId,
+        temperature: (forecast.temp_min + forecast.temp_max) / 2, // Average temperature
+        wind_speed: forecast.wind_speed,
+        wind_direction: forecast.wind_direction,
+        weather_condition: forecast.condition,
+        precipitation: forecast.precipitation_prob / 100, // Convert percentage to decimal
+        humidity: forecast.humidity,
+        recorded_at: new Date(date),
+        // Add marine data simulation for forecast
+        wave_height: this.simulateMarineData(lat, lng).wave_height,
+        current_speed: this.simulateMarineData(lat, lng).current_speed,
+        visibility: 10000 // Default visibility for forecast
+      }));
+
       logger.info('Weather forecast fetched and stored', { 
         centerId, 
         centerName: name,
         forecastDays: Object.keys(dailyForecasts).length 
       });
 
-      return dailyForecasts;
+      return forecastArray;
     } catch (error) {
       logger.error('Error fetching weather forecast:', error.message);
       throw error;
