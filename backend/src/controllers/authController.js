@@ -362,8 +362,7 @@ const logout = asyncHandler(async (req, res) => {
 // @route   GET /api/v1/auth/users
 // @access  System Admin only
 const getAllUsers = asyncHandler(async (req, res) => {
-  const { page = 1, limit = 10, role, center_id, search } = req.query;
-  const offset = (page - 1) * limit;
+  const { role, center_id, search } = req.query;
 
   let queryText = `
     SELECT u.id, u.email, u.role, u.first_name, u.last_name, u.phone, u.center_id, u.is_active, u.created_at,
@@ -394,33 +393,20 @@ const getAllUsers = asyncHandler(async (req, res) => {
     queryParams.push(`%${search}%`);
   }
 
-  // Get total count
-  const countQuery = queryText.replace(/SELECT.*FROM/, 'SELECT COUNT(*) FROM');
-  const countResult = await query(countQuery, queryParams);
-  const totalCount = parseInt(countResult.rows[0].count);
-
-  // Get paginated results
+  // Remove pagination: no LIMIT or OFFSET
   queryText += ` ORDER BY 
     CASE u.role 
       WHEN 'system_admin' THEN 1 
       WHEN 'center_admin' THEN 2 
       WHEN 'lifeguard' THEN 3 
     END, 
-    u.created_at ASC 
-    LIMIT $${paramCount + 1} OFFSET $${paramCount + 2}`;
-  queryParams.push(limit, offset);
+    u.created_at ASC`;
 
   const result = await query(queryText, queryParams);
 
   res.json({
     success: true,
-    data: result.rows,
-    pagination: {
-      page: parseInt(page),
-      limit: parseInt(limit),
-      total: totalCount,
-      pages: Math.ceil(totalCount / limit)
-    }
+    data: result.rows
   });
 });
 
@@ -510,17 +496,17 @@ const createUser = asyncHandler(async (req, res) => {
   const saltRounds = 12;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
-  // Create user
+  // Revert: Do NOT require center_id for lifeguards, and do NOT set center_id in users table for lifeguards
+  // Insert user (center_id is optional, can be null)
   const result = await query(
     `INSERT INTO users (email, password_hash, role, first_name, last_name, phone, center_id)
      VALUES ($1, $2, $3, $4, $5, $6, $7)
      RETURNING id, email, role, first_name, last_name, phone, center_id, created_at`,
     [email, passwordHash, role, first_name, last_name, phone, processedCenterId]
   );
-
   const user = result.rows[0];
 
-  // If user is a lifeguard, create lifeguard record
+  // If user is a lifeguard and center_id is provided, create lifeguard record
   if (role === 'lifeguard' && processedCenterId) {
     await query(
       `INSERT INTO lifeguards (user_id, center_id, certification_level, certification_expiry)
@@ -529,11 +515,11 @@ const createUser = asyncHandler(async (req, res) => {
     );
   }
 
-  logger.info('User created by system admin', { 
-    userId: user.id, 
-    email: user.email, 
+  logger.info('User created by system admin', {
+    userId: user.id,
+    email: user.email,
     role: user.role,
-    createdBy: req.user.id 
+    createdBy: req.user.id
   });
 
   res.status(201).json({

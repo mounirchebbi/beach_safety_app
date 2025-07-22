@@ -176,12 +176,13 @@ const createLifeguard = asyncHandler(async (req, res) => {
   const client = await query('BEGIN');
 
   try {
-    // Create user
+    // --- PATCH: Set center_id in users table for new lifeguards ---
+    // Create user with center_id set
     const userResult = await query(
-      `INSERT INTO users (email, password_hash, role, first_name, last_name, phone)
-       VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING id, email, first_name, last_name, phone, role`,
-      [email, passwordHash, 'lifeguard', first_name, last_name, phone]
+      `INSERT INTO users (email, password_hash, role, first_name, last_name, phone, center_id)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING id, email, first_name, last_name, phone, role, center_id`,
+      [email, passwordHash, 'lifeguard', first_name, last_name, phone, centerId]
     );
 
     const userId = userResult.rows[0].id;
@@ -199,7 +200,7 @@ const createLifeguard = asyncHandler(async (req, res) => {
     // Get the complete lifeguard data
     const completeResult = await query(
       `SELECT l.id, l.certification_level, l.certification_expiry, l.emergency_contact, l.created_at, l.updated_at,
-              u.id as user_id, u.email, u.first_name, u.last_name, u.phone, u.is_active,
+              u.id as user_id, u.email, u.first_name, u.last_name, u.phone, u.is_active, u.center_id,
               c.id as center_id, c.name as center_name
        FROM lifeguards l
        JOIN users u ON u.id = l.user_id
