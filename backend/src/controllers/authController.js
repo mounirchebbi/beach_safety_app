@@ -4,6 +4,14 @@ const { query } = require('../config/database');
 const { logger } = require('../utils/logger');
 const { asyncHandler } = require('../middleware/errorHandler');
 
+// Helper: Log audit actions
+typeof logAuditAction === 'undefined' && (global.logAuditAction = async (action, entity_type, entity_id, performed_by, details = null) => {
+  await query(
+    'INSERT INTO audit_log (action, entity_type, entity_id, performed_by, details) VALUES ($1, $2, $3, $4, $5)',
+    [action, entity_type, entity_id, performed_by, details ? JSON.stringify(details) : null]
+  );
+});
+
 // Generate JWT token
 const generateToken = (userId) => {
   return jwt.sign(
@@ -608,48 +616,82 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete user (System Admin only)
+// @desc    Soft delete user (System Admin or Center Admin)
 // @route   DELETE /api/v1/auth/users/:id
-// @access  System Admin only
+// @access  System Admin or Center Admin
 const deleteUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  const requestingUser = req.user;
 
   // Check if user exists
   const existingUser = await query(
-    'SELECT id, email, role FROM users WHERE id = $1',
+    'SELECT id, email, role, center_id FROM users WHERE id = $1',
     [id]
   );
-
   if (existingUser.rows.length === 0) {
-    return res.status(404).json({
-      success: false,
-      message: 'User not found'
-    });
+    return res.status(404).json({ success: false, message: 'User not found' });
   }
+  const user = existingUser.rows[0];
 
   // Prevent system admin from deleting themselves
-  if (id === req.user.id) {
-    return res.status(400).json({
-      success: false,
-      message: 'Cannot delete your own account'
-    });
+  if (id === requestingUser.id) {
+    return res.status(400).json({ success: false, message: 'Cannot delete your own account' });
+  }
+
+  // Center Admin: can only delete users in their center
+  if (requestingUser.role === 'center_admin') {
+    if (user.center_id !== requestingUser.center_id) {
+      return res.status(403).json({ success: false, message: 'Cannot delete users outside your center' });
+    }
   }
 
   // Soft delete user
   await query(
-    'UPDATE users SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = $1',
+    'UPDATE users SET is_active = false, deleted_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = $1',
     [id]
   );
+  await global.logAuditAction('soft_delete', 'user', id, requestingUser.id, { email: user.email, role: user.role });
 
-  logger.info('User deactivated by system admin', { 
-    userId: id, 
-    deactivatedBy: req.user.id 
-  });
+  logger.info('User soft-deleted', { userId: id, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'User deactivated (soft deleted) successfully' });
+});
 
-  res.json({
-    success: true,
-    message: 'User deactivated successfully'
-  });
+// @desc    Restore user (System Admin only)
+// @route   POST /api/v1/auth/users/:id/restore
+// @access  System Admin only
+const restoreUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  if (requestingUser.role !== 'system_admin') {
+    return res.status(403).json({ success: false, message: 'Only system admin can restore users' });
+  }
+  const existingUser = await query('SELECT id, email, role FROM users WHERE id = $1', [id]);
+  if (existingUser.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'User not found' });
+  }
+  await query('UPDATE users SET is_active = true, deleted_at = NULL, updated_at = CURRENT_TIMESTAMP WHERE id = $1', [id]);
+  await global.logAuditAction('restore', 'user', id, requestingUser.id, { email: existingUser.rows[0].email, role: existingUser.rows[0].role });
+  logger.info('User restored', { userId: id, restoredBy: requestingUser.id });
+  res.json({ success: true, message: 'User restored successfully' });
+});
+
+// @desc    Hard delete user (System Admin only)
+// @route   DELETE /api/v1/auth/users/:id/hard
+// @access  System Admin only
+const hardDeleteUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  if (requestingUser.role !== 'system_admin') {
+    return res.status(403).json({ success: false, message: 'Only system admin can hard delete users' });
+  }
+  const existingUser = await query('SELECT id, email, role FROM users WHERE id = $1', [id]);
+  if (existingUser.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'User not found' });
+  }
+  await query('DELETE FROM users WHERE id = $1', [id]);
+  await global.logAuditAction('hard_delete', 'user', id, requestingUser.id, { email: existingUser.rows[0].email, role: existingUser.rows[0].role });
+  logger.info('User hard-deleted', { userId: id, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'User permanently deleted (hard delete)' });
 });
 
 // @desc    Reset user password (System Admin only)
@@ -711,5 +753,7 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  restoreUser,
+  hardDeleteUser,
   resetUserPassword
 }; 

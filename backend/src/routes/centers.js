@@ -8,6 +8,8 @@ const {
   createCenter,
   updateCenter,
   deleteCenter,
+  restoreCenter,
+  hardDeleteCenter,
   getCenterLifeguards,
   getCenterShifts,
   getCenterWeather,
@@ -87,5 +89,7 @@ router.put('/:id', verifyToken, requireCenterAdmin, requireOwnership('center'), 
 
 // DELETE /api/v1/centers/:id - Delete center (System Admin only)
 router.delete('/:id', verifyToken, requireSystemAdmin, asyncHandler(deleteCenter));
+router.post('/:id/restore', verifyToken, requireSystemAdmin, asyncHandler(restoreCenter));
+router.delete('/:id/hard', verifyToken, requireSystemAdmin, asyncHandler(hardDeleteCenter));
 
 module.exports = router; 

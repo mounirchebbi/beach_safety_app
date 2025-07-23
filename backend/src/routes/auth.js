@@ -13,6 +13,8 @@ const {
   createUser,
   updateUser,
   deleteUser,
+  restoreUser,
+  hardDeleteUser,
   resetUserPassword
 } = require('../controllers/authController');
 
@@ -181,7 +183,9 @@ router.get('/users', verifyToken, requireSystemAdmin, asyncHandler(getAllUsers))
 router.get('/users/:id', verifyToken, requireSystemAdmin, asyncHandler(getUserById));
 router.post('/users', verifyToken, requireSystemAdmin, validateUserCreation, asyncHandler(createUser));
 router.put('/users/:id', verifyToken, requireSystemAdmin, validateUserUpdate, asyncHandler(updateUser));
-router.delete('/users/:id', verifyToken, requireSystemAdmin, asyncHandler(deleteUser));
+router.delete('/users/:id', verifyToken, asyncHandler(deleteUser));
+router.post('/users/:id/restore', verifyToken, requireSystemAdmin, asyncHandler(restoreUser));
+router.delete('/users/:id/hard', verifyToken, requireSystemAdmin, asyncHandler(hardDeleteUser));
 router.post('/users/:id/reset-password', verifyToken, requireSystemAdmin, validatePasswordReset, asyncHandler(resetUserPassword));
 
 module.exports = router; 

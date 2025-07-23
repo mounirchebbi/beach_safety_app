@@ -3,6 +3,14 @@ const { logger } = require('../utils/logger');
 const { asyncHandler } = require('../middleware/errorHandler');
 const bcrypt = require('bcrypt');
 
+// Helper: Log audit actions
+typeof logAuditAction === 'undefined' && (global.logAuditAction = async (action, entity_type, entity_id, performed_by, details = null) => {
+  await query(
+    'INSERT INTO audit_log (action, entity_type, entity_id, performed_by, details) VALUES ($1, $2, $3, $4, $5)',
+    [action, entity_type, entity_id, performed_by, details ? JSON.stringify(details) : null]
+  );
+});
+
 // @desc    Get all lifeguards for a center
 // @route   GET /api/v1/lifeguards
 // @access  Center Admin
@@ -395,49 +403,53 @@ const updateLifeguard = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Delete lifeguard
+// @desc    Soft delete lifeguard (Center Admin or System Admin)
 // @route   DELETE /api/v1/lifeguards/:id
-// @access  Center Admin
+// @access  Center Admin or System Admin
 const deleteLifeguard = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const centerAdminId = req.user.id;
+  const requestingUser = req.user;
+  let centerId = null;
 
-  // Get the center ID for this center admin
-  const centerResult = await query(
-    `SELECT c.id as center_id
-     FROM centers c
-     JOIN users u ON u.center_id = c.id
-     WHERE u.id = $1 AND u.role = 'center_admin'
-     LIMIT 1`,
-    [centerAdminId]
-  );
-
-  if (centerResult.rows.length === 0) {
-    return res.status(404).json({
-      success: false,
-      message: 'Center not found for this admin'
-    });
+  // System Admin: can delete any lifeguard
+  if (requestingUser.role === 'system_admin') {
+    const lifeguardResult = await query(
+      `SELECT l.id, l.user_id, l.center_id, u.email, u.first_name, u.last_name
+       FROM lifeguards l
+       JOIN users u ON u.id = l.user_id
+       WHERE l.id = $1`,
+      [id]
+    );
+    if (lifeguardResult.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Lifeguard not found' });
+    }
+    centerId = lifeguardResult.rows[0].center_id;
+  } else {
+    // Center Admin: can only delete lifeguards in their center
+    const centerResult = await query(
+      `SELECT c.id as center_id
+       FROM centers c
+       JOIN users u ON u.center_id = c.id
+       WHERE u.id = $1 AND u.role = 'center_admin'
+       LIMIT 1`,
+      [requestingUser.id]
+    );
+    if (centerResult.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Center not found for this admin' });
+    }
+    centerId = centerResult.rows[0].center_id;
+    // Check if lifeguard exists and belongs to this center
+    const existingLifeguard = await query(
+      `SELECT l.id, l.user_id, u.email, u.first_name, u.last_name
+       FROM lifeguards l
+       JOIN users u ON u.id = l.user_id
+       WHERE l.id = $1 AND l.center_id = $2 AND u.role = 'lifeguard'`,
+      [id, centerId]
+    );
+    if (existingLifeguard.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Lifeguard not found' });
+    }
   }
-
-  const centerId = centerResult.rows[0].center_id;
-
-  // Check if lifeguard exists and belongs to this center
-  const existingLifeguard = await query(
-    `SELECT l.id, l.user_id, u.email, u.first_name, u.last_name
-     FROM lifeguards l
-     JOIN users u ON u.id = l.user_id
-     WHERE l.id = $1 AND l.center_id = $2 AND u.role = 'lifeguard'`,
-    [id, centerId]
-  );
-
-  if (existingLifeguard.rows.length === 0) {
-    return res.status(404).json({
-      success: false,
-      message: 'Lifeguard not found'
-    });
-  }
-
-  const userId = existingLifeguard.rows[0].user_id;
 
   // Check if lifeguard has active shifts
   const activeShifts = await query(
@@ -446,42 +458,59 @@ const deleteLifeguard = asyncHandler(async (req, res) => {
      WHERE lifeguard_id = $1 AND status IN ('scheduled', 'active')`,
     [id]
   );
-
   if (parseInt(activeShifts.rows[0].count) > 0) {
-    return res.status(400).json({
-      success: false,
-      message: 'Cannot delete lifeguard with active shifts'
-    });
+    return res.status(400).json({ success: false, message: 'Cannot delete lifeguard with active shifts' });
   }
 
-  // Start transaction
-  await query('BEGIN');
-
-  try {
-    // Delete lifeguard record (this will cascade to user due to foreign key)
-    await query('DELETE FROM lifeguards WHERE id = $1', [id]);
-
-    // Delete user record
-    await query('DELETE FROM users WHERE id = $1', [userId]);
-
-    await query('COMMIT');
-
-    logger.info('Deleted lifeguard', {
-      lifeguardId: id,
-      userId,
-      centerId,
-      adminId: centerAdminId
-    });
-
-    res.json({
-      success: true,
-      message: 'Lifeguard deleted successfully'
-    });
-
-  } catch (error) {
-    await query('ROLLBACK');
-    throw error;
+  // Soft delete lifeguard and user
+  await query('UPDATE lifeguards SET is_active = false, deleted_at = CURRENT_TIMESTAMP WHERE id = $1', [id]);
+  const lifeguardUser = await query('SELECT user_id FROM lifeguards WHERE id = $1', [id]);
+  if (lifeguardUser.rows.length > 0) {
+    await query('UPDATE users SET is_active = false, deleted_at = CURRENT_TIMESTAMP WHERE id = $1', [lifeguardUser.rows[0].user_id]);
+    await global.logAuditAction('soft_delete', 'lifeguard', id, requestingUser.id, { user_id: lifeguardUser.rows[0].user_id });
   }
+  logger.info('Lifeguard soft-deleted', { lifeguardId: id, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'Lifeguard deactivated (soft deleted) successfully' });
+});
+
+// @desc    Restore lifeguard (System Admin only)
+// @route   POST /api/v1/lifeguards/:id/restore
+// @access  System Admin only
+const restoreLifeguard = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  if (requestingUser.role !== 'system_admin') {
+    return res.status(403).json({ success: false, message: 'Only system admin can restore lifeguards' });
+  }
+  const lifeguardUser = await query('SELECT user_id FROM lifeguards WHERE id = $1', [id]);
+  if (lifeguardUser.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'Lifeguard not found' });
+  }
+  await query('UPDATE lifeguards SET is_active = true, deleted_at = NULL WHERE id = $1', [id]);
+  await query('UPDATE users SET is_active = true, deleted_at = NULL WHERE id = $1', [lifeguardUser.rows[0].user_id]);
+  await global.logAuditAction('restore', 'lifeguard', id, requestingUser.id, { user_id: lifeguardUser.rows[0].user_id });
+  logger.info('Lifeguard restored', { lifeguardId: id, restoredBy: requestingUser.id });
+  res.json({ success: true, message: 'Lifeguard restored successfully' });
+});
+
+// @desc    Hard delete lifeguard (System Admin only)
+// @route   DELETE /api/v1/lifeguards/:id/hard
+// @access  System Admin only
+const hardDeleteLifeguard = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  if (requestingUser.role !== 'system_admin') {
+    return res.status(403).json({ success: false, message: 'Only system admin can hard delete lifeguards' });
+  }
+  const lifeguardUser = await query('SELECT user_id FROM lifeguards WHERE id = $1', [id]);
+  if (lifeguardUser.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'Lifeguard not found' });
+  }
+  await query('DELETE FROM lifeguards WHERE id = $1', [id]);
+  await query('DELETE FROM users WHERE id = $1', [lifeguardUser.rows[0].user_id]);
+  await global.logAuditAction('hard_delete', 'lifeguard', id, requestingUser.id, { user_id: lifeguardUser.rows[0].user_id });
+  logger.info('Lifeguard hard-deleted', { lifeguardId: id, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'Lifeguard permanently deleted (hard delete)' });
 });
 
 // @desc    Get lifeguard shifts
@@ -557,5 +586,7 @@ module.exports = {
   createLifeguard,
   updateLifeguard,
   deleteLifeguard,
+  restoreLifeguard,
+  hardDeleteLifeguard,
   getLifeguardShifts
 }; 

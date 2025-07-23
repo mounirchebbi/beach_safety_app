@@ -2,6 +2,14 @@ const { query } = require('../config/database');
 const { logger } = require('../utils/logger');
 const { asyncHandler } = require('../middleware/errorHandler');
 
+// Helper: Log audit actions
+typeof logAuditAction === 'undefined' && (global.logAuditAction = async (action, entity_type, entity_id, performed_by, details = null) => {
+  await query(
+    'INSERT INTO audit_log (action, entity_type, entity_id, performed_by, details) VALUES ($1, $2, $3, $4, $5)',
+    [action, entity_type, entity_id, performed_by, details ? JSON.stringify(details) : null]
+  );
+});
+
 // @desc    Get all centers
 // @route   GET /api/v1/centers
 // @access  System Admin only
@@ -155,30 +163,56 @@ const updateCenter = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete center
+// @desc    Soft delete center (System Admin only)
 // @route   DELETE /api/v1/centers/:id
 // @access  System Admin only
 const deleteCenter = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  const requestingUser = req.user;
 
   const result = await query(
-    'UPDATE centers SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = $1 RETURNING id, name',
+    'UPDATE centers SET is_active = false, deleted_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = $1 RETURNING id, name',
     [id]
   );
 
   if (result.rows.length === 0) {
-    return res.status(404).json({
-      success: false,
-      message: 'Center not found'
-    });
+    return res.status(404).json({ success: false, message: 'Center not found' });
   }
 
-  logger.info('Center deactivated', { centerId: id, name: result.rows[0].name });
+  await global.logAuditAction('soft_delete', 'center', id, requestingUser.id, { name: result.rows[0].name });
+  logger.info('Center soft-deleted', { centerId: id, name: result.rows[0].name, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'Center deactivated (soft deleted) successfully' });
+});
 
-  res.json({
-    success: true,
-    message: 'Center deactivated successfully'
-  });
+// @desc    Restore center (System Admin only)
+// @route   POST /api/v1/centers/:id/restore
+// @access  System Admin only
+const restoreCenter = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  const result = await query('UPDATE centers SET is_active = true, deleted_at = NULL, updated_at = CURRENT_TIMESTAMP WHERE id = $1 RETURNING id, name', [id]);
+  if (result.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'Center not found' });
+  }
+  await global.logAuditAction('restore', 'center', id, requestingUser.id, { name: result.rows[0].name });
+  logger.info('Center restored', { centerId: id, name: result.rows[0].name, restoredBy: requestingUser.id });
+  res.json({ success: true, message: 'Center restored successfully' });
+});
+
+// @desc    Hard delete center (System Admin only)
+// @route   DELETE /api/v1/centers/:id/hard
+// @access  System Admin only
+const hardDeleteCenter = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const requestingUser = req.user;
+  const result = await query('SELECT id, name FROM centers WHERE id = $1', [id]);
+  if (result.rows.length === 0) {
+    return res.status(404).json({ success: false, message: 'Center not found' });
+  }
+  await query('DELETE FROM centers WHERE id = $1', [id]);
+  await global.logAuditAction('hard_delete', 'center', id, requestingUser.id, { name: result.rows[0].name });
+  logger.info('Center hard-deleted', { centerId: id, name: result.rows[0].name, deletedBy: requestingUser.id });
+  res.json({ success: true, message: 'Center permanently deleted (hard delete)' });
 });
 
 // @desc    Get center lifeguards
@@ -350,6 +384,8 @@ module.exports = {
   createCenter,
   updateCenter,
   deleteCenter,
+  restoreCenter,
+  hardDeleteCenter,
   getCenterLifeguards,
   getCenterShifts,
   getCenterWeather,
