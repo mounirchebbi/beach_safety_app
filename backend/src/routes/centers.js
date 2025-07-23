@@ -14,7 +14,8 @@ const {
   getCenterShifts,
   getCenterWeather,
   updateLocationCheckInSetting,
-  getLocationCheckInSetting
+  getLocationCheckInSetting,
+  setRateLimitEnabled
 } = require('../controllers/centerController');
 
 const router = express.Router();
@@ -91,5 +92,8 @@ router.put('/:id', verifyToken, requireCenterAdmin, requireOwnership('center'), 
 router.delete('/:id', verifyToken, requireSystemAdmin, asyncHandler(deleteCenter));
 router.post('/:id/restore', verifyToken, requireSystemAdmin, asyncHandler(restoreCenter));
 router.delete('/:id/hard', verifyToken, requireSystemAdmin, asyncHandler(hardDeleteCenter));
+
+// PATCH /api/v1/centers/:centerId/rate-limit - Enable/disable emergency alert rate limiting
+router.patch('/:centerId/rate-limit', verifyToken, asyncHandler(setRateLimitEnabled));
 
 module.exports = router; 

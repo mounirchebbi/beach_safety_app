@@ -118,29 +118,8 @@ const getWeatherHistory = asyncHandler(async (req, res) => {
   }
 });
 
-// Test weather API connection (for debugging)
-const testWeatherApi = asyncHandler(async (req, res) => {
-  try {
-    const testResult = await weatherService.testApiConnection();
-    
-    res.json({
-      success: true,
-      message: 'Weather API test completed',
-      data: testResult
-    });
-  } catch (error) {
-    logger.error('Error testing weather API:', error.message);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to test weather API',
-      error: error.message
-    });
-  }
-});
-
 module.exports = {
   getCurrentWeather,
   getWeatherForecast,
-  getWeatherHistory,
-  testWeatherApi
+  getWeatherHistory
 }; 

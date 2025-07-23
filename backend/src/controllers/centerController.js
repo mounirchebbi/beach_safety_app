@@ -37,7 +37,7 @@ const getCenterById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const result = await query(
-    'SELECT id, name, description, ST_AsGeoJSON(location) as location, address, phone, email, operating_hours, created_at, updated_at, is_active FROM centers WHERE id = $1',
+    'SELECT id, name, description, ST_AsGeoJSON(location) as location, address, phone, email, operating_hours, created_at, updated_at, is_active, emergency_alert_rate_limit_enabled FROM centers WHERE id = $1',
     [id]
   );
 
@@ -378,6 +378,51 @@ const getLocationCheckInSetting = asyncHandler(async (req, res) => {
   });
 });
 
+const setRateLimitEnabled = async (req, res) => {
+  const { centerId } = req.params;
+  const { enabled } = req.body;
+
+  try {
+    logger.info('setRateLimitEnabled: user', {
+      userId: req.user.id,
+      role: req.user.role,
+      userCenterId: req.user.center_id,
+      paramCenterId: centerId
+    });
+    // Only allow center admins for their own center, or system admins
+    if (
+      req.user.role !== 'system_admin' &&
+      !(req.user.role === 'center_admin' && req.user.center_id === centerId)
+    ) {
+      logger.error('Forbidden: User does not have permission to toggle rate limit', { userId: req.user.id, centerId });
+      return res.status(403).json({ success: false, message: 'Forbidden' });
+    }
+
+    if (typeof enabled !== 'boolean') {
+      logger.error('Invalid enabled value in request body', { enabled });
+      return res.status(400).json({ success: false, message: 'Enabled value must be boolean' });
+    }
+
+    const result = await query(
+      'UPDATE centers SET emergency_alert_rate_limit_enabled = $1 WHERE id = $2 RETURNING id',
+      [enabled, centerId]
+    );
+
+    if (result.rows.length === 0) {
+      logger.error('Center not found for rate limit update', { centerId });
+      return res.status(404).json({ success: false, message: 'Center not found' });
+    }
+
+    // Audit log
+    await global.logAuditAction('toggle_rate_limit', 'center', centerId, req.user.id, { enabled });
+
+    res.json({ success: true, message: 'Rate limiting setting updated', enabled });
+  } catch (err) {
+    logger.error('Error in setRateLimitEnabled', { error: err, centerId, enabled, userId: req.user.id });
+    res.status(500).json({ success: false, message: 'Internal server error', error: err.message });
+  }
+};
+
 module.exports = {
   getAllCenters,
   getCenterById,
@@ -390,5 +435,6 @@ module.exports = {
   getCenterShifts,
   getCenterWeather,
   updateLocationCheckInSetting,
-  getLocationCheckInSetting
+  getLocationCheckInSetting,
+  setRateLimitEnabled
 }; 

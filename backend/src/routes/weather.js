@@ -16,9 +16,6 @@ router.get('/centers/:id/current', verifyToken, requireLifeguard, asyncHandler(g
 router.get('/centers/:id/forecast', verifyToken, requireLifeguard, asyncHandler(getWeatherForecast));
 router.get('/centers/:id/history', verifyToken, requireLifeguard, asyncHandler(getWeatherHistory));
 
-// Test route (no authentication required for debugging)
-router.get('/test', asyncHandler(testWeatherApi));
-
 // Manual weather update trigger (for testing)
 router.post('/update-all', asyncHandler(async (req, res) => {
   try {
