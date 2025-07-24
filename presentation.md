@@ -1,165 +1,187 @@
-# Beach Safety App: Comprehensive Overview
+# Slide 1: Beach Safety Management System
+
+**Slide Text:**
+- Beach Safety Management System
+- Individual Project Showcase
+
+**Speaker Notes:**
+Welcome to my presentation on the Beach Safety Management System. This is a comprehensive, real-time web application designed and implemented as a solo project. Today, I'll walk you through the journey, technical highlights, and the MVP in action.
 
 ---
 
-## Introduction
+# Slide 2: Project Introduction & Goals
 
-The **Beach Safety App** is a full-stack web application designed to enhance safety and operational efficiency at beach centers. It provides real-time monitoring, alerting, and management tools for lifeguards, center admins, and system administrators, integrating weather data, incident reporting, and shift management.
+**Slide Text:**
+- Purpose: Enhance beach safety operations
+- Real-time monitoring, emergency response, and compliance
+- Individual project (not a team effort)
+
+**Speaker Notes:**
+The main goal was to create a robust platform for managing beach safety, with features like real-time lifeguard tracking, emergency alerting, and strong compliance/audit capabilities. This project was completed individually, allowing for deep, end-to-end ownership of every aspect.
 
 ---
 
-## System Architecture
+# Slide 3: Process Summary
 
-- **Backend:** Node.js, Express, PostgreSQL (with PostGIS for geospatial queries)
-- **Frontend:** React, TypeScript, Material-UI
-- **Real-Time:** WebSockets for live alerts and updates
-- **External Integrations:** OpenWeatherMap API for real weather data; simulated marine data
+**Slide Text:**
+- Project Lifecycle Stages:
+  - Requirements & Research
+  - Architecture & Planning
+  - Implementation (Backend & Frontend)
+  - Testing & Debugging
+  - Deployment & Documentation
+- Major Decisions:
+  - Real-time features (Socket.io)
+  - Spatial data (PostGIS)
+  - Role-based access (RBAC)
+- Key Challenges:
+  - Integrating real-time and spatial data
+  - Ensuring security and compliance
+
+**Speaker Notes:**
+The process began with requirements gathering and research, followed by careful architectural planning. Implementation was split between backend and frontend, with a strong focus on real-time and spatial features. Testing and debugging were iterative, and deployment included comprehensive documentation. Key decisions included using Socket.io for real-time updates, PostGIS for spatial data, and strict RBAC for security. Integrating these technologies and ensuring compliance were the main challenges.
+
+---
+
+# Slide 4: Technical Architecture
+
+**Slide Text:**
+- Full-stack: React (TypeScript) + Node.js (Express)
+- PostgreSQL + PostGIS for spatial data
+- Real-time: Socket.io
+- Secure: JWT, bcrypt, audit logging
+- Modular, service-oriented design
+- [System Architecture Diagram]
 
 ```mermaid
 graph TD;
-  User-->|Web/App|Frontend[React App]
-  Frontend-->|REST API|Backend[Node.js/Express]
-  Backend-->|DB Queries|PostgreSQL[(PostgreSQL + PostGIS)]
-  Backend-->|Weather API|OpenWeatherMap
-  Backend-->|WebSocket|Frontend
+  User["User (Lifeguard, Center Admin, System Admin)"]
+  Frontend["Frontend (React + TypeScript)"]
+  Backend["Backend (Node.js + Express)"]
+  DB[("PostgreSQL + PostGIS")]
+  WeatherAPI["External Weather APIs"]
+  Socket["Socket.io (Real-time)"]
+
+  User-->|Web/App|Frontend
+  Frontend-->|REST API|Backend
+  Backend-->|DB Queries|DB
+  Backend-->|Weather Data|WeatherAPI
+  Backend-->|WebSocket|Socket
+  Socket-->|Live Updates|Frontend
 ```
 
----
-
-## Key Features
-
-### For Lifeguards
-- **Dashboard:** View real-time emergency alerts, weather, and safety flags
-- **My Shifts:** Calendar and list view of assigned shifts; check-in/check-out with location validation
-- **Incident Reporting:** Submit and review incident reports
-- **Emergency Alerts:** Receive and acknowledge alerts with map-based geolocation
-
-### For Center Admins
-- **Center Dashboard:** Monitor center status, lifeguard activity, and safety flags
-- **Shift Scheduling:** Assign, edit, and view lifeguard shifts (calendar & list views)
-- **Lifeguard Management:** Add, remove, and manage lifeguard accounts
-- **Safety Flag Management:** View flag history, trigger auto-updates, set manual overrides, and configure location-based check-in
-- **Incident & Escalation Management:** Review and escalate incidents
-
-### For System Admins
-- **System Dashboard:** Overview of all centers, global safety status
-- **User Management:** Manage all users and roles
-- **Flag Analytics:** View and audit safety flag status across all centers
-- **Force Updates:** Trigger system-wide flag or weather updates
+**Speaker Notes:**
+The application is built with a modern full-stack architecture. The frontend uses React and TypeScript for a robust, type-safe UI. The backend is Node.js with Express, connected to a PostgreSQL database enhanced with PostGIS for spatial queries. Real-time features are powered by Socket.io, and security is enforced with JWT, bcrypt, and comprehensive audit logging. The architecture is modular and service-oriented for maintainability and scalability.
 
 ---
 
-## User Roles & Permissions
+# Slide 5: Key Internal Mechanisms
 
-- **Lifeguard:**
-  - View own shifts, check in/out, receive alerts, submit reports
-- **Center Admin:**
-  - Manage lifeguards, shifts, safety flags, and incidents for their center
-- **System Admin:**
-  - Full access to all centers, users, and system settings
+**Slide Text:**
+- RESTful API with versioning
+- Middleware for authentication and RBAC
+- Service layer for business logic
+- Real-time event handling
+- [Backend Flow Diagram]
 
----
-
-## Backend Workflows
-
-### 1. Weather & Safety Flag Automation
-- Fetches real weather data every 15 minutes for each center
-- Simulates marine data (wave height, currents)
-- Determines safety flag (green/yellow/red/black) based on configurable thresholds
-- Sets automatic flag with 14-minute expiration; respects manual overrides (2-hour expiration)
-- Triggers WebSocket updates to frontend clients
-
-### 2. Shift & Check-In Logic
-- Shifts assigned to lifeguards by center admin
-- Lifeguards can check in only for today’s shifts, and only within 2 hours of start time
-- Optional: Check-in restricted to within 10km of center (configurable)
-
-### 3. Emergency Alerts
-- Alerts created by admins or triggered by incidents
-- Alerts broadcast in real-time to relevant lifeguards and admins
-- Alerts include geolocation and severity
-
-### 4. Incident & Escalation Management
-- Lifeguards submit incident reports
-- Admins review, escalate, and resolve incidents
-
----
-
-## Frontend Workflows
-
-### 1. Real-Time Dashboards
-- Lifeguard and admin dashboards auto-update via WebSocket for alerts, flags, and weather
-
-### 2. Calendar & List Views
-- Shifts and schedules shown in both calendar and list formats
-- Drag-and-drop and quick edit features for admins
-
-### 3. Map Integration
-- Emergency alerts and safety zones visualized on interactive maps
-- Weather overlays and flag status shown on map
-
-### 4. User Feedback & Validation
-- Clear error messages and status indicators for check-in, flag status, and alerts
-
----
-
-## Real-Time & Scheduled Features
-
-- **WebSocket:**
-  - Emergency alerts, flag changes, and weather updates pushed instantly to clients
-- **Schedulers:**
-  - Weather and safety flag updates every 15 minutes
-  - Expired manual flags revert to automatic mode
-
----
-
-## Extensibility & Customization
-
-- **Configurable Safety Flag Conditions:** (future)
-  - Thresholds for flag status can be made center-specific
-- **Modular API:**
-  - RESTful endpoints for all major resources (users, shifts, flags, alerts, reports)
-- **Role-Based Access Control:**
-  - Easily extendable for new roles or permissions
-
----
-
-## Example User Flows
-
-### Lifeguard Check-In
-1. Lifeguard logs in and views today’s shifts
-2. Checks in (location-validated if enabled)
-3. Receives real-time alerts and weather updates
-
-### Center Admin Sets Manual Flag
-1. Admin reviews weather and flag status
-2. Sets manual flag (expires in 2 hours)
-3. System respects manual override until expiration
-
-### Automatic Flag Update
-1. Scheduler fetches weather every 15 minutes
-2. System determines new flag and sets automatic flag (expires in 14 minutes)
-3. If manual flag is active and not expired, system does not override
-
----
-
-## Diagrams
-
-### System Overview
 ```mermaid
 graph LR;
-  subgraph Frontend
-    A[User Interface]-->|REST/WebSocket|B[API Service]
-  end
-  subgraph Backend
-    B-->|DB|C[(PostgreSQL)]
-    B-->|Weather API|D(OpenWeatherMap)
-    B-->|WebSocket|A
-  end
+  API["API Endpoint (/api/v1/...)"]
+  Auth["Auth Middleware (JWT, RBAC)"]
+  Controller["Controller (Business Logic)"]
+  Service["Service Layer (e.g., Weather, Socket)"]
+  Repo["Repository/DB Access"]
+  DB[("PostgreSQL + PostGIS")]
+  Socket["Socket.io"]
+
+  API-->|Request|Auth
+  Auth-->|Authorized|Controller
+  Controller-->|Invoke|Service
+  Service-->|DB Query|Repo
+  Repo-->|SQL|DB
+  Service-->|Emit Event|Socket
+  Socket-->|Real-time|API
 ```
+
+**Speaker Notes:**
+Internally, the backend follows a layered approach. API endpoints are protected by authentication and role-based access middleware. Controllers handle business logic, delegating to services for complex operations like weather integration or real-time events. The repository layer abstracts database access, and Socket.io is used for emitting real-time updates to clients. This structure ensures clear separation of concerns and maintainability.
 
 ---
 
-## Conclusion
+# Slide 6: Technology Choices & Rationale
 
-The Beach Safety App provides a robust, real-time platform for managing beach safety operations, integrating weather intelligence, incident management, and shift scheduling. Its modular, extensible design supports future enhancements and scaling to additional centers or regions. 
+**Slide Text:**
+- React + TypeScript: Modern, type-safe UI
+- Node.js + Express: Fast, scalable backend
+- PostgreSQL + PostGIS: Relational + spatial data
+- Socket.io: Real-time communication
+- JWT & bcrypt: Security best practices
+- Modular, testable codebase
+
+**Speaker Notes:**
+Each technology was chosen for its strengths: React and TypeScript for a modern, maintainable frontend; Node.js and Express for a performant backend; PostgreSQL with PostGIS for advanced spatial data support; and Socket.io for real-time features. Security is a priority, with JWT for authentication and bcrypt for password hashing. The codebase is modular and testable, supporting future growth.
+
+---
+
+# Slide 7: Noteworthy Implementation Details
+
+**Slide Text:**
+- Role-based access control (RBAC) at every layer
+- Soft/hard delete with audit logging
+- Real-time weather and alert updates
+- Interactive mapping (Leaflet.js)
+- Automated database migrations
+- Comprehensive test coverage
+
+**Speaker Notes:**
+Some highlights include strict RBAC enforcement, soft and hard delete mechanisms with full audit trails, and real-time updates for weather and emergency alerts. The frontend features interactive mapping with Leaflet.js, and the backend supports automated migrations. Comprehensive testing ensures reliability.
+
+---
+
+# Slide 8: MVP Demo
+
+**Slide Text:**
+- Live demo: Core features in action
+  - User login & role-based dashboard
+  - Real-time emergency alerts
+  - Lifeguard shift management
+  - Incident reporting
+  - Interactive map & weather widget
+- [Screenshots or live preview]
+
+**Speaker Notes:**
+In the demo, I'll showcase the MVP's core features: logging in as different roles, receiving and responding to real-time emergency alerts, managing lifeguard shifts, filing incident reports, and using the interactive map and weather widget. Screenshots or a live preview will illustrate these workflows.
+
+---
+
+# Slide 9: Results & Reflection
+
+**Slide Text:**
+- Outcomes:
+  - Fully functional MVP
+  - Real-time, spatial, and secure
+- Performance:
+  - Fast response times
+  - Scalable architecture
+- Lessons Learned:
+  - Integrating real-time and spatial data
+  - Importance of modular design
+  - Value of comprehensive testing
+
+**Speaker Notes:**
+The project resulted in a fully functional MVP with real-time, spatial, and secure features. Performance is strong, with fast response times and a scalable architecture. Key lessons include the complexity of integrating real-time and spatial data, the benefits of modular design, and the necessity of thorough testing.
+
+---
+
+# Slide 10: Conclusion & Next Steps
+
+**Slide Text:**
+- Future Development:
+  - Advanced analytics & reporting
+  - Mobile app version
+  - Push notifications
+  - Multi-tenant support
+- Thank you!
+
+**Speaker Notes:**
+Looking ahead, future development could include advanced analytics, a mobile app, push notifications, and multi-tenant support. Thank you for your attention—I'm happy to answer any questions or discuss the project further. 
