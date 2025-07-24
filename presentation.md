@@ -103,8 +103,36 @@ graph LR;
   Socket-->|Real-time|API
 ```
 
+**Emergency Alert Lifecycle (Public User Initiated):**
+
+```mermaid
+sequenceDiagram
+    participant PublicUser as "Public User"
+    participant Frontend as "Frontend (Web/App)"
+    participant Backend as "Backend (API Server)"
+    participant DB as "Database"
+    participant Lifeguard as "Lifeguard (Socket.io)"
+    participant CenterAdmin as "Center Admin (Socket.io)"
+
+    PublicUser->>Frontend: Submit Emergency Alert (SOS)
+    Frontend->>Backend: POST /api/v1/alerts/sos
+    Backend->>DB: Store new alert (status: active)
+    Backend->>Lifeguard: Emit 'alert_new' (Socket.io)
+    Backend->>CenterAdmin: Emit 'alert_new' (Socket.io)
+    Lifeguard->>Frontend: Real-time alert notification
+    CenterAdmin->>Frontend: Real-time alert notification
+    Lifeguard->>Backend: Update alert status (responding/resolved)
+    Backend->>DB: Update alert status
+    Backend->>Lifeguard: Emit 'alert_status_change'
+    Backend->>CenterAdmin: Emit 'alert_status_change'
+    Lifeguard->>Frontend: See status update
+    CenterAdmin->>Frontend: See status update
+```
+
 **Speaker Notes:**
 Internally, the backend follows a layered approach. API endpoints are protected by authentication and role-based access middleware. Controllers handle business logic, delegating to services for complex operations like weather integration or real-time events. The repository layer abstracts database access, and Socket.io is used for emitting real-time updates to clients. This structure ensures clear separation of concerns and maintainability.
+
+The sequence diagram below illustrates the full lifecycle of an emergency alert initiated by a public user. It shows how the alert is submitted, stored, and broadcast in real time to lifeguards and center admins, and how status updates propagate through the system.
 
 ---
 
