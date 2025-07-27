@@ -132,6 +132,7 @@ const getCenterEscalations = asyncHandler(async (req, res) => {
     let query = `
       SELECT 
         ee.id,
+        ee.alert_id,
         ee.escalation_type,
         ee.priority,
         ee.description,
@@ -254,6 +255,7 @@ const getMyEscalations = asyncHandler(async (req, res) => {
     const result = await db.query(
       `SELECT 
         ee.id,
+        ee.alert_id,
         ee.escalation_type,
         ee.priority,
         ee.description,

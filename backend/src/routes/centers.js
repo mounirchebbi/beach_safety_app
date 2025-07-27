@@ -4,6 +4,7 @@ const { verifyToken, requireSystemAdmin, requireCenterAdmin, requireOwnership } 
 const { asyncHandler } = require('../middleware/errorHandler');
 const {
   getAllCenters,
+  getOtherCenters,
   getCenterById,
   createCenter,
   updateCenter,
@@ -63,6 +64,9 @@ const validateCenter = [
 // Routes
 // GET /api/v1/centers - Get all centers (System Admin only)
 router.get('/', verifyToken, requireSystemAdmin, asyncHandler(getAllCenters));
+
+// GET /api/v1/centers/others - Get other centers for support requests (Center Admin)
+router.get('/others', verifyToken, requireCenterAdmin, asyncHandler(getOtherCenters));
 
 // POST /api/v1/centers - Create new center (System Admin only)
 router.post('/', verifyToken, requireSystemAdmin, validateCenter, asyncHandler(createCenter));

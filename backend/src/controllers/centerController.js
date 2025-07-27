@@ -30,6 +30,45 @@ const getAllCenters = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get other centers for support requests
+// @route   GET /api/v1/centers/others
+// @access  Center Admin
+const getOtherCenters = asyncHandler(async (req, res) => {
+  const currentUserId = req.user.id;
+  
+  // Get current user's center
+  const userResult = await query(
+    'SELECT center_id FROM users WHERE id = $1',
+    [currentUserId]
+  );
+
+  if (userResult.rows.length === 0 || !userResult.rows[0].center_id) {
+    return res.status(404).json({
+      success: false,
+      message: 'User center not found'
+    });
+  }
+
+  const currentCenterId = userResult.rows[0].center_id;
+
+  // Get all centers except the current user's center
+  const result = await query(
+    'SELECT id, name, description, ST_AsGeoJSON(location) as location, address, phone, email, operating_hours, created_at, updated_at, is_active FROM centers WHERE is_active = true AND id != $1 ORDER BY name',
+    [currentCenterId]
+  );
+
+  const centers = result.rows.map(row => ({
+    ...row,
+    location: JSON.parse(row.location)
+  }));
+
+  res.json({
+    success: true,
+    count: centers.length,
+    data: centers
+  });
+});
+
 // @desc    Get center by ID
 // @route   GET /api/v1/centers/:id
 // @access  Private
@@ -425,6 +464,7 @@ const setRateLimitEnabled = async (req, res) => {
 
 module.exports = {
   getAllCenters,
+  getOtherCenters,
   getCenterById,
   createCenter,
   updateCenter,
