@@ -8,7 +8,8 @@ const {
   acknowledgeSupportRequest,
   resolveSupportRequest,
   declineSupportRequest,
-  getSupportRequestById
+  getSupportRequestById,
+  getIncomingSupportRequestsCount
 } = require('../controllers/interCenterSupportController');
 
 // All routes require authentication and center_admin role
@@ -20,6 +21,9 @@ router.post('/', createInterCenterSupportRequest);
 
 // Get incoming support requests (requests sent TO this center)
 router.get('/incoming', getIncomingSupportRequests);
+
+// Get count of incoming support requests for dashboard
+router.get('/incoming/count', getIncomingSupportRequestsCount);
 
 // Get outgoing support requests (requests sent FROM this center)
 router.get('/outgoing', getOutgoingSupportRequests);

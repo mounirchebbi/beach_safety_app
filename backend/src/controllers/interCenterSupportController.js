@@ -587,6 +587,57 @@ const declineSupportRequest = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get count of incoming support requests for dashboard
+// @route   GET /api/v1/inter-center-support/incoming/count
+// @access  Center Admin
+const getIncomingSupportRequestsCount = asyncHandler(async (req, res) => {
+  const centerAdminId = req.user.id;
+
+  try {
+    // Get center ID for the admin
+    const userResult = await db.query(
+      'SELECT center_id FROM users WHERE id = $1',
+      [centerAdminId]
+    );
+
+    if (userResult.rows.length === 0 || !userResult.rows[0].center_id) {
+      return res.status(404).json({
+        success: false,
+        message: 'Center not found for this admin'
+      });
+    }
+
+    const centerId = userResult.rows[0].center_id;
+
+    // Get count of incoming support requests
+    const result = await db.query(
+      `SELECT COUNT(*) as count
+       FROM inter_center_support_requests icsr
+       WHERE icsr.target_center_id = $1 AND icsr.status IN ('pending', 'acknowledged', 'responding')`,
+      [centerId]
+    );
+
+    const count = parseInt(result.rows[0].count);
+
+    logger.info('Retrieved incoming support requests count', {
+      centerAdminId,
+      centerId,
+      count
+    });
+
+    res.json({
+      success: true,
+      data: { count }
+    });
+  } catch (error) {
+    logger.error('Error retrieving incoming support requests count', { error: error.message, centerAdminId });
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve incoming support requests count'
+    });
+  }
+});
+
 // @desc    Get support request by ID
 // @route   GET /api/v1/inter-center-support/:id
 // @access  Center Admin
@@ -678,5 +729,6 @@ module.exports = {
   acknowledgeSupportRequest,
   resolveSupportRequest,
   declineSupportRequest,
-  getSupportRequestById
+  getSupportRequestById,
+  getIncomingSupportRequestsCount
 }; 
