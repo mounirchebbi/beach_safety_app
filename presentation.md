@@ -84,17 +84,71 @@ The application is built with a modern full-stack architecture. The frontend use
 
 **WebSocket Implementation:**
 ```javascript
-// Socket.io Service - Real-time Communication
+// Emergency Alert Flow: Public User → Server → Lifeguards & Admins
+
+// 1. Public user creates emergency alert (REST API)
+const createSOSAlert = async (req, res) => {
+  const { location, description, center_id } = req.body;
+  
+  // Find nearest center if not specified
+  const nearestCenter = await findNearestCenter(location.lat, location.lng);
+  const targetCenterId = center_id || nearestCenter.id;
+  
+  // Store alert in database
+  const result = await query(`
+    INSERT INTO emergency_alerts (center_id, alert_type, severity, location, description, status)
+    VALUES ($1, 'sos', 'critical', ST_SetSRID(ST_MakePoint($2, $3), 4326), $4, 'active')
+    RETURNING *
+  `, [targetCenterId, location.lng, location.lat, description]);
+  
+  const alert = result.rows[0];
+  
+  // 2. Broadcast real-time alert to center
+  emitEmergencyAlert(alert);
+  
+  res.status(201).json({ success: true, data: alert });
+};
+
+// 3. Socket.io broadcasting function
+const emitEmergencyAlert = (alertData) => {
+  if (io) {
+    // Broadcast to specific center room
+    io.to(`center_${alertData.center_id}`).emit('emergency_alert', {
+      id: alertData.id,
+      alert_type: alertData.alert_type,
+      severity: alertData.severity,
+      location: alertData.location,
+      description: alertData.description,
+      status: alertData.status,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Also notify system admin room
+    io.to('system_admin').emit('emergency_alert', {
+      ...alertData,
+      timestamp: new Date().toISOString()
+    });
+  }
+};
+
+// 4. Socket.io connection handling
 const initializeSocket = (socketIo) => {
   io = socketIo;
   
   io.on('connection', (socket) => {
-    // Join center room for real-time updates
+    // Lifeguards and admins join their center room
     socket.on('join_center', (centerId) => {
       socket.join(`center_${centerId}`);
+      logger.info('Client joined center room', { socketId: socket.id, centerId });
     });
     
-    // Handle emergency alert acknowledgment
+    // System admins join system-wide room
+    socket.on('join_system', () => {
+      socket.join('system_admin');
+      logger.info('Client joined system admin room', { socketId: socket.id });
+    });
+    
+    // 5. Lifeguard acknowledges the alert
     socket.on('acknowledge_alert', async (data) => {
       const { alertId, lifeguardId } = data;
       
@@ -104,7 +158,7 @@ const initializeSocket = (socketIo) => {
         ['responding', lifeguardId, alertId]
       );
       
-      // Notify center about alert acknowledgment
+      // 6. Broadcast acknowledgment to center
       io.to(`center_${alert.center_id}`).emit('alert_acknowledged', {
         alertId, lifeguardId, status: 'responding'
       });
@@ -147,7 +201,7 @@ class WeatherService {
 ```
 
 **Speaker Notes:**
-Here are two key implementation highlights. First, the WebSocket communication uses Socket.io to enable real-time updates. When a lifeguard acknowledges an emergency alert, the system updates the database and immediately broadcasts the status change to all connected clients in that center. Second, the weather integration fetches real-time data from OpenWeatherMap API, transforms it into our standardized format, and stores it in the database with spatial coordinates. Both systems are designed for reliability and real-time responsiveness.
+Here are two key implementation highlights. First, the WebSocket communication shows the complete emergency alert flow: a public user creates an SOS alert via REST API, the server stores it in the database, then immediately broadcasts the alert to all connected lifeguards and center admins in that specific center using Socket.io rooms. When a lifeguard acknowledges the alert, the status update is broadcasted back to everyone in real-time. Second, the weather integration fetches real-time data from OpenWeatherMap API, transforms it into our standardized format, and stores it in the database with spatial coordinates. Both systems are designed for reliability and real-time responsiveness.
 
 ---
 
