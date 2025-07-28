@@ -83,6 +83,8 @@ The application is built with a modern full-stack architecture. The frontend use
 - [Code Snippets Below]
 
 **WebSocket Implementation:**
+
+**Part 1: Emergency Alert Creation & Broadcasting**
 ```javascript
 // Emergency Alert Flow: Public User → Server → Lifeguards & Admins
 
@@ -130,7 +132,13 @@ const emitEmergencyAlert = (alertData) => {
     });
   }
 };
+```
 
+**Part 1 Explanation:**
+This code handles the initial emergency alert creation and real-time broadcasting. When a public user reports an emergency, the system first determines the appropriate center (either specified or nearest based on GPS coordinates). The alert is stored in the database using PostGIS spatial functions to capture the exact location with geographic precision. The `emitEmergencyAlert` function then immediately broadcasts the alert to two target groups: all connected lifeguards and center admins in the specific center room, and system administrators in the system-wide room. This ensures rapid notification while maintaining proper access control and preventing unnecessary alerts to unrelated personnel.
+
+**Part 2: Socket.io Connection & Acknowledgment**
+```javascript
 // 4. Socket.io connection handling
 const initializeSocket = (socketIo) => {
   io = socketIo;
@@ -167,8 +175,8 @@ const initializeSocket = (socketIo) => {
 };
 ```
 
-**WebSocket Code Explanation:**
-This code implements the complete emergency alert lifecycle. When a public user reports an emergency, the system first stores the alert in the database using PostGIS spatial functions to capture the exact location. The `emitEmergencyAlert` function then immediately broadcasts the alert to all connected lifeguards and center admins in that specific center using Socket.io rooms. This ensures only relevant personnel receive the alert. When a lifeguard acknowledges the emergency, the system updates the database to track who is responding and broadcasts this status change back to everyone in real-time. The room-based approach prevents alert fatigue by targeting only the center responsible for that location.
+**Part 2 Explanation:**
+This code manages the real-time communication infrastructure and response handling. The `initializeSocket` function sets up the WebSocket server and defines event handlers for different user actions. Users join specific rooms based on their role: lifeguards and center admins join their center's room for targeted updates, while system admins join a system-wide room for global oversight. When a lifeguard acknowledges an emergency alert, the system updates the database to track the assignment and response status, then broadcasts this acknowledgment back to all personnel in that center. This creates a complete feedback loop where everyone knows who is handling the emergency, preventing duplicate responses and ensuring accountability.
 
 **Weather Data Integration:**
 ```javascript
