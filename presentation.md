@@ -167,6 +167,9 @@ const initializeSocket = (socketIo) => {
 };
 ```
 
+**WebSocket Code Explanation:**
+This code implements the complete emergency alert lifecycle. When a public user reports an emergency, the system first stores the alert in the database using PostGIS spatial functions to capture the exact location. The `emitEmergencyAlert` function then immediately broadcasts the alert to all connected lifeguards and center admins in that specific center using Socket.io rooms. This ensures only relevant personnel receive the alert. When a lifeguard acknowledges the emergency, the system updates the database to track who is responding and broadcasts this status change back to everyone in real-time. The room-based approach prevents alert fatigue by targeting only the center responsible for that location.
+
 **Weather Data Integration:**
 ```javascript
 // Weather Service - API Integration & Data Processing
@@ -199,6 +202,9 @@ class WeatherService {
   }
 }
 ```
+
+**Weather Code Explanation:**
+This weather service demonstrates external API integration and data processing. The system first retrieves the center's geographic coordinates from the PostgreSQL database using PostGIS spatial functions. It then makes an authenticated request to the OpenWeatherMap API to fetch real-time weather data for that specific location. The raw API response is transformed into a standardized format, with units converted (visibility from meters to kilometers) and additional metadata added. The processed data is stored in the database with a timestamp, enabling historical weather tracking and real-time safety assessments. This integration provides accurate, location-specific weather data that directly impacts safety flag decisions and emergency response planning.
 
 **Speaker Notes:**
 Here are two key implementation highlights. First, the WebSocket communication shows the complete emergency alert flow: a public user creates an SOS alert via REST API, the server stores it in the database, then immediately broadcasts the alert to all connected lifeguards and center admins in that specific center using Socket.io rooms. When a lifeguard acknowledges the alert, the status update is broadcasted back to everyone in real-time. Second, the weather integration fetches real-time data from OpenWeatherMap API, transforms it into our standardized format, and stores it in the database with spatial coordinates. Both systems are designed for reliability and real-time responsiveness.
