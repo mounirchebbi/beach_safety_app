@@ -75,7 +75,83 @@ The application is built with a modern full-stack architecture. The frontend use
 
 ---
 
-# Slide 5: Key Internal Mechanisms
+# Slide 5: Code Implementation Highlights
+
+**Slide Text:**
+- WebSocket Real-time Communication
+- Weather Data Integration
+- [Code Snippets Below]
+
+**WebSocket Implementation:**
+```javascript
+// Socket.io Service - Real-time Communication
+const initializeSocket = (socketIo) => {
+  io = socketIo;
+  
+  io.on('connection', (socket) => {
+    // Join center room for real-time updates
+    socket.on('join_center', (centerId) => {
+      socket.join(`center_${centerId}`);
+    });
+    
+    // Handle emergency alert acknowledgment
+    socket.on('acknowledge_alert', async (data) => {
+      const { alertId, lifeguardId } = data;
+      
+      // Update alert status in database
+      await query(
+        'UPDATE emergency_alerts SET status = $1, assigned_lifeguard_id = $2 WHERE id = $3',
+        ['responding', lifeguardId, alertId]
+      );
+      
+      // Notify center about alert acknowledgment
+      io.to(`center_${alert.center_id}`).emit('alert_acknowledged', {
+        alertId, lifeguardId, status: 'responding'
+      });
+    });
+  });
+};
+```
+
+**Weather Data Integration:**
+```javascript
+// Weather Service - API Integration & Data Processing
+class WeatherService {
+  async getCurrentWeather(centerId) {
+    // Get center coordinates from database
+    const centerResult = await query(
+      'SELECT ST_X(location) as lng, ST_Y(location) as lat FROM centers WHERE id = $1',
+      [centerId]
+    );
+    
+    const { lng, lat } = centerResult.rows[0];
+    
+    // Fetch from OpenWeatherMap API
+    const response = await axios.get(`${this.baseUrl}/weather`, {
+      params: { lat, lon: lng, appid: this.apiKey, units: 'metric' }
+    });
+    
+    // Transform and store in database
+    const transformedData = {
+      center_id: centerId,
+      temperature: response.data.main.temp,
+      wind_speed: response.data.wind.speed,
+      weather_condition: response.data.weather[0].main,
+      visibility: response.data.visibility / 1000, // Convert to km
+      recorded_at: new Date()
+    };
+    
+    return await this.storeWeatherData(transformedData);
+  }
+}
+```
+
+**Speaker Notes:**
+Here are two key implementation highlights. First, the WebSocket communication uses Socket.io to enable real-time updates. When a lifeguard acknowledges an emergency alert, the system updates the database and immediately broadcasts the status change to all connected clients in that center. Second, the weather integration fetches real-time data from OpenWeatherMap API, transforms it into our standardized format, and stores it in the database with spatial coordinates. Both systems are designed for reliability and real-time responsiveness.
+
+---
+
+# Slide 6: Key Internal Mechanisms
 
 **Slide Text:**
 - RESTful API with versioning
@@ -136,7 +212,7 @@ The sequence diagram below illustrates the full lifecycle of an emergency alert 
 
 ---
 
-# Slide 6: Technology Choices & Rationale
+# Slide 7: Technology Choices & Rationale
 
 **Slide Text:**
 - React + TypeScript: Modern, type-safe UI
@@ -151,7 +227,7 @@ Each technology was chosen for its strengths: React and TypeScript for a modern,
 
 ---
 
-# Slide 7: Noteworthy Implementation Details
+# Slide 8: Noteworthy Implementation Details
 
 **Slide Text:**
 - Role-based access control (RBAC) at every layer
@@ -166,7 +242,7 @@ Some highlights include strict RBAC enforcement, soft and hard delete mechanisms
 
 ---
 
-# Slide 8: MVP Demo
+# Slide 9: MVP Demo
 
 **Slide Text:**
 - Live demo: Core features in action
@@ -182,7 +258,7 @@ In the demo, I'll showcase the MVP's core features: logging in as different role
 
 ---
 
-# Slide 9: Results & Reflection
+# Slide 10: Results & Reflection
 
 **Slide Text:**
 - Outcomes:
@@ -201,7 +277,7 @@ The project resulted in a fully functional MVP with real-time, spatial, and secu
 
 ---
 
-# Slide 10: Conclusion & Next Steps
+# Slide 11: Conclusion & Next Steps
 
 **Slide Text:**
 - Future Development:
