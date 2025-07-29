@@ -1,1 +1,161 @@
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+build/
+dist/
+out/
+
+# Logs
+logs/
+*.log
+backend.log
+frontend.log
+combined*.log
+error*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+db_backup_*.dump
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Application specific
 frontend_backup/
+checkpoint.txt
+context.txt
+database_comprehension.txt
+demo_accounts_analysis.txt
+demo_accounts_cleanup_summary.txt
+edit_history.txt
+file_structure.txt
+github_backup.txt
+presentation.md
+rate_limiter_test.sh
+users_credentials.txt
+weather_integration.sql
+
+# Migration and setup files
+add_emergency_alert_rate_limit_setting.sql
+add_soft_delete_and_audit_log.sql
+add_updated_at_to_safety_flags.sql
+change_safety_flags_ownership.sql
+inter_center_support_setup.sql
+weather_integration.sql
+
+# Changelog files (except specified ones)
+*_CHANGELOG.md
+*_CHANGELOG.md.backup
+
+# Backup files
+*.backup
+*.bak
+
+# Test files
+test_*.sh
+*_test.sh
+
+# Generated files
+generate_hash.js
+
+# Keep these important files (negative patterns)
+!Technical_Documentation.md
+!Sprints.md
+!README.md
+!debug_history.txt
+!MVP_testing.sh
+!restart_app.sh
+!stop_app.sh

@@ -124,4 +124,52 @@ The Inter-Center Support card has been successfully added to the Center Admin Da
 - **API Integration**: New endpoint responds correctly
 - **WebSocket Events**: Real-time updates working
 
-The Inter-Center Support card is now fully functional and integrated into the Center Admin Dashboard! 🎉 
+The Inter-Center Support card is now fully functional and integrated into the Center Admin Dashboard! 🎉
+
+## Layout Update - Side by Side Cards
+
+### Summary
+Updated the Center Admin Dashboard layout to display the 'Escalation Alerts' card and 'Inter-Center' card side by side, with 'Escalation Alerts' on the left and 'Inter-Center' on the right.
+
+### Changes Made
+
+#### CenterDashboard.tsx Layout Changes
+- **File**: `frontend/src/components/admin/CenterDashboard.tsx`
+- **Changes**:
+  - Changed Escalation Alerts card from `xs={12} lg={12}` to `xs={12} lg={6}` (left side)
+  - Changed Inter-Center card from `xs={12} lg={12}` to `xs={12} lg={6}` (right side)
+  - Both cards now share the same row with equal width on large screens
+  - Maintained full width on small screens (xs={12}) for mobile responsiveness
+  - No functional changes - only layout modifications
+
+### Layout Details
+- **Large Screens (lg)**: Cards display side by side with equal width (6 columns each)
+- **Small Screens (xs)**: Cards stack vertically with full width (12 columns each)
+- **Responsive Design**: Maintains mobile-friendly layout
+- **Visual Balance**: Both cards have equal prominence in the layout
+
+### Status: ✅ LAYOUT UPDATED
+
+## Layout Update Summary
+
+The Center Admin Dashboard layout has been successfully updated to display the 'Escalation Alerts' and 'Inter-Center' cards side by side:
+
+### ✅ Changes Implemented
+- **Escalation Alerts Card**: Changed from `lg={12}` to `lg={6}` (left side)
+- **Inter-Center Card**: Changed from `lg={12}` to `lg={6}` (right side)
+- **Responsive Design**: Maintained `xs={12}` for mobile stacking
+- **Visual Balance**: Both cards now have equal prominence in the layout
+
+### ✅ Layout Behavior
+- **Large Screens (lg)**: Cards display side by side with equal width (6 columns each)
+- **Small Screens (xs)**: Cards stack vertically with full width (12 columns each)
+- **No Functional Changes**: All existing functionality preserved
+- **Build Success**: Frontend compiles without errors
+
+### ✅ Visual Result
+- **Side-by-Side Layout**: Escalation Alerts on left, Inter-Center on right
+- **Equal Width**: Both cards take up equal space on large screens
+- **Mobile Friendly**: Cards stack vertically on smaller screens
+- **Consistent Styling**: Maintains all existing card styling and functionality
+
+The layout update is complete and ready for use! 🎉 

@@ -52,3 +52,95 @@ src/components/admin/CenterDashboard.tsx
 
 webpack compiled with 1 warning
 No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/CenterDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  Line 16:3:   'Stack' is defined but never used                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 30:15:  'SecurityIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 31:18:  'BeachIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 32:20:  'NotificationsIcon' is defined but never used                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  Line 34:25:  'AdminIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 35:17:  'TrendingIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 37:11:  'WifiIcon' is defined but never used                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 38:14:  'WifiOffIcon' is defined but never used                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  Line 44:19:  'DoNotDisturbIcon' is defined but never used                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  Line 52:8:   'WeatherAlerts' is defined but never used                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 97:10:  'rateLimitSaving' is assigned a value but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 122:9:  'updateLifeguardStats' is assigned a value but never used                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 145:9:  'updateShiftStats' is assigned a value but never used                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 375:6:  React Hook useEffect has missing dependencies: 'updateAlertsCount', 'updateEscalationsCount', 'updateSafetyFlagStats', 'updateSupportRequestsCount', and 'updateWeatherStats'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  Line 392:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array                                                                                                               react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/CenterDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  Line 16:3:   'Stack' is defined but never used                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 30:15:  'SecurityIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 31:18:  'BeachIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 32:20:  'NotificationsIcon' is defined but never used                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  Line 34:25:  'AdminIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 35:17:  'TrendingIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 37:11:  'WifiIcon' is defined but never used                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 38:14:  'WifiOffIcon' is defined but never used                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  Line 44:19:  'DoNotDisturbIcon' is defined but never used                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  Line 52:8:   'WeatherAlerts' is defined but never used                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 97:10:  'rateLimitSaving' is assigned a value but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 122:9:  'updateLifeguardStats' is assigned a value but never used                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 145:9:  'updateShiftStats' is assigned a value but never used                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 375:6:  React Hook useEffect has missing dependencies: 'updateAlertsCount', 'updateEscalationsCount', 'updateSafetyFlagStats', 'updateSupportRequestsCount', and 'updateWeatherStats'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  Line 392:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array                                                                                                               react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/admin/CenterDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  Line 16:3:   'Stack' is defined but never used                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 30:15:  'SecurityIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 31:18:  'BeachIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 32:20:  'NotificationsIcon' is defined but never used                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  Line 34:25:  'AdminIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 35:17:  'TrendingIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 37:11:  'WifiIcon' is defined but never used                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 38:14:  'WifiOffIcon' is defined but never used                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  Line 44:19:  'DoNotDisturbIcon' is defined but never used                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  Line 52:8:   'WeatherAlerts' is defined but never used                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 97:10:  'rateLimitSaving' is assigned a value but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 122:9:  'updateLifeguardStats' is assigned a value but never used                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 145:9:  'updateShiftStats' is assigned a value but never used                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 375:6:  React Hook useEffect has missing dependencies: 'updateAlertsCount', 'updateEscalationsCount', 'updateSafetyFlagStats', 'updateSupportRequestsCount', and 'updateWeatherStats'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  Line 392:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array                                                                                                               react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/admin/CenterDashboard.tsx
+  Line 12:3:   'Divider' is defined but never used                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  Line 16:3:   'Stack' is defined but never used                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 30:15:  'SecurityIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 31:18:  'BeachIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 32:20:  'NotificationsIcon' is defined but never used                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  Line 34:25:  'AdminIcon' is defined but never used                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 35:17:  'TrendingIcon' is defined but never used                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  Line 37:11:  'WifiIcon' is defined but never used                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 38:14:  'WifiOffIcon' is defined but never used                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  Line 44:19:  'DoNotDisturbIcon' is defined but never used                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  Line 52:8:   'WeatherAlerts' is defined but never used                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 97:10:  'rateLimitSaving' is assigned a value but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  Line 122:9:  'updateLifeguardStats' is assigned a value but never used                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  Line 145:9:  'updateShiftStats' is assigned a value but never used                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  Line 375:6:  React Hook useEffect has missing dependencies: 'updateAlertsCount', 'updateEscalationsCount', 'updateSafetyFlagStats', 'updateSupportRequestsCount', and 'updateWeatherStats'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  Line 392:6:  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array                                                                                                               react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+No issues found.
