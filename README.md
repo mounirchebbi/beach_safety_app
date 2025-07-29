@@ -2,7 +2,7 @@
 
 A comprehensive web application for managing beach safety operations with real-time monitoring, emergency response coordination, administrative controls, and advanced audit/compliance features.
 
-## 🏖️ Overview
+##  Overview
 
 The Beach Safety Management System is a full-stack web application designed to enhance beach safety operations through:
 
@@ -13,7 +13,7 @@ The Beach Safety Management System is a full-stack web application designed to e
 - **Interactive Mapping**: Geographic visualization of safety zones and incidents
 - **Audit & Compliance**: Full audit log and soft/hard delete support for key entities
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Tech Stack
 
@@ -38,7 +38,7 @@ The Beach Safety Management System is a full-stack web application designed to e
 - OpenWeatherMap API for weather data
 - Marine Weather API for ocean conditions
 
-## 👥 User Roles
+##  User Roles
 
 ### 1. Lifeguards
 - **Shift Management**: Check in/out, view schedules
@@ -60,9 +60,9 @@ The Beach Safety Management System is a full-stack web application designed to e
 - **Configuration**: Global system settings and policies
 - **Audit Log**: View all delete/restore/hard delete actions
 
-## 🚀 Current Status
+##  Current Status
 
-### ✅ Completed Features
+###  Completed Features
 
 **Backend:**
 - Database setup with PostgreSQL and PostGIS
@@ -93,38 +93,38 @@ The Beach Safety Management System is a full-stack web application designed to e
 - Weather widget and map integration
 - Enhanced lifeguard management UI
 
-### 🔄 In Progress
+###  In Progress
 - Advanced analytics and reporting
 - Mobile app development
 - Push notifications
 - Multi-tenant support
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Beach_Safety_App/
-├── backend/                  # Node.js/Express backend
-│   ├── src/
-│   │   ├── controllers/      # API controllers
-│   │   ├── routes/           # API routes
-│   │   ├── middleware/       # Auth and error handling
-│   │   ├── services/         # Business logic
-│   │   └── utils/            # Utilities and logging
-│   ├── database_setup.sql    # Database schema
-│   └── package.json
-├── frontend/                 # React TypeScript frontend
-│   ├── src/
-│   │   ├── components/       # React components
-│   │   ├── services/         # API and Socket services
-│   │   ├── context/          # React context
-│   │   └── types/            # TypeScript definitions
-│   └── package.json
-├── database_setup.sql        # Complete database setup
-├── setup_database.sh         # Database setup script
-└── README.md
+ backend/                  # Node.js/Express backend
+    src/
+       controllers/      # API controllers
+       routes/           # API routes
+       middleware/       # Auth and error handling
+       services/         # Business logic
+       utils/            # Utilities and logging
+    database_setup.sql    # Database schema
+    package.json
+ frontend/                 # React TypeScript frontend
+    src/
+       components/       # React components
+       services/         # API and Socket services
+       context/          # React context
+       types/            # TypeScript definitions
+    package.json
+ database_setup.sql        # Complete database setup
+ setup_database.sh         # Database setup script
+ README.md
 ```
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 - Node.js 18+
@@ -183,7 +183,7 @@ OPENWEATHER_API_KEY=your-api-key
 REACT_APP_API_URL=http://localhost:5000
 ```
 
-## 🔌 API Endpoints (Key Examples)
+##  API Endpoints (Key Examples)
 
 ### Authentication
 - `POST /api/v1/auth/login` - User login
@@ -263,7 +263,7 @@ REACT_APP_API_URL=http://localhost:5000
 - `GET /api/v1/inter-center-support` - List all support requests
 - `POST /api/v1/inter-center-support` - Create support request
 
-## 🔄 Real-time Events (Socket.io)
+##  Real-time Events (Socket.io)
 
 **Client to Server:**
 - `join_center` - Join center-specific room
@@ -283,7 +283,7 @@ REACT_APP_API_URL=http://localhost:5000
 - `shift_status_change` - Shift status updates
 - `system_notification` - System-wide notifications
 
-## 🎨 Frontend Features
+##  Frontend Features
 
 - **Modern Design**: Material-UI components with custom theme
 - **Responsive Layout**: Mobile-first design approach
@@ -294,7 +294,7 @@ REACT_APP_API_URL=http://localhost:5000
 - **Enhanced Lifeguard Management**: CRUD, validation, and audit
 - **Notification System**: Real-time, auto-dismiss, and status indicators
 
-## 🔒 Security Features
+##  Security Features
 
 - **JWT Authentication**: Secure token-based authentication
 - **Password Hashing**: bcrypt for password security
@@ -305,7 +305,7 @@ REACT_APP_API_URL=http://localhost:5000
 - **Audit Logging**: All critical actions logged
 - **Soft/Hard Delete**: Data recoverability and compliance
 
-## 📊 Database Schema (Key Tables)
+##  Database Schema (Key Tables)
 
 - `users` - User accounts and authentication (soft/hard delete, audit log)
 - `centers` - Beach safety centers (soft/hard delete, audit log)
@@ -348,7 +348,7 @@ npm test
 - CRUD operations for all entities
 - Real-time Socket.io events
 
-## 🚀 Deployment
+##  Deployment
 
 ### Production Setup
 
@@ -377,9 +377,9 @@ npm test
 
 5. **Reverse Proxy**: Configure nginx or similar for serving the application
 
-## 🔮 Roadmap
+##  Roadmap
 
-### Phase 1: Core Features ✅
+### Phase 1: Core Features 
 - [x] User authentication and authorization
 - [x] Center and lifeguard management
 - [x] Shift scheduling and tracking
@@ -388,7 +388,7 @@ npm test
 - [x] Real-time dashboard and notifications
 - [x] Soft/hard delete and audit log
 
-### Phase 2: Advanced Features 🚧
+### Phase 2: Advanced Features 
 - [ ] Advanced analytics and reporting
 - [ ] Mobile app development
 - [ ] Push notifications
@@ -402,11 +402,11 @@ npm test
 4. Add tests for new functionality
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Support
+##  Support
 
 For support and questions:
 - Create an issue in the repository

@@ -2,7 +2,7 @@
 
 A comprehensive Node.js/Express backend API for the Beach Safety Web App with real-time features, role-based access control, and PostgreSQL/PostGIS integration.
 
-## 🚀 Features
+##  Features
 
 - **Authentication & Authorization**: JWT-based authentication with role-based access control
 - **Real-time Communication**: Socket.io for live updates and emergency alerts
@@ -14,7 +14,7 @@ A comprehensive Node.js/Express backend API for the Beach Safety Web App with re
 - **Security**: Helmet, CORS, rate limiting, and input validation
 - **Error Handling**: Centralized error handling with proper HTTP status codes
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Runtime**: Node.js 18+
 - **Framework**: Express.js 4.x
@@ -26,13 +26,13 @@ A comprehensive Node.js/Express backend API for the Beach Safety Web App with re
 - **Logging**: Winston
 - **Security**: Helmet, CORS, express-rate-limit
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js 18+ installed
 - PostgreSQL 15+ with PostGIS extension
 - Database setup completed (see main README)
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Install Dependencies
 
@@ -89,46 +89,46 @@ npm start
 
 The server will start on `http://localhost:5000`
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 backend/
-├── src/
-│   ├── config/
-│   │   └── database.js          # Database configuration
-│   ├── controllers/
-│   │   ├── authController.js    # Authentication logic
-│   │   ├── centerController.js  # Center management
-│   │   ├── lifeguardController.js
-│   │   ├── shiftController.js
-│   │   ├── weatherController.js
-│   │   ├── alertController.js
-│   │   ├── reportController.js
-│   │   └── publicController.js
-│   ├── middleware/
-│   │   ├── auth.js              # JWT authentication
-│   │   └── errorHandler.js      # Error handling
-│   ├── routes/
-│   │   ├── auth.js              # Authentication routes
-│   │   ├── centers.js           # Center routes
-│   │   ├── lifeguards.js
-│   │   ├── shifts.js
-│   │   ├── weather.js
-│   │   ├── alerts.js
-│   │   ├── reports.js
-│   │   └── public.js
-│   ├── services/
-│   │   └── socketService.js     # Socket.io real-time features
-│   ├── utils/
-│   │   └── logger.js            # Winston logger configuration
-│   └── app.js                   # Main application file
-├── logs/                        # Application logs
-├── package.json
-├── env.example
-└── README.md
+ src/
+    config/
+       database.js          # Database configuration
+    controllers/
+       authController.js    # Authentication logic
+       centerController.js  # Center management
+       lifeguardController.js
+       shiftController.js
+       weatherController.js
+       alertController.js
+       reportController.js
+       publicController.js
+    middleware/
+       auth.js              # JWT authentication
+       errorHandler.js      # Error handling
+    routes/
+       auth.js              # Authentication routes
+       centers.js           # Center routes
+       lifeguards.js
+       shifts.js
+       weather.js
+       alerts.js
+       reports.js
+       public.js
+    services/
+       socketService.js     # Socket.io real-time features
+    utils/
+       logger.js            # Winston logger configuration
+    app.js                   # Main application file
+ logs/                        # Application logs
+ package.json
+ env.example
+ README.md
 ```
 
-## 🔐 Authentication & Authorization
+##  Authentication & Authorization
 
 ### User Roles
 
@@ -143,7 +143,7 @@ Include the JWT token in the Authorization header:
 Authorization: Bearer <your-jwt-token>
 ```
 
-## 📡 API Endpoints
+##  API Endpoints
 
 ### Authentication
 - `POST /api/v1/auth/register` - Register new user
@@ -204,7 +204,7 @@ Authorization: Bearer <your-jwt-token>
 - `GET /api/v1/public/centers/:id/status` - Get center status
 - `GET /api/v1/public/weather/current` - Get current weather
 
-## 🔌 Real-time Features (Socket.io)
+##  Real-time Features (Socket.io)
 
 ### Events
 
@@ -248,7 +248,7 @@ socket.on('emergency_alert', (data) => {
 });
 ```
 
-## 🗄 Database Integration
+##  Database Integration
 
 The backend uses PostgreSQL with PostGIS extension for spatial data:
 
@@ -256,7 +256,7 @@ The backend uses PostgreSQL with PostGIS extension for spatial data:
 - **Spatial Queries**: Find nearest center, check if location is in safety zone
 - **Performance**: Optimized indexes for spatial and temporal queries
 
-## 🔒 Security Features
+##  Security Features
 
 - **JWT Authentication**: Secure token-based authentication
 - **Role-based Access Control**: Granular permissions per user role
@@ -266,7 +266,7 @@ The backend uses PostgreSQL with PostGIS extension for spatial data:
 - **Helmet**: Security headers
 - **Password Hashing**: bcrypt for secure password storage
 
-## 📊 Logging
+##  Logging
 
 Structured logging with Winston:
 
@@ -288,7 +288,7 @@ npm run lint
 npm run lint:fix
 ```
 
-## 🚀 Deployment
+##  Deployment
 
 ### Production Environment Variables
 
@@ -327,11 +327,11 @@ CMD ["npm", "start"]
 4. Write comprehensive tests
 5. Update documentation
 
-## 📝 License
+##  License
 
 This project is licensed under the ISC License.
 
-## 🆘 Support
+##  Support
 
 For issues and questions:
 1. Check the logs in the `logs/` directory
@@ -339,7 +339,7 @@ For issues and questions:
 3. Check environment variables
 4. Review API documentation
 
-## 🔄 Next Steps
+##  Next Steps
 
 - [ ] Implement remaining controller methods
 - [ ] Add comprehensive testing

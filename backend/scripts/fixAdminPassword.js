@@ -3,7 +3,7 @@ const { pool } = require('../src/config/database');
 
 async function fixAdminPassword() {
   try {
-    console.log('🔧 Fixing admin@beachsafety.com password...');
+    console.log(' Fixing admin@beachsafety.com password...');
     
     // Hash the correct password
     const password = 'Admin123!';
@@ -20,16 +20,16 @@ async function fixAdminPassword() {
     const result = await pool.query(query, [hashedPassword]);
     
     if (result.rowCount > 0) {
-      console.log('✅ Successfully updated admin@beachsafety.com password');
-      console.log('📧 Email: admin@beachsafety.com');
-      console.log('🔑 Password: Admin123!');
-      console.log('🔐 New hash: ' + hashedPassword);
+      console.log(' Successfully updated admin@beachsafety.com password');
+      console.log(' Email: admin@beachsafety.com');
+      console.log(' Password: Admin123!');
+      console.log(' New hash: ' + hashedPassword);
     } else {
-      console.log('❌ User admin@beachsafety.com not found');
+      console.log(' User admin@beachsafety.com not found');
     }
     
   } catch (error) {
-    console.error('❌ Error fixing admin password:', error);
+    console.error(' Error fixing admin password:', error);
   } finally {
     await pool.end();
   }
