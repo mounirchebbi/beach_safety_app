@@ -275,7 +275,7 @@ Structured logging with Winston:
 - **Log Levels**: Error, warn, info, debug
 - **Structured Data**: JSON format with metadata
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Run tests (when implemented)
@@ -319,7 +319,7 @@ EXPOSE 5000
 CMD ["npm", "start"]
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 1. Follow the existing code style
 2. Add proper error handling

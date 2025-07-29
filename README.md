@@ -328,7 +328,7 @@ REACT_APP_API_URL=http://localhost:5000
 - **Audit Trails**: Change tracking and logging
 - **Soft/Hard Delete**: Data recoverability and compliance
 
-## 🧪 Testing
+##  Testing
 
 ### Backend Testing
 ```bash
@@ -394,7 +394,7 @@ npm test
 - [ ] Push notifications
 - [ ] Multi-tenant support
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
